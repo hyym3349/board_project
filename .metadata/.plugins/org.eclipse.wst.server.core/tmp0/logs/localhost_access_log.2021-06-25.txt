@@ -340,3 +340,6 @@
 0:0:0:0:0:0:0:1 - - [25/Jun/2021:17:31:37 +0900] "GET /WEB-INF/classes/com/project/controller/BoardController.java HTTP/1.1" 404 721
 0:0:0:0:0:0:0:1 - - [25/Jun/2021:17:32:00 +0900] "GET /board/writeView HTTP/1.1" 200 2461
 0:0:0:0:0:0:0:1 - - [25/Jun/2021:17:32:04 +0900] "GET /board/list HTTP/1.1" 200 8333
+0:0:0:0:0:0:0:1 - - [25/Jun/2021:17:37:08 +0900] "GET /board/readView?bno=57 HTTP/1.1" 200 2266
+0:0:0:0:0:0:0:1 - - [25/Jun/2021:17:37:12 +0900] "GET /board/list HTTP/1.1" 200 8333
+0:0:0:0:0:0:0:1 - - [25/Jun/2021:17:37:57 +0900] "GET /board/list HTTP/1.1" 200 8333
