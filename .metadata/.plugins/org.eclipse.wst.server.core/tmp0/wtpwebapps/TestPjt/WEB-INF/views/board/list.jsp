@@ -3,6 +3,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 	<head>
+	<style>
+      .outer{
+      text-align: center;
+      }
+      </style>
 		<!-- 합쳐지고 최소화된 최신 CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<!-- 부가적인 테마 -->
@@ -50,7 +55,7 @@
 						</c:forEach>
 						
 					</table>
-					
+					<div class = "outer">
 					  <div class="search">
     					<select name="searchType">
       					<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
@@ -86,6 +91,7 @@
     							<li><a href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
     						</c:if> 
  						 </ul>
+					</div>
 					</div>
 				</form>
 			</section>

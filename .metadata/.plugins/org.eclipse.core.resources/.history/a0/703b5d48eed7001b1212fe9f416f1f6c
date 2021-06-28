@@ -4,8 +4,10 @@
 <html>
 	<head>
 	<style>
-      .outer{
-      text-align: center;
+      .outer {
+        width: 800px;
+        height: 800px;
+        background: #3c40c6;
       }
       </style>
 		<!-- 합쳐지고 최소화된 최신 CSS -->

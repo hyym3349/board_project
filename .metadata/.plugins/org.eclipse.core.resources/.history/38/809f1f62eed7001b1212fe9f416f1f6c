@@ -4,8 +4,8 @@
 <html>
 	<head>
 	<style>
-      .outer{
-      text-align: center;
+      .outer
+      margin: 0 auto;
       }
       </style>
 		<!-- 합쳐지고 최소화된 최신 CSS -->
