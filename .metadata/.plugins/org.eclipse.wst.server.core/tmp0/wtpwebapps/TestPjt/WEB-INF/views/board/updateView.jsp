@@ -82,6 +82,11 @@
 						<fmt:formatDate value="${update.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>					
 					</div>
 					
+					<div class="form-group">
+						<label for="editdate" class="col-sm-2 control-label">수정날짜</label>
+						<fmt:formatDate value="${update.editdate}" pattern="yyyy-MM-dd HH:mm:ss"/>					
+					</div>
+					
 					</table>
 					<div>
 						<button type="submit" class="update_btn btn btn-primary">저장</button>

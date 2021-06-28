@@ -23,14 +23,16 @@
 		        CONTENT,
 		        WRITER, 
 		        REGDATE,
-		        HIT
+		        HIT,
+		        EDITDATE
 		 FROM ( 
 		        SELECT BNO, 
 		               TITLE, 
 		               CONTENT, 
 		               WRITER, 
 		               REGDATE,
-		               HIT, 
+		               HIT,
+		               EDITDATE,
 		               ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
 		         FROM MP_BOARD
 		         WHERE 1=1 
@@ -46,6 +48,7 @@
 			  , CONTENT
 			  , WRITER
 			  , REGDATE
+			  , EDITDATE
 		 FROM MP_BOARD
 		 WHERE BNO = #{bno}
 	</select>
@@ -53,7 +56,8 @@
 	    <update id="update" parameterType="com.project.vo.BoardVO">
 		UPDATE MP_BOARD
 		   SET TITLE    =   #{title},
-		   	   CONTENT  =   #{content}
+		   	   CONTENT  =   #{content},
+		   	   EDITDATE =	sysdate
 		 WHERE BNO = #{bno} 
 	</update>
 	
