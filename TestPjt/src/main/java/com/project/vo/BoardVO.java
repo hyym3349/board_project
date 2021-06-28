@@ -10,6 +10,7 @@ public class BoardVO {
 	private String writer;
 	private Date regdate;
 	private int hit;
+	private Date editdate;
 	
 	public int getBno() {
 		return bno;
@@ -46,6 +47,12 @@ public class BoardVO {
 	}
 	public void setHit(int hit) {
 		this.hit = hit;
+	}
+	public Date getEditdate() {
+		return editdate;
+	}
+	public void setEditdate(Date editdate) {
+		this.editdate = editdate;
 	}
 	
 }
