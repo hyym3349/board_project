@@ -22,6 +22,7 @@
 			   , TITLE
 			   , WRITER
 			   , REGDATE
+			   , HIT
 		  FROM MP_BOARD
 		  ORDER BY BNO DESC
 	</select>
@@ -49,4 +50,11 @@
 		 WHERE BNO = #{bno}
 	</delete>
 	
+	<!-- 게시판 조회수 -->
+    <update id="boardHit" parameterType="int">
+    	UPDATE MP_BOARD SET
+    	HIT = HIT+1
+    	WHERE BNO = #{bno}
+    </update>
+    
 </mapper>

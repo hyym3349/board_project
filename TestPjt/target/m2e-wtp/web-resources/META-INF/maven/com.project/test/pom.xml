@@ -185,6 +185,15 @@
 			<version>1.18.20</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- 트랜젝션 START -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+		<dependency>
+    		<groupId>org.springframework</groupId>
+   	 		<artifactId>spring-tx</artifactId>
+    		<version>5.2.15.RELEASE</version>
+		</dependency>
+		<!-- 트랜젝션 END -->
 
 
 	</dependencies>

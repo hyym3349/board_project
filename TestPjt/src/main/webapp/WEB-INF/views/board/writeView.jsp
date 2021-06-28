@@ -69,7 +69,7 @@
 						<input type="text" id="writer" name="writer" class="form-control" title="작성자을 입력하세요."/>
 					</div>
 					
-						<button type="submit" class="btn btn-success">작성</button>
+						<button type="submit" class="update_btn btn btn-success">작성</button>
 		
 					</table>
 				</form>
