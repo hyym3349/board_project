@@ -9,13 +9,11 @@
 	   INSERT INTO MP_BOARD(    BNO 
 	   					      , TITLE 
 	   					      , CONTENT 
-	   					      , WRITER
-	   					      , EDITOR  )
+	   					      , WRITER  )
 	                 VALUES(    MP_BOARD_SEQ.NEXTVAL 
 	                 		  , #{title}
 	                 		  , #{content}
-	                 		  , #{writer}  
-	                 		  , #{editor} )
+	                 		  , #{writer}  )
    
    </insert>
    
@@ -62,8 +60,7 @@
 		UPDATE MP_BOARD
 		   SET TITLE    =   #{title},
 		   	   CONTENT  =   #{content},
-		   	   EDITDATE =	sysdate,
-		   	   EDITOR	=	#{editor}
+		   	   EDITDATE =	sysdate
 		 WHERE BNO = #{bno} 
 	</update>
 	

@@ -55,11 +55,5 @@ public class BoardVO {
 	public void setEditdate(Date editdate) {
 		this.editdate = editdate;
 	}
-	public String getEditor() {
-		return editor;
-	}
-	public void setEditor(String editor) {
-		this.editor = editor;
-	}
 	
 }

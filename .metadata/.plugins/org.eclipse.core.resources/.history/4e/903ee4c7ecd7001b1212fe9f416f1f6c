@@ -62,8 +62,7 @@
 		UPDATE MP_BOARD
 		   SET TITLE    =   #{title},
 		   	   CONTENT  =   #{content},
-		   	   EDITDATE =	sysdate,
-		   	   EDITOR	=	#{editor}
+		   	   EDITDATE =	sysdate
 		 WHERE BNO = #{bno} 
 	</update>
 	

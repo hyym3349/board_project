@@ -9,11 +9,13 @@
 	   INSERT INTO MP_BOARD(    BNO 
 	   					      , TITLE 
 	   					      , CONTENT 
-	   					      , WRITER  )
+	   					      , WRITER
+	   					      , EDITOR  )
 	                 VALUES(    MP_BOARD_SEQ.NEXTVAL 
 	                 		  , #{title}
 	                 		  , #{content}
-	                 		  , #{writer}  )
+	                 		  , #{writer}  
+	                 		  , #{editor} )
    
    </insert>
    
@@ -24,7 +26,8 @@
 		        WRITER, 
 		        REGDATE,
 		        HIT,
-		        EDITDATE
+		        EDITDATE,
+		        EDITOR
 		 FROM ( 
 		        SELECT BNO, 
 		               TITLE, 
@@ -33,6 +36,7 @@
 		               REGDATE,
 		               HIT,
 		               EDITDATE,
+		               EDITOR,
 		               ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
 		         FROM MP_BOARD
 		         WHERE 1=1 
@@ -49,6 +53,7 @@
 			  , WRITER
 			  , REGDATE
 			  , EDITDATE
+			  , EDITOR
 		 FROM MP_BOARD
 		 WHERE BNO = #{bno}
 	</select>
@@ -57,7 +62,8 @@
 		UPDATE MP_BOARD
 		   SET TITLE    =   #{title},
 		   	   CONTENT  =   #{content},
-		   	   EDITDATE =	sysdate
+		   	   EDITDATE =	sysdate,
+		   	   EDITOR	=	#{editor}
 		 WHERE BNO = #{bno} 
 	</update>
 	

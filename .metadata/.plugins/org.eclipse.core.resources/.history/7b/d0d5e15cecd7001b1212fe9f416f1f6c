@@ -83,16 +83,14 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="editor" class="col-sm-2 control-label">수정자</label>
-						<input type="text" id="editor" name="editor" class="form-control" value="${update.editor}"/>
-					</div>
-					
-					<div class="form-group">
 						<label for="editdate" class="col-sm-2 control-label">수정날짜</label>
 						<fmt:formatDate value="${update.editdate}" pattern="yyyy-MM-dd HH:mm:ss"/>					
 					</div>
 					
-					
+					<div class="form-group">
+						<label for="editor" class="col-sm-2 control-label">수정자</label>
+						<input type="text" id="writer" name="writer" class="form-control" value="${update.writer}" readonly="readonly"/>
+					</div>
 					
 					</table>
 					<div>

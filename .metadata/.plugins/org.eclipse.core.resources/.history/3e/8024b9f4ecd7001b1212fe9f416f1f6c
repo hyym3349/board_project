@@ -41,11 +41,9 @@
 								</td>
 								<td><c:out value="${list.writer}" /></td>
 								<td><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-								<td><c:out value="${list.editor}" /></td>
-								<td><fmt:formatDate value="${list.editdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 								<td><c:out value="${list.hit}" /></td>
-								
-								
+								<td><fmt:formatDate value="${list.editdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+								<td><c:out value="${list.editor}" /></td>
 							</tr>
 						</c:forEach>
 						

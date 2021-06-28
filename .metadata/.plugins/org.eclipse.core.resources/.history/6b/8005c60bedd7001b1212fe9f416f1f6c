@@ -92,18 +92,7 @@
 							<div class="form-group">
 								<label for="regdate" class="col-sm-2 control-label">작성날짜</label>
 								<fmt:formatDate value="${read.regdate}" pattern="yyyy-MM-dd HH:mm:ss" />					
-							</div>
-							
-							<div class="form-group">
-								<label for="editor" class="col-sm-2 control-label">수정자</label>
-								<input type="text" id="editor" name="editor" class="form-control" value="${read.editor}"  readonly="readonly"/>
-								
-							</div>
-								
-							<div class="form-group">
-								<label for="editdate" class="col-sm-2 control-label">수정날짜</label>
-								<fmt:formatDate value="${read.editdate}" pattern="yyyy-MM-dd HH:mm:ss" />					
-							</div>		
+							</div>	
 							
 				<div>
 					<button type="button" class="update_btn btn btn-warning">수정</button>
