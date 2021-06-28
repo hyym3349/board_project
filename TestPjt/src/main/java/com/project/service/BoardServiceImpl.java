@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.project.dao.BoardDAO;
 import com.project.vo.BoardVO;
+import com.project.vo.SearchCriteria;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -26,9 +27,16 @@ public class BoardServiceImpl implements BoardService {
 	
 	// 게시물 목록 조회
 	@Override
-	public List<BoardVO> list() throws Exception {
+	public List<BoardVO> list(SearchCriteria scri) throws Exception {
 
-		return dao.list();
+		return dao.list(scri);
+	}
+	
+	// 개시물 총 개수
+	@Override
+	public int listCount(SearchCriteria scri) throws Exception {
+		
+		return dao.listCount(scri);
 	}
 	
 	// 게시물 조회

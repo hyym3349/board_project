@@ -18,6 +18,12 @@
 		<script type="text/javascript">
 		$(document).ready(function(){
 			var formObj = $("form[name='writeForm']");
+			
+			$(".cancel_btn").on("click", function(){
+				event.preventDefault();
+				location.href = "/board/list";
+			})
+			
 			$(".write_btn").on("click", function(){
 				if(fn_valiChk()){
 					return false;
@@ -68,9 +74,10 @@
 						<label for="writer" class="col-sm-2 control-label">작성자</label>
 						<input type="text" id="writer" name="writer" class="form-control" title="작성자을 입력하세요."/>
 					</div>
-					
+					   <div>
 						<button type="submit" class="update_btn btn btn-success">작성</button>
-		
+						<button type="submit" class="cancel_btn btn btn-danger">취소</button>
+					   </div>
 					</table>
 				</form>
 			</section>

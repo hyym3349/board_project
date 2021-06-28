@@ -1,7 +1,9 @@
 package com.project.service;
 
-import com.project.vo.BoardVO;
 import java.util.List;
+
+import com.project.vo.BoardVO;
+import com.project.vo.SearchCriteria;
 
 public interface BoardService {
 
@@ -9,7 +11,10 @@ public interface BoardService {
 	public void write(BoardVO boardVO) throws Exception;
 	
 	// 게시물 목록 조회
-	public List<BoardVO> list() throws Exception;
+	public List<BoardVO> list(SearchCriteria scri) throws Exception;
+	
+	// 개시물 총 개수
+	public int listCount(SearchCriteria scri) throws Exception;
 	
 	// 게시물 조회
 	public BoardVO read(int bno) throws Exception;
