@@ -11,7 +11,7 @@
       <style>
       div.absolute{
       position: absolute;
-      left: 650px;
+      left: 658px;
       }
       </style>
 		<!-- 합쳐지고 최소화된 최신 CSS -->
@@ -25,7 +25,7 @@
 	<body>
 		<div class="container">
 			<header>
-				<h1> 게시판</h1>
+				<h1> 게시판 </h1>
 				
 			</header>
 			<hr />
@@ -72,8 +72,8 @@
 					<br>
 		
 					<div class="outer">
-						<select name="searchType" style="width:180px; height:34px; fontsize:20px;">
-      						<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
+						<select name="searchType" style="width:100px; height:34px; fontsize:20px;">
+      						<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>----전체----</option>
      				    	<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
      			   	    	<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
    					    	<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>

@@ -12,6 +12,7 @@ public class BoardVO {
 	private int hit;
 	private Date editdate;
 	private String editor;
+	private String deleted;
 	
 	public int getBno() {
 		return bno;
@@ -60,6 +61,12 @@ public class BoardVO {
 	}
 	public void setEditor(String editor) {
 		this.editor = editor;
+	}
+	public String getDeleted() {
+		return deleted;
+	}
+	public void setDeleted(String deleted) {
+		this.deleted = deleted;
 	}
 	
 }
