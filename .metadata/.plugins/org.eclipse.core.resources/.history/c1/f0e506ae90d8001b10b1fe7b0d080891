@@ -75,7 +75,7 @@
 						<input type="text" id="writer" name="writer" class="form-control" title="작성자을 입력하세요."/>
 					</div>
 					   <span>
-						<button type="submit" class="write_btn btn btn-success">작성</button>
+						<button type="submit" class="btn btn-success">작성</button>
 						
 					   </span>
 					   <button type="submit" class="cancel_btn btn btn-danger">취소</button>

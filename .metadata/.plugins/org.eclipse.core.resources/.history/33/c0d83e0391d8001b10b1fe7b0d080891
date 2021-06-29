@@ -10,13 +10,13 @@
 	   					      , TITLE 
 	   					      , CONTENT 
 	   					      , WRITER
-
+	   					      , EDITOR
   )
 	                 VALUES(    MP_BOARD_SEQ.NEXTVAL 
 	                 		  , #{title}
 	                 		  , #{content}
 	                 		  , #{writer}  
-
+	                 		  , #{EDITOR}
  )
    
    </insert>

@@ -74,10 +74,11 @@
 						<label for="writer" class="col-sm-2 control-label">작성자</label>
 						<input type="text" id="writer" name="writer" class="form-control" title="작성자을 입력하세요."/>
 					</div>
-					   <div>
-						<button type="submit" class="update_btn btn btn-success">작성</button>
-						<button type="submit" class="cancel_btn btn btn-danger">취소</button>
-					   </div>
+					   <span>
+						<button type="submit" class="write_btn btn btn-success">작성</button>
+						
+					   </span>
+					   <button type="submit" class="cancel_btn btn btn-danger">취소</button>
 					</table>
 				</form>
 			</section>
