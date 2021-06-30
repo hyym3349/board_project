@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 	<head>
@@ -49,6 +49,8 @@
 						</tr>
 						
 						<c:forEach items="${list}" var = "list">
+						<c:choose>
+						<c:when test="${list.deleted == 'N'}">
 							<tr>
 								<td><c:out value="${list.bno}" /></td>
 								<td>
@@ -63,12 +65,14 @@
 								<td><c:out value="${list.editor}" /></td>
 								<td><fmt:formatDate value="${list.editdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 								<td><c:out value="${list.hit}" /></td>
-								
-								
-							</tr>
+							</tr>	
+							</c:when>
+							<c:otherwise>
+							
+							</c:otherwise>
+							</c:choose>
 						</c:forEach>
 					</table>
-					
 					<br>
 		
 					<div class="outer">
