@@ -50,7 +50,7 @@
 						
 						<c:forEach items="${list}" var = "list">
 						<c:choose>
-						<c:when test="${list.deleted == 'N'}">
+						<c:when test="${list.deleted == 'N' or list.deleted == NULL}">
 							<tr>
 								<td><c:out value="${list.bno}" /></td>
 								<td>
