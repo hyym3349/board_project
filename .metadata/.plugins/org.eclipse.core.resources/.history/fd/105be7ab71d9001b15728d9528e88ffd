@@ -62,7 +62,7 @@
 			<div>
 				<%@include file="nav.jsp" %>
 			</div>
-			<hr />
+
 			
 			<section id="container">
 				<form name="readForm" role="form" method="post">
