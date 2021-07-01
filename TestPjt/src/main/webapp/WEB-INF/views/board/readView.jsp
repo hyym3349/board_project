@@ -52,7 +52,7 @@
 	
 		<div class="container">
 			<header>
-				<h1> 게시판</h1>
+				<h1> 게시판 - 상세</h1>
 			</header>
 			<hr />
 			 
@@ -72,17 +72,17 @@
 
 							<div class="form-group">
 								<label for="title" class="col-sm-2 control-label">제목</label>
-								<input type="text" id="title" name="title" class="form-control" value="${read.title}" readonly="readonly" />
+								${read.title}
 							</div>
 							
 							<div class="form-group">
 								<label for="content" class="col-sm-2 control-label">내용</label>
-								<textarea id="content" name="content" class="form-control" readonly="readonly"><c:out value="${read.content}" /></textarea>
+								<div>${read.content}</div>
 							</div>
 							
 							<div class="form-group">
 								<label for="writer" class="col-sm-2 control-label">작성자</label>
-								<input type="text" id="writer" name="writer" class="form-control" value="${read.writer}"  readonly="readonly"/>
+								${read.writer}
 								
 							</div>
 								
@@ -93,7 +93,7 @@
 							
 							<div class="form-group">
 								<label for="editor" class="col-sm-2 control-label">수정자</label>
-								<input type="text" id="editor" name="editor" class="form-control" value="${read.editor}"  readonly="readonly"/>
+								${read.editor}
 								
 							</div>
 								

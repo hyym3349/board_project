@@ -49,7 +49,7 @@
 	
 		<div class="container">
 			<header>
-				<h1> 게시판</h1>
+				<h1> 게시판 - 글 수정 </h1>
 			</header>
 			<hr />
 			
@@ -71,7 +71,7 @@
 			
 					<div class="form-group">
 						<label for="content" class="col-sm-2 control-label">내용</label>
-						<textarea name="content" id="content" rows="10" cols="100"><c:out value="${update.content}" /></textarea>
+						<textarea name="content" id="content" rows="10" cols="156"><c:out value="${update.content}" /></textarea>
 					</div>
 		
 					<div class="form-group">

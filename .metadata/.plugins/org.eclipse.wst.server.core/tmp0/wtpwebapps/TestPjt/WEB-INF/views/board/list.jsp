@@ -111,7 +111,7 @@
 	<body>
 		<div class="container">
 			<header>
-				<h1> 게시판 </h1>
+				<h1> 게시판 - 목록 </h1>
 				
 			</header>
 			<hr />
@@ -122,7 +122,7 @@
 			<hr />
 				<input type="button" value="선택삭제" class="btn btn-outline-info" onclick="deleteValue();">
 				<form role="form" method="get" action="/board/write">
-					<table id="boardList" class="table table-bordered"  style='display:inline-block'>
+					<table id="boardList"  class="table table-bordered"  style='display:inline-block; width:100%; min-width:100px'>
 					<thead>
 						<tr>
 							<th><input  id="allCheck" type="checkbox" name="allCheck"/></th>
@@ -183,7 +183,7 @@
   					  </div>
   					  
   					  
-  					  	<div class="absolute">
+  					  	<div class="outer">
  						 <ul class="pagination">
     						<c:if test="${pageMaker.prev}">
     							<li><a href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>

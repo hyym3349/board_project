@@ -1,0 +1,15 @@
+  
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <style type="text/css">
+	li {list-style: none; display:inline; padding: 6px;}
+</style>
+<div>
+	<div>
+		<button type="button" class="btn btn-outline-info" onClick="/board/list">게시물 목록</button>
+		-
+		<button type="button" class="btn btn-outline-info" onClick="/board/writeView">게시물 목록</button>
+		<a href="/board/writeView">글 작성</a>
+	</div>
+</div>
+

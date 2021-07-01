@@ -50,7 +50,7 @@
 	
 		<div class="container">
 			<header>
-				<h1> 게시판</h1>
+				<h1> 게시판 - 글 작성 </h1>
 			</header>
 			<hr />
 			 
@@ -75,7 +75,7 @@
 		
 					<div class="form-group">
 						<label for="content" class="col-sm-2 control-label">내용</label>
-						<textarea name="content" id="content" rows="10" cols="156"></textarea>
+						<input name="content" id="content" rows="10" cols="156"></input>
 					</div>
 					
 					
@@ -99,10 +99,10 @@
  			fCreator: "createSEditor2"
 			});
 			function submitContents(elClickedObj) {
-		         oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됩니다.
+		         oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+		         // 에디터의 내용이 textarea에 적용됩니다.
 		   /*       document.getElementById("ir1").submit(); */
 		         // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
-
 		         try {
 		            elClickedObj.form.submit();
 		         } catch (e) {
