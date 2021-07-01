@@ -103,9 +103,9 @@
 							</div>		
 							
 				<div>
-					<button type="button" class="update_btn btn btn-warning">수정</button>
+					<button type="button" class="update_btn btn btn-outline-info">수정</button>
 
-					<button type="button" class="list_btn btn btn-primary">목록</button>	
+					<button type="button" class="list_btn btn btn-outline-info">목록</button>	
 				</div>
 			</section>
 			<hr />

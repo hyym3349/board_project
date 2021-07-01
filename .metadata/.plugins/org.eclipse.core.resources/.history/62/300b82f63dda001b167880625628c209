@@ -75,15 +75,15 @@
 		
 					<div class="form-group">
 						<label for="content" class="col-sm-2 control-label">내용</label>
-						<textarea name="content" id="content" rows="10" cols="156"></textarea>
+						<textarea name="content" id="content" rows="10" cols="100"></textarea>
 					</div>
 					
 					
 					   <span>
-						<button type="submit" class="write_btn btn btn-outline-info" onclick = "submitContents()">작성</button>
+						<button type="submit" class="write_btn btn btn-success" onclick = "submitContents()">작성</button>
 						
 					   </span>
-					   <button type="submit" class="cancel_btn btn btn-outline-info" >취소</button>
+					   <button type="submit" class="cancel_btn btn btn-danger" >취소</button>
 					</table>
 				</form>
 			</section>

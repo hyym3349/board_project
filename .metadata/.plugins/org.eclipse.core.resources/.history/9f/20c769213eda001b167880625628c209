@@ -98,8 +98,8 @@
 					
 					</table>
 					<div>
-						<button type="submit" class="save_btn btn btn-outline-info">저장</button>
-						<button type="submit" class="cancel2_btn btn btn-outline-info">취소</button>
+						<button type="submit" class="save_btn btn btn-primary">저장</button>
+						<button type="submit" class="cancel2_btn btn btn-danger">취소</button>
 					</div>
 				</form>
 			</section>

@@ -179,7 +179,7 @@
   					    <input type="text" name="keyword" id="keywordInput" style="width:180px; height:34px;" value="${scri.keyword}"/>
 
 
-  					    <button id="searchBtn" type="button" class="btn btn-outline-info">검색</button>
+  					    <button id="searchBtn" type="button" class="btn btn-outline-info>검색</button>
   					  </div>
   					  
   					  
