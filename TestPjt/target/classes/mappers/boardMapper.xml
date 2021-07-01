@@ -73,8 +73,10 @@
 		 WHERE BNO = #{bno} 
 	</update>
 	
-	<update id="delete" parameterType="int">
-		UPDATE MP_BOARD SET DELETED = 'Y' WHERE BNO = #{bno}
+	<update id="delete" parameterType="String">
+		UPDATE MP_BOARD 
+			SET DELETED = 'Y' 
+		WHERE BNO = #{bno}
 	</update>
 	
 	<!-- 게시판 조회수 -->

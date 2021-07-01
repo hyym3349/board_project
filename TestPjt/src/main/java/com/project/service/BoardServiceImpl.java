@@ -56,7 +56,7 @@ public class BoardServiceImpl implements BoardService {
 
 	// 게시물 목록 삭제
 	@Override
-	public void delete(int bno) throws Exception {
+	public void delete(String bno) throws Exception {
 		
 		dao.delete(bno);
 	}

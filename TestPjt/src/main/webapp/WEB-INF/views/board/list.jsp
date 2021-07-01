@@ -8,6 +8,62 @@
 <html lang="kr">
 <head>
 
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var chkObj = document.getElementsByName("RowCheck");
+			var rowCnt = chkObj.length;
+			
+			$("input[name='allCheck']").click(function(){
+				var chk_listArr = $("input[name='RowCheck']");
+				for (var i=0; i<chk_listArr.length; i++){
+					chk_listArr[i].checked = this.checked;
+				}
+			});
+			$("input[name='RowCheck']").click(function(){
+				if($("input[name='RowCheck']:checked").length == rowCnt){
+					$("input[name='allCheck']")[0].checked = true;
+				}
+				else{
+					$("input[name='allCheck']")[0].checked = false;
+				}
+			});
+		});
+		function deleteValue(){
+			var url = "delete";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
+			var valueArr = new Array();
+		    var list = $("input[name='RowCheck']");
+		    for(var i = 0; i < list.length; i++){
+		        if(list[i].checked){ //선택되어 있으면 배열에 값을 저장함
+		            valueArr.push(list[i].value);
+		        }
+		    }
+		    if (valueArr.length == 0){
+		    	alert("선택된 글이 없습니다.");
+		    }
+		    else{
+				var chk = confirm("정말 삭제하시겠습니까?");				 
+				$.ajax({
+				    url : url,                    // 전송 URL
+				    type : 'POST',                // GET or POST 방식
+				    traditional : true,
+				    data : {
+				    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
+				    },
+	                success: function(jdata){
+	                    if(jdata = 1) {
+	                        alert("삭제 성공");
+	                        location.replace("list")
+	                    }
+	                    else{
+	                        alert("삭제 실패");
+	                    }
+	                }
+				});
+			}
+		}
+	</script>
+
 		<style>
       .outer{
       text-align: center;
@@ -33,17 +89,19 @@
          jQuery(function($){
             $("#boardList").DataTable({
                dom: '1t',
-               aaSorting: [
 
-               ],
+               // 정렬 기능 숨기기
+               ordering: false,
+
                columnDefs: [
-                   { targets: 0, width: 50 },
-                   { targets: 1, width: 180 },
-                   { targets: 2, width: 100 },
-                   { targets: 3, width: 200 },
-                   { targets: 4, width: 100 },
-                   { targets: 5, width: 200 },
-                   { targets: 6, width: 60 }
+                   { targets: 0, width: 10 },
+                   { targets: 1, width: 100 },
+                   { targets: 2, width: 200 },
+                   { targets: 3, width: 100 },
+                   { targets: 4, width: 200 },
+                   { targets: 5, width: 100 },
+                   { targets: 6, width: 200 },
+                   { targets: 7, width: 100 }
                ]
 
             });
@@ -62,10 +120,12 @@
 				<%@include file="nav.jsp" %>
 			</div>
 			<hr />
+				<input type="button" value="선택삭제" class="btn btn-outline-info" onclick="deleteValue();">
 				<form role="form" method="get" action="/board/write">
 					<table id="boardList" class="table table-bordered"  style='display:inline-block'>
 					<thead>
 						<tr>
+							<th><input  id="allCheck" type="checkbox" name="allCheck"/></th>
 							<th>번호</th>
 							<th>제목</th>
 							<th>작성자</th>
@@ -80,6 +140,7 @@
 						<c:choose>
 						<c:when test="${list.deleted == 'N' or list.deleted == NULL}">
 							<tr>
+								<td class="checkbox"><input name="RowCheck" type="checkbox" value="${list.bno}"/></td>
 								<td><c:out value="${list.bno}" /></td>
 								<td>
 									<a href="/board/readView?bno=${list.bno}&

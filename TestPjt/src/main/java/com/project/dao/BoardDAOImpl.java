@@ -49,7 +49,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 	// 게시물 삭제
 	@Override
-	public void delete(int bno) throws Exception {
+	public void delete(String bno) throws Exception {
 		
 		sqlSession.delete("boardMapper.delete", bno);
 	}

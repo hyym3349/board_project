@@ -1,6 +1,7 @@
 package com.project.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -95,19 +96,19 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
-	// 게시판 삭제
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String delete(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
-		logger.info("delete");
-		
-		service.delete(boardVO.getBno());
-		
-		rttr.addAttribute("page", scri.getPage());
-		rttr.addAttribute("perPageNum", scri.getPerPageNum());
-		rttr.addAttribute("searchType", scri.getSearchType());
-		rttr.addAttribute("keyword", scri.getKeyword());
-		
-		return "redirect:/board/list";
-	}
+
+	
+	//게시물 선택삭제
+    @RequestMapping(value = "/delete")
+    public String ajaxTest(HttpServletRequest request) throws Exception {
+            
+        String[] ajaxMsg = request.getParameterValues("valueArr");
+        int size = ajaxMsg.length;
+        for(int i=0; i<size; i++) {
+        	service.delete(ajaxMsg[i]);
+        }
+        return "redirect:list";
+    }
+	
 	
 }

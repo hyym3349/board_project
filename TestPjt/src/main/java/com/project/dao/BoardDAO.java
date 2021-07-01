@@ -23,7 +23,7 @@ public interface BoardDAO {
 	public void update(BoardVO boardVO) throws Exception;
 	
 	// 게시물 삭제
-	public void delete(int bno) throws Exception;
+	public void delete(String bno) throws Exception;
 	
 	// 게시판 조회수
 	public void boardHit(int bno) throws Exception;
