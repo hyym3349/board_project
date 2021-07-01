@@ -14,7 +14,7 @@
 		$(document).ready(function(){
 			var formObj = $("form[name='updateForm']");
 			
-			$(".cancel_btn").on("click", function(){
+			$(".cancel2_btn").on("click", function(){
 				event.preventDefault();
 				location.href = "/board/readView?bno=${update.bno}"
 					   + "&page=${scri.page}"
@@ -23,7 +23,7 @@
 					   + "&keyword=${scri.keyword}";
 			})
 			
-			$(".update_btn").on("click", function(){
+			$(".save_btn").on("click", function(){
 				if(fn_valiChk()){
 					return false;
 				}
@@ -96,8 +96,8 @@
 					
 					</table>
 					<div>
-						<button type="submit" class="update_btn btn btn-primary">저장</button>
-						<button type="submit" class="cancel_btn btn btn-danger">취소</button>
+						<button type="submit" class="save_btn btn btn-primary">저장</button>
+						<button type="submit" class="cancel2_btn btn btn-danger">취소</button>
 					</div>
 				</form>
 			</section>
