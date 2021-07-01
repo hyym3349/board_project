@@ -3,6 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 	<head>
+		<script type="text/javascript" src="/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
+	
 		<!-- 합쳐지고 최소화된 최신 CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<!-- 부가적인 테마 -->
@@ -69,7 +71,7 @@
 			
 					<div class="form-group">
 						<label for="content" class="col-sm-2 control-label">내용</label>
-						<textarea id="content" name="content" class="form-control"><c:out value="${update.content}" /></textarea>
+						<textarea name="content" id="content" rows="10" cols="100"><c:out value="${update.content}" /></textarea>
 					</div>
 		
 					<div class="form-group">
@@ -103,5 +105,25 @@
 			</section>
 			<hr />
 		</div>
+		<script type="text/javascript">
+		
+			var oEditors = [];
+			nhn.husky.EZCreator.createInIFrame({
+ 			oAppRef: oEditors,
+ 			elPlaceHolder: "content",
+ 			sSkinURI: "/resources/se2/SmartEditor2Skin.html",
+ 			fCreator: "createSEditor2"
+			});
+			function submitContents(elClickedObj) {
+		         oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됩니다.
+		   /*       document.getElementById("ir1").submit(); */
+		         // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
+
+		         try {
+		            elClickedObj.form.submit();
+		         } catch (e) {
+		         }
+		      }
+		</script>
 	</body>
 </html>

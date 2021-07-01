@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html lang="kr">
 <head>
+
 		<style>
       .outer{
       text-align: center;
@@ -61,8 +62,6 @@
 				<%@include file="nav.jsp" %>
 			</div>
 			<hr />
-			
-	
 				<form role="form" method="get" action="/board/write">
 					<table id="boardList" class="table table-bordered"  style='display:inline-block'>
 					<thead>
