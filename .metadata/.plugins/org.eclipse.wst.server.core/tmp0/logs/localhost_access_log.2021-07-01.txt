@@ -1218,3 +1218,5 @@
 0:0:0:0:0:0:0:1 - - [01/Jul/2021:17:48:11 +0900] "GET /board/list?page=1&perPageNum=10&searchType=&keyword= HTTP/1.1" 200 11713
 0:0:0:0:0:0:0:1 - - [01/Jul/2021:17:48:13 +0900] "GET /board/readView?bno=308&%20page=1&%20perPageNum=10&%20searchType=&%20keyword= HTTP/1.1" 200 3739
 0:0:0:0:0:0:0:1 - - [01/Jul/2021:17:48:15 +0900] "GET /board/list?page=1&perPageNum=10&searchType=&keyword= HTTP/1.1" 200 11713
+0:0:0:0:0:0:0:1 - - [01/Jul/2021:17:50:28 +0900] "GET /board/readView?bno=299&%20page=1&%20perPageNum=10&%20searchType=&%20keyword= HTTP/1.1" 200 3737
+0:0:0:0:0:0:0:1 - - [01/Jul/2021:17:50:29 +0900] "GET /board/list?page=1&perPageNum=10&searchType=&keyword= HTTP/1.1" 200 11713
