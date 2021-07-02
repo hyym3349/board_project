@@ -74,16 +74,6 @@
 		}
 	</script>
 
-		<style>
-      .outer{
-      text-align: center;
-      }
-      div.absolute{
-      position: absolute;
-      left: 658px;
-      }
-      </style>
-
 <!--         합쳐지고 최소화된 최신 CSS
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		부가적인 테마
@@ -131,6 +121,21 @@
 			</div>
 			<hr />
 				<input type="button" value="선택삭제" class="btn btn-outline-info" onclick="deleteValue();">
+				
+					
+					<span style ="float: right;">
+						<select name="searchType" style="width:100px; height:30px; fontsize:20px;">
+      						<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>----전체----</option>
+     				    	<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
+     			   	    	<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
+   					    	<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
+  					    	<option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+ 					    </select>
+  					    <input type="text" name="keyword" id="keywordInput" style="width:180px; height:30px;" value="${scri.keyword}"/>
+  					    <button id="searchBtn" type="button" class="btn btn-outline-info">검색</button>
+  					  </span>
+  					  
+  					  
 				<form role="form" method="get" action="/board/write">
 					<table id="boardList"  class="table table-bordered"  style='display:inline-block; width:100%; min-width:100px'>
 					<thead>
@@ -174,27 +179,12 @@
 						</c:forEach>
 						</tbody>
 					</table>
+					
+					<a href="/board/writeView" style ="float: right;"><font color="black"><input type="button" value="글 작성" class="btn btn-outline-info"></font></a>
 					<br>
-		
-					<div class="outer">
-						<select name="searchType" style="width:100px; height:34px; fontsize:20px;">
-      						<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>----전체----</option>
-     				    	<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
-     			   	    	<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
-   					    	<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
-  					    	<option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
- 					    </select>
-				
-		
+					
+  					  	<div style ="text-align: center;">
 
-  					    <input type="text" name="keyword" id="keywordInput" style="width:180px; height:34px;" value="${scri.keyword}"/>
-
-
-  					    <button id="searchBtn" type="button" class="btn btn-outline-info">검색</button>
-  					  </div>
-  					  
-  					  
-  					  	<div class="outer">
  						 <ul class="pagination">
     						<c:if test="${pageMaker.prev}">
     							<li><a href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
