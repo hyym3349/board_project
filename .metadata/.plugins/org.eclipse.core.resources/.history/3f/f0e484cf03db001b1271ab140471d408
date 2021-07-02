@@ -20,7 +20,7 @@
 			// 수정 
 			$(".update_btn").on("click", function(){
 				formObj.attr("action", "/board/updateView");
-				formObj.attr("method", "get");
+				formObj.attr("method", "POST");
 				formObj.submit();				
 			})
 			

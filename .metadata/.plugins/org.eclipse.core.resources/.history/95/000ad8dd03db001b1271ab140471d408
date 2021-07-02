@@ -27,7 +27,7 @@ public class BoardController {
 	BoardService service;
 	
 	// 게시판 글 작성 화면123
-	@RequestMapping(value = "/writeView", method = RequestMethod.GET)
+	@RequestMapping(value = "/writeView", method = RequestMethod.POST)
 	public void writeView() throws Exception{
 		logger.info("writeView");
 		
@@ -61,7 +61,7 @@ public class BoardController {
 	}
 	
 	// 게시판 조회
-	@RequestMapping(value = "/readView", method = RequestMethod.GET)
+	@RequestMapping(value = "/readView", method = RequestMethod.POST)
 	public String read(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
 		logger.info("read");
 		
