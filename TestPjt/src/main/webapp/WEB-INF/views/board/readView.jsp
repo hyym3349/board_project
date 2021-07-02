@@ -52,7 +52,6 @@
 			
 			// 목록
 			$(".list_btn").on("click", function(){
-
 			location.href = "/board/list?page=${scri.page}"
 			+"&perPageNum=${scri.perPageNum}"
 			+"&searchType=${scri.searchType}&keyword=${scri.keyword}";

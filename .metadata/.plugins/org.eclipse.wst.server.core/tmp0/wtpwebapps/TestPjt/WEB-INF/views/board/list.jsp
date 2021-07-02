@@ -89,10 +89,8 @@
          jQuery(function($){
             $("#boardList").DataTable({
                dom: '1t',
-
                // 정렬 기능 숨기기
                ordering: false,
-
                columnDefs: [
                    { targets: 0, width: 10 },
                    { targets: 1, width: 50 },
@@ -103,7 +101,6 @@
                    { targets: 6, width: 180 },
                    { targets: 7, width: 60 }
                ]
-
             });
          });
       </script> 
@@ -153,7 +150,7 @@
 						<tbody>
 						<c:forEach items="${list}" var = "list">
 						<c:choose>
-						<c:when test="${list.deleted == 'N' or list.deleted == NULL}">
+						<c:when test="${list.deleted == 'N'}">
 							<tr>
 								<td class="checkbox"><input name="RowCheck" type="checkbox" value="${list.bno}"/></td>
 								<td><c:out value="${list.bno}" /></td>
