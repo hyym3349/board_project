@@ -60,7 +60,7 @@
 			<hr />
 			
 			<section id="container">
-				<form role="writeForm" method="get" action="/board/write">
+				<form role="writeForm" method="post" action="/board/write">
 					<table class="table table-hover">
 					
 					<div class="form-group">
