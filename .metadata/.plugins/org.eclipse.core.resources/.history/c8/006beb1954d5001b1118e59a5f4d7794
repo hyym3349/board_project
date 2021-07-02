@@ -1,7 +1,0 @@
-package com.project.service;
-
-import com.project.vo.BoardVO;
-
-public class BoardService {
-
-}

@@ -60,7 +60,13 @@
 		
 		})
 	</script>
-	
+	<script type="text/javascript">
+
+   function goBack(){
+      window.history.back();
+   }
+
+</script>
 	<body>
 	
 		<div class="container">
@@ -122,7 +128,7 @@
 				<div>
 					<button type="button" class="update_btn btn btn-outline-info">수정</button>
 					<!-- <button type="button" class="deleteCol_btn btn btn-outline-info">삭제</button> -->
-					<button type="button" class="list_btn btn btn-outline-info">목록</button>	
+					<input type="button" value="목록" class="btn btn-outline-info" onclick="goBack();"/>
 				</div>
 			</section>
 			<hr />

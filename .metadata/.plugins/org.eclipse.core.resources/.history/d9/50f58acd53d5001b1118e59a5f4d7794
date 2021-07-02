@@ -1,9 +1,0 @@
-package com.project.dao;
-
-import com.project.vo.BoardVO;
-
-public class BoardDAO {
-	
-	public void write(BoardVO boardVO) throws Exception;
-
-}
