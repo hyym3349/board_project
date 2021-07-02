@@ -44,11 +44,11 @@
 		               DELETED,
 		               ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM
 		         FROM MP_BOARD
-		         WHERE 1=1 AND DELETED = 'N' or DELETED = NULL
+		         WHERE 1=1 
 		         	<include refid="search"></include>
 		                       ) MP
 		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd} 
-		
+
 		ORDER BY BNO DESC
 	</select>
 	

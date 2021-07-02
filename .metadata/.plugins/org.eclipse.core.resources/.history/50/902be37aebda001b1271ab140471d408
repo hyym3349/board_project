@@ -95,13 +95,13 @@
 
                columnDefs: [
                    { targets: 0, width: 10 },
-                   { targets: 1, width: 50 },
-                   { targets: 2, width: 250 },
-                   { targets: 3, width: 140 },
-                   { targets: 4, width: 180 },
-                   { targets: 5, width: 140 },
-                   { targets: 6, width: 180 },
-                   { targets: 7, width: 60 }
+                   { targets: 1, width: 100 },
+                   { targets: 2, width: 200 },
+                   { targets: 3, width: 100 },
+                   { targets: 4, width: 200 },
+                   { targets: 5, width: 100 },
+                   { targets: 6, width: 200 },
+                   { targets: 7, width: 100 }
                ]
 
             });
@@ -124,14 +124,14 @@
 				
 					
 					<span style ="float: right;">
-						<select name="searchType" style="width:100px; height:30px; fontsize:20px;">
+						<select name="searchType" style="width:100px; height:25px; fontsize:20px;">
       						<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>----전체----</option>
      				    	<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
      			   	    	<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
    					    	<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
   					    	<option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
  					    </select>
-  					    <input type="text" name="keyword" id="keywordInput" style="width:180px; height:30px;" value="${scri.keyword}"/>
+  					    <input type="text" name="keyword" id="keywordInput" style="width:180px; height:29px;" value="${scri.keyword}"/>
   					    <button id="searchBtn" type="button" class="btn btn-outline-info">검색</button>
   					  </span>
   					  

@@ -95,13 +95,13 @@
 
                columnDefs: [
                    { targets: 0, width: 10 },
-                   { targets: 1, width: 100 },
-                   { targets: 2, width: 200 },
-                   { targets: 3, width: 100 },
-                   { targets: 4, width: 200 },
-                   { targets: 5, width: 100 },
-                   { targets: 6, width: 200 },
-                   { targets: 7, width: 100 }
+                   { targets: 1, width: 50 },
+                   { targets: 2, width: 250 },
+                   { targets: 3, width: 140 },
+                   { targets: 4, width: 180 },
+                   { targets: 5, width: 140 },
+                   { targets: 6, width: 180 },
+                   { targets: 7, width: 60 }
                ]
 
             });
@@ -208,9 +208,7 @@
     					    });
    					   });   
   					  </script> 
-					<br><br><br>
 				</form>
-	
 			<hr />
 		</div>
 	</body>
