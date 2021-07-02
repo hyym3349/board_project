@@ -22,6 +22,9 @@ public interface BoardService {
 	// 게시물 수정
 	public void update(BoardVO boardVO) throws Exception;
 	
-	// 게시물 삭제
+	// 게시물 선택삭제
 	public void delete(String bno) throws Exception;
+	
+	// 게시물 삭제
+	public void deleteCol(int bno) throws Exception;
 }

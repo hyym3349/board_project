@@ -24,13 +24,26 @@
 				formObj.submit();				
 			})
 			
-			// 삭제
+			// 선택삭제
 			$(".delete_btn").on("click", function(){
 				
 				var deleteYN = confirm("삭제하시겠습니까?");
 				if(deleteYN == true){
 					
 				formObj.attr("action", "/board/delete");
+				formObj.attr("method", "post");
+				formObj.submit();
+					
+				}
+			})
+			
+			// 삭제
+			$(".deleteCol_btn").on("click", function(){
+				
+				var deleteYN = confirm("삭제하시겠습니까?");
+				if(deleteYN == true){
+					
+				formObj.attr("action", "/board/deleteCol");
 				formObj.attr("method", "post");
 				formObj.submit();
 					
@@ -69,6 +82,10 @@
  					 <input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
 					 <input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
 				</form>
+							<div class="form-group">
+								<label for="bno" class="col-sm-2 control-label">게시물 번호</label>
+								${read.bno}
+							</div>
 
 							<div class="form-group">
 								<label for="title" class="col-sm-2 control-label">제목</label>
@@ -104,7 +121,7 @@
 							
 				<div>
 					<button type="button" class="update_btn btn btn-outline-info">수정</button>
-
+					<!-- <button type="button" class="deleteCol_btn btn btn-outline-info">삭제</button> -->
 					<button type="button" class="list_btn btn btn-outline-info">목록</button>	
 				</div>
 			</section>

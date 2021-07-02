@@ -62,6 +62,16 @@
 				});
 			}
 		}
+		function deleteCol(){
+			var url = "deleteCol";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
+			var valueArr = new Array();
+		    var list = $("input[name='RowCheck']");
+		    for(var i = 0; i < list.length; i++){
+		        if(list[i].checked){ //선택되어 있으면 배열에 값을 저장함
+		            valueArr.push(list[i].value);
+		        }
+			}
+		}
 	</script>
 
 		<style>
@@ -155,6 +165,7 @@
 								<td><fmt:formatDate value="${list.editdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 								<td><c:out value="${list.hit}" /></td>
 							</tr>	
+							
 							</c:when>
 							<c:otherwise>
 							

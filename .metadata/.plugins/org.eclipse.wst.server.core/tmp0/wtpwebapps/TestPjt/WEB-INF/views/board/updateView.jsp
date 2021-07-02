@@ -63,6 +63,10 @@
 					<input type="hidden" name="bno" value="${update.bno}" readonly="readonly"/>
 					<table class="table table-hover">
 					
+					<div class="form-group">
+						<label for="bno">게시물 번호</label>
+						<input type="text" id="bno" name="bno" class="form-control" value="${update.bno}" readonly="readonly"/>
+					</div>
 					
 					<div class="form-group">
 						<label for="title">제목</label>
@@ -70,27 +74,27 @@
 					</div>
 			
 					<div class="form-group">
-						<label for="content" class="col-sm-2 control-label">내용</label>
+						<label for="content">내용</label>
 						<textarea name="content" id="content" rows="10" cols="156"><c:out value="${update.content}" /></textarea>
 					</div>
 		
 					<div class="form-group">
-						<label for="writer" class="col-sm-2 control-label">작성자</label>
+						<label for="writer">작성자</label>
 						<input type="text" id="writer" name="writer" class="form-control" value="${update.writer}" readonly="readonly"/>
 					</div>
 						
 					<div class="form-group">
-						<label for="regdate" class="col-sm-2 control-label">작성날짜</label>
+						<label for="regdate">작성날짜</label>
 						<fmt:formatDate value="${update.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>					
 					</div>
 					
 					<div class="form-group">
-						<label for="editor" class="col-sm-2 control-label">수정자</label>
+						<label for="editor">수정자</label>
 						<input type="text" id="editor" name="editor" class="form-control" value="${update.editor}"/>
 					</div>
 					
 					<div class="form-group">
-						<label for="editdate" class="col-sm-2 control-label">수정날짜</label>
+						<label for="editdate">수정날짜</label>
 						<fmt:formatDate value="${update.editdate}" pattern="yyyy-MM-dd HH:mm:ss"/>					
 					</div>
 					
@@ -98,7 +102,7 @@
 					
 					</table>
 					<div>
-						<button type="submit" class="save_btn btn btn-outline-info">저장</button>
+						<button type="submit" class="save_btn btn btn-outline-info" onclick = "submitContents()">저장</button>
 						<button type="submit" class="cancel2_btn btn btn-outline-info">취소</button>
 					</div>
 				</form>
