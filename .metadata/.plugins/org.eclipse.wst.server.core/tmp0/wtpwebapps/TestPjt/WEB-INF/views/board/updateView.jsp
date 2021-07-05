@@ -47,6 +47,14 @@
 		
 	</script>
 	
+	<script type="text/javascript">
+
+   function goBack(){
+      window.history.back();
+   }
+	</script>
+	
+	<body>
 		<div class="container">
 			<header>
 				<h1> 게시판 - 글 수정 </h1>
@@ -103,7 +111,7 @@
 					</table>
 					<div>
 						<button type="submit" class="save_btn btn btn-outline-info" onclick = "submitContents()">저장</button>
-						<button type="submit" class="cancel2_btn btn btn-outline-info">취소</button>
+						<input type="button" value="취소" class="btn btn-outline-info" onclick="goBack();"/>
 					</div>
 				</form>
 			</section>
@@ -124,6 +132,7 @@
 		         // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
 		         try {
 		            elClickedObj.form.submit();
+		            
 		         } catch (e) {
 		         }
 		      }
