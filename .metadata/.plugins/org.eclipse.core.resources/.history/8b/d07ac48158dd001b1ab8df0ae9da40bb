@@ -1,0 +1,7 @@
+package com.project.service;
+
+public interface MemberService {
+
+	public void register(MemberVO vo) throws Exception;
+
+}

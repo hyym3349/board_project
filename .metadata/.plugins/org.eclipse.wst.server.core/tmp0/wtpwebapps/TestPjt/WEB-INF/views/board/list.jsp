@@ -117,6 +117,7 @@
 				<%@include file="nav.jsp" %>
 			</div>
 			<hr />
+			
 				<input type="button" value="게시물 삭제" class="btn btn-outline-info" onclick="deleteValue();">
 				
 					

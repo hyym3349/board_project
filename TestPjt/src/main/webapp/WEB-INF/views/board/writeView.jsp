@@ -64,6 +64,7 @@
 			<section id="container">
 				<form name="writeForm" method="post" action="/board/write">
 					<table class="table table-hover">
+					<c:if test="${member.userId != null}">
 					
 					<div class="form-group">
 						<label for="title" class="col-sm-2 control-label" >제목</label>
@@ -86,6 +87,10 @@
 						
 					   </span>
 					   <button type="submit" class="cancel_btn btn btn-outline-info" >취소</button>
+					   		</c:if>
+							<c:if test="${member.userId == null}">
+								<p>로그인 후에 작성하실 수 있습니다.</p>
+							</c:if>
 					</table>
 				</form>
 			</section>
