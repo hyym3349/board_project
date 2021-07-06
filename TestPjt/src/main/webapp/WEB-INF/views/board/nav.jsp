@@ -8,12 +8,12 @@
 	<li><a href="/board/writeView">글 작성</a></li>
 	<li>
 		<c:if test="${member != null}"><a href="/member/logout">로그아웃</a></c:if>
-		<c:if test="${member == null}"><a href="/home">로그인</a></c:if>
+		<c:if test="${member == null}"><a href="/home">로그인 페이지</a></c:if>
 	</li>
 	<li>
 		<c:if test="${member != null}">
 		
-			<p>${member.userId}님 안녕하세요.</p>
+			<p> 사용자 : ${member.userId} 님</p>
 		</c:if>
 	</li>
 </ul>

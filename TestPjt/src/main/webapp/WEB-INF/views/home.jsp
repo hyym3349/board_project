@@ -31,16 +31,16 @@
 	})
 </script>
 <body>
-<div class="container">
+<div class="container" style="border: 3px solid gray;margin: auto;padding: 20px;width: 600px;overflow: auto;">
 			<header>
 				<h1> 로그인 </h1>
 			</header>
 				<hr />
 
 	
-			 <section id="container">
+			<section id="container">
 		<form name='homeForm' method="post" action="/member/login">
-		<table class="table table-hover">
+		<table class="table table-hover" style='display:inline-block; width:100%; min-width:100px'>
 		<c:if test="${member == null}">
 			
 			<div class="form-group">
@@ -64,13 +64,15 @@
 			<div class="form-group">
 				<p>${member.userId}님 환영 합니다.</p>
 				<button class="btn btn-outline-info" id="memberUpdateBtn" type="button">회원정보수정</button>
+				<a href="/member/memberDeleteView" /><button class="btn btn-outline-info" type="button">회원탈퇴</button></a>
 				<button class="btn btn-outline-info" id="logoutBtn" type="button">로그아웃</button>
-				<button class="btn btn-outline-info" type="button"><a href="/board/list">게시판</button>
+				<a href="/board/list" /><button class="btn btn-outline-info" type="button">게시판</button></a>
 			</div>
 		</c:if>
 		<c:if test="${msg == false}">
 			<p style="color: red;">로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
 		</c:if>
+		</table>
 	</form>
 	</section>
 	</div>

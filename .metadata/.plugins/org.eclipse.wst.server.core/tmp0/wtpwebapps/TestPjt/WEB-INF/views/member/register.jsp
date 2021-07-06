@@ -42,23 +42,40 @@
 					$("#userName").focus();
 					return false;
 				}
-				else{
-				location.href = "../home";
+				var idChkVal = $("#idChk").val();
+				if(idChkVal == "N"){
+					alert("중복확인 버튼을 눌러주세요.");
+				}else if(idChkVal == "Y"){
+					$("#regForm").submit();
 				}
 			});
-			
-				
-			
-		})
+		});
+		function fn_idChk(){
+			$.ajax({
+				url : "/member/idChk",
+				type : "post",
+				dataType : "json",
+				data : {"userId" : $("#userId").val()},
+				success : function(data){
+					if(data == 1){
+						alert("중복된 아이디입니다.");
+					}else if(data == 0){
+						$("#idChk").attr("value", "Y");
+						alert("사용가능한 아이디입니다.");
+					}
+				}
+			})
+		}
 	</script>
-		<script type="text/javascript">
+	
+	<script type="text/javascript">
+   		function goBack(){
+     	 window.history.back();
+   		}
+	</script>
 
-   function goBack(){
-      window.history.back();
-   }
-	</script>
 <body>
-	<div class="container">
+	<div class="container" style="border: 3px solid gray;margin: auto;padding: 20px;width: 600px;overflow: auto;">
 			<header>
 				<h1> 회원가입 </h1>
 			</header>
@@ -66,13 +83,15 @@
 			 <section id="container">
 			 
 			<form action="/member/register" method="post">
-				<table class="table table-hover">
+				<table class="table table-hover" style='display:inline-block; width:100%; min-width:100px'>
 			
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="userId">아이디</label>
 					<input class="form-control" type="text" id="userId" name="userId" />
+					<br />
+					<button class="idChk btn btn-outline-info" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
 				</div>
-				
+				<br />
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="userPass">패스워드</label>
 					<input class="form-control" type="password" id="userPass" name="userPass" />

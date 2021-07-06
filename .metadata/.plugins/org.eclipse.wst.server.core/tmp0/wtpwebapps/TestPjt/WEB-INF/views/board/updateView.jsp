@@ -98,7 +98,7 @@
 					
 					<div class="form-group">
 						<label for="editor">수정자</label>
-						<input type="text" id="editor" name="editor" class="form-control" value="${update.editor}"/>
+						<input type="text" id="editor" name="editor" class="form-control" value="${member.userId}" readonly="readonly"/>
 					</div>
 					
 					<div class="form-group">
