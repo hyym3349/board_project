@@ -45,11 +45,10 @@ public class BoardController {
 	
 	// 게시판 목록 조회
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
+	public String table(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
 		logger.info("list");
-		
+
 		model.addAttribute("list", service.list(scri));
-		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(service.listCount(scri));
@@ -119,6 +118,9 @@ public class BoardController {
 		
 		return "redirect:/board/list";
 	}
+	
+	
+	
 	
 	
 }

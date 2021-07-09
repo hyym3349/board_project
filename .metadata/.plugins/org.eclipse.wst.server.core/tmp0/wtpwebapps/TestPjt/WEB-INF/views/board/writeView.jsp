@@ -21,7 +21,15 @@
 		<!-- 작성버튼을 눌렀을때 벨리데이션을 체크하기 위한 함수  -->
 		<!-- chk라는 클래스의 i번째가 공백이거나 null이면 알러트로 i번째의 타이틀을 출력해주는 함수  -->
 		<script type="text/javascript">
+		var oEditors = [];
 		$(document).ready(function(){
+			
+			nhn.husky.EZCreator.createInIFrame({
+ 			oAppRef: oEditors,
+ 			elPlaceHolder: "content",
+ 			sSkinURI: "/resources/se2/SmartEditor2Skin.html",
+ 			fCreator: "createSEditor2"
+			});
 			var formObj = $("form[name='writeForm']");
 			
 			$(".write_btn").on("click", function(){
@@ -34,7 +42,7 @@
 			});
 			$(".cancel_btn").on("click", function(){
 				event.preventDefault();
-				location.href = "/board/list";
+				location.href = "/board/table";
 			})
 		})
 		function fn_valiChk(){
@@ -45,6 +53,15 @@
 					return true;
 				}
 			}
+			oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+			 var content = document.getElementById("content").value;;
+	         if(content == "" || content == null || content == '&nbsp;' || 
+	         content == '<br>' || content == '<br/>' || content == '<p>&nbsp;</p>' || content == '<p><br></p>'){ 
+	        	 alert("본문을 작성해주세요."); 
+	        	 oEditors.getById["content"].exec("FOCUS"); //포커싱 
+	        	 return true; 
+	        	 }
+
 		}
 		</script>
 			
@@ -96,26 +113,6 @@
 			</section>
 			<hr />
 		</div>
-		<script type="text/javascript">
-		
-			var oEditors = [];
-			nhn.husky.EZCreator.createInIFrame({
- 			oAppRef: oEditors,
- 			elPlaceHolder: "content",
- 			sSkinURI: "/resources/se2/SmartEditor2Skin.html",
- 			fCreator: "createSEditor2"
-			});
-			function submitContents(elClickedObj) {
-		         oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
-		         // 에디터의 내용이 textarea에 적용됩니다.
-		   /*       document.getElementById("ir1").submit(); */
-		         // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
-		         try {
-		            elClickedObj.form.submit();
-		         } catch (e) {
-		         }
-		      }
-		</script>
 	</body>
 	
 </html>

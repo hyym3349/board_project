@@ -1,7 +1,0 @@
-package com.project.vo;
-
-import java.util.Date;
-
-public class MemberVO {
-
-}
