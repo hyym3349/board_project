@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.project.vo.BoardVO;
 import com.project.vo.SearchCriteria;
 
+
 @Repository
 public class BoardDAOImpl implements BoardDAO {
 
@@ -58,12 +59,6 @@ public class BoardDAOImpl implements BoardDAO {
 		sqlSession.delete("boardMapper.delete", bno);
 	}
 	
-	// 게시물 삭제
-	@Override
-	public void deleteCol(int bno) throws Exception {
-		
-		sqlSession.delete("boardMapper.deleteCol", bno);
-	}
 	
 	// 게시판 조회수
 	@Override

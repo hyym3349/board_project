@@ -5,6 +5,7 @@ import java.util.List;
 import com.project.vo.BoardVO;
 import com.project.vo.SearchCriteria;
 
+
 public interface BoardDAO {
 
 	// 게시글 작성
@@ -24,9 +25,6 @@ public interface BoardDAO {
 	
 	// 게시물 선택삭제
 	public void delete(String bno) throws Exception;
-	
-	// 게시물 삭제
-	public void deleteCol(int bno) throws Exception;
 	
 	// 게시판 조회수
 	public void boardHit(int bno) throws Exception;
