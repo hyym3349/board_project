@@ -111,7 +111,23 @@
 		
 	</script>
 	
-
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#logoutBtn").on("click", function(){
+			location.href="member/logout";
+		})
+		$("#registerBtn").on("click", function(){
+			location.href="/member/register";
+		})
+		
+		
+		
+		$("#memberUpdateBtn").on("click", function(){
+			location.href="member/memberUpdateView";
+		})
+		
+	})
+</script>
 
 <body id="page-top">
 
@@ -126,7 +142,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">BOARD<sup>DH</sup></div>
+                <div class="sidebar-brand-text mx-3">DH<sup>PAGE</sup></div>
             </a>
 
             <!-- Divider -->
@@ -201,9 +217,9 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                        <a class="collapse-item" href="/home">Login</a>
+                        <a class="collapse-item" id="registerBtn" type="button">Register</a>
+                        <!-- <a class="collapse-item" href="forgot-password.html">Forgot Password</a> -->
                         <!-- <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.html">404 Page</a>
@@ -224,7 +240,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="list">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                    <span>BOARD</span></a>
             </li>
 
             <!-- Divider -->
@@ -275,7 +291,7 @@
                     <!-- Topbar Search -->
                      <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">게시판
+                        <div class="input-group">BOARD
                             <!-- <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
