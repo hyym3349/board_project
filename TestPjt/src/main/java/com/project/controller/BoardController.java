@@ -86,6 +86,7 @@ public class BoardController {
 	public String update(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
 		logger.info("update");
 		
+
 		service.update(boardVO);
 		
 		rttr.addAttribute("page", scri.getPage());
@@ -93,11 +94,8 @@ public class BoardController {
 		rttr.addAttribute("searchType", scri.getSearchType());
 		rttr.addAttribute("keyword", scri.getKeyword());
 		
-		return "redirect:/board/list";
-		/*
-		 * return "/board/list?page=${scri.page}" +"&perPageNum=${scri.perPageNum}"
-		 * +"&searchType=${scri.searchType}" +"&keyword=${scri.keyword}";
-		 */
+		return "redirect:/board/readView?bno=" + boardVO.getBno() + "&page="+ scri.getPage() +"&perPageNum="+ scri.getPerPageNum() +"&searchType="+ scri.getSearchType() +"&keyword=" + scri.getKeyword();
+		
 	}
 
 
@@ -116,7 +114,8 @@ public class BoardController {
     		rttr.addAttribute("searchType", scri.getSearchType());
     		rttr.addAttribute("keyword", scri.getKeyword());
         }
-        return "redirect:/board/list";
+        return "redirect:/board/readView?&page="+ scri.getPage() +"&perPageNum="+ scri.getPerPageNum() +"&searchType="+ scri.getSearchType() +"&keyword=" + scri.getKeyword();
+		
     }
     
 	// 페이지 홈

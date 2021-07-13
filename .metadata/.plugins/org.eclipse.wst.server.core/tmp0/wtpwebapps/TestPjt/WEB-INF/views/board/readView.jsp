@@ -65,7 +65,7 @@
 			
 			// 목록
 			$(".list_btn").on("click", function(){
-
+			
 			location.href = "/board/list?page=${scri.page}"
 			+"&perPageNum=${scri.perPageNum}"
 			+"&searchType=${scri.searchType}"
@@ -513,10 +513,7 @@
  					 <input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
 					 <input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
 				</form>
-							<div class="form-group">
-								<label for="bno" class="col-sm-2 control-label">게시물 번호</label>
-								<input type="text" id="bno" name="bno" class="form-control" value="${read.bno}" readonly="readonly"/>
-							</div>
+
 
 							<div class="form-group">
 								<label for="title" class="col-sm-2 control-label">제목</label>

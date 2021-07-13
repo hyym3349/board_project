@@ -37,6 +37,9 @@ $(function(){
 		}
 	});
 });
+
+
+
 function deleteValue(){
 	var url = "delete";    // Controller로 보내고자 하는 URL (.dh부분은 자신이 설정한 값으로 변경해야됨)
 	var valueArr = new Array();
@@ -145,6 +148,9 @@ function deleteValue(){
 		
 	})
 </script>
+
+
+
 
 <body id="page-top">
 
@@ -549,14 +555,14 @@ function deleteValue(){
                   
 
 
-                    <!-- DataTales Example -->
+                  
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <a class="m-0 font-weight-bold text-primary">Board list</a>
+                         </div>    
                             
-                            
-                            
-                        </div>
+                          
+                       
                         <form role="form" method="POST" action="/board/write">
                         <div class="card-body">
                             <div class="table-responsive">
@@ -568,14 +574,24 @@ function deleteValue(){
                             <div class="search" style ="float: right;">
                             <span style="display:inline-block; width:100px; height:35px;">
    							 <select style="width:100px; height:35px;" class="form-control navbar-left list-group"  name="searchType">
-      							<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
+      							<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>--전체--</option>
      							 <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
      							 <option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
     						</select>
 							</span>
 							<span style="display:inline-block; width:200px; height:36px;">
-    						<input class="form-control navbar-left list-group" style="width:200px; height:36px;" type="search" placeholder="검색하기..." name="keyword" id="keywordInput" value="${scri.keyword}"/>
+    						<input class="form-control navbar-left list-group" style="width:200px; height:36px;" type="search" placeholder="검색하기..." name="keyword" id="keywordInput" onkeyup="enterkey()" value="${scri.keyword}"/>
 							</span>
+							<script>
+							function enterkey() {
+						        if (window.event.keyCode == 13) {
+						 
+						             // 엔터키가 눌렸을 때 실행할 내용
+						        	self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+						        }
+						}
+    						</script>
+
 							<span style="display:inline-block; width:60px; height:36px;">
     						<button  style="width:60px; height:34px;" id="searchBtn" type="button" class="btn btn-outline-primary">검색</button>
     						</span>
@@ -586,26 +602,27 @@ function deleteValue(){
      						   });
     						  });   
    						 </script>
-   						 
  						 </div>
  						 <br />
  						 
- 						 
+ 						     <!-- DataTales Example -->
                                 <table class="table table-bordered"  style="table-layout:fixed">
                                     <thead>
                                     
                                         <tr>
                                         	<!-- <th class="text-center"><input name="select_all" id="select-all" type="checkbox" /></th> -->
-                                            <th style="text-align:center; width:30px;"><input  id="allCheck" type="checkbox" name="allCheck"/></th>
-											<th style="text-align:center; width:42px;">번호</th>
-											<th style="text-align:center; width:470px;">제목</th>
-											<th style="text-align:center; width:70px;">작성자</th>
-											<th style="text-align:center; width:120px;">등록일</th>
-											<th style="text-align:center; width:50px;">조회수</th>
+                                            <th style="text-align:center; width:5%;"><input  id="allCheck" type="checkbox" name="allCheck"/></th>
+											<th style="text-align:center; width:10%;">번호</th>
+											<th style="text-align:center; width:70%;">제목</th>
+											<th style="text-align:center; width:15%;">작성자</th>
+											<th style="text-align:center; width:25%;">등록일</th>
+											<th style="text-align:center; width:10%;">조회수</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody>
+                                    
+                                    
                                         <c:forEach items="${list}" var = "list">
 											<c:choose>
 												<c:when test="${list.deleted == 'N'}">
@@ -626,20 +643,19 @@ function deleteValue(){
 													</tr>	
 							
 												</c:when>
-											<c:otherwise>
-											
-											</c:otherwise>
-											</c:choose>
-										</c:forEach>
-                                    </tbody>
-                                </table>
+											<c:otherwise></c:otherwise>
+										</c:choose>
+						</c:forEach>
+                       </tbody>
+                     </table>
+                                
                                 <div style="display:inline-block; float: right;">
                                 <a href="/board/writeView"><input  type="button" value="글 작성" class="btn btn-outline-primary"></a>
-							</div>
+								</div>
 							 
 							
-							<div>
-							<li>현제 페이지 : ${scri.page}</li>
+							
+							<%-- <li>현제 페이지 : ${scri.page}</li> --%>
 							<span style="display:inline-block; width:400px; height:35px;">
 							  <ul class="paging">
 							  </span>
@@ -655,7 +671,7 @@ function deleteValue(){
 							    	<li><a class="select" href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
 							    </c:if> 
 							  </ul>
-							</div>
+							
 							
                                 
                             </div>

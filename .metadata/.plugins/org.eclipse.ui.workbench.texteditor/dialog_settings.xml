@@ -8,6 +8,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="sa"/>
 			<item value="body"/>
 			<item value="선택삭제"/>
 			<item value="desc"/>

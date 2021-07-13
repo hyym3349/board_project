@@ -31,71 +31,24 @@ $(document).ready(function() {
 /*--------------------------------------------------------------
 					게시판 목록 DataTable & 체크박스
 --------------------------------------------------------------*/
-	var table = $('#dataTable').DataTable({
-		aaSorting : [], /*초기화 시 정렬 비활성화시키기*/
-		
-		language : lang_kor, /*글씨 바꾸기*/
-		/*stateSave: true, 상태 저장하기 */
-		columnDefs : [
-			{/*0번째 컬럼 옵션 설정*/
-				targets: 0,
-				width: '5%',
-				searchable: false, //검색
-				orderable: false, //컬럼정렬
-				className: 'dt-body-center',//dt-body-center: 가운데로 정렬하기
-				render: function(data, type, full, meta) {
-					return '<input type="checkbox" name="bno" value="' + $('<div/>').text(data).html() + '" style="cursor:pointer">';
-				}
-			},
-			/* width: 컬럼에따라 크기 조정/ hidden-xs:좁아지면 숨기기 */
-			{ targets: [1], width: '7%', },
-			{ targets: [2], width: '40%', },
-			{ targets: [3], width: '10%', className: 'hidden-xs'},
-			{ targets: [4], width: '15%', },
-			{ targets: [5], width: '7%', className: 'hidden-xs'}
-		]
+	var DataTable = $('#dataTable').DataTable({
+		"autoWidth": false,
+		"info" : false,
+		"paging": false, //페이징처리
+		"ordering": false, //칼럼별 정렬기능
+		"autoWidth": true, //가로자동
+		"lengthChange": false, //데이터건수 변경
+		"pageLength": false, //기본 데이터건수
+		"lengthMenu": false, //데이터건수옵션
+		"order": false, //기본 정렬칼럼
+		"searching": false, //검색
+
+		"language" : lang_kor /*글씨 바꾸기*/
+
 	});
-
-
+});
 	/*----------------------- 전체체크 ------------------------------*/
 	
-	// id가 select-all을 클릭했을 때, checkbox type의 input의 속성을 checked가 되게 한다.
-	$('#select-all').on('click', function() {
-
-		// Check/uncheck all checkboxes in the table
-		/* search: 'applied' 라고 설정하면 필터링된 데이터만 사용하구요. 
-		page: 'current' 라고 설정하면 현재 페이지의 데이터만 사용하는 등의 옵션 */
-		var rows = table.rows({ 'search': 'applied' }).nodes();
-
-		/*	.prop()는 지정한 선택자를 가진 첫번째 요소의 속성값을 가져오거나 속성값을 추가합니다. 
-			주의할 점은 HTML 입장에서의 속성(attribute)이 아닌 JavaScript 입장에서의 속성(property)이라는 것입니다. */
-		$('input[type="checkbox"]', rows).prop('checked', this.checked);
-	});
-
-	//부분체크
-	$('#dataTable tbody').on('change', 'input[type="checkbox"]', function() {
-		// If checkbox is not checked 만약 체크박스가 체크가 안되어 있으면
-		if (!this.checked) {
-			//한개의 체크박스 해제시 el이 불러와짐
-			var el = $('#select-all').get(0);
-			// If "Select all" control is checked and has 'indeterminate' property
-			if (el && el.checked && ('indeterminate' in el)) {
-				// Set visual state of "Select all" control 
-				// as 'indeterminate'
-				el.indeterminate = true;
-			}
-		}
-	});
-
-	/* 게시판 목록 DataTable & 체크박스 END */
-		
-   
-/*--------------------------------------------------------------
-					? 
---------------------------------------------------------------*/
-
-
-});
 
  
 

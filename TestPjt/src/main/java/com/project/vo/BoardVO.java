@@ -26,6 +26,12 @@ public class BoardVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	@Override
+	public String toString() {
+		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regdate="
+				+ regdate + ", hit=" + hit + ", editdate=" + editdate + ", editor=" + editor + ", deleted=" + deleted
+				+ "]";
+	}
 	public String getContent() {
 		return content;
 	}
