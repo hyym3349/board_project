@@ -8,9 +8,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
 
 <head>
+
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
@@ -91,7 +92,6 @@ function deleteValue(){
     <meta name="author" content="">
 
     <title>게시판 - 테이블</title>
-    	
 	 <style type="text/css">
 			li {list-style: none; float: left; padding: 1px;}
 		</style>
@@ -106,29 +106,11 @@ function deleteValue(){
 
     <!-- Custom styles for this page -->
     <link href="/resources/boot/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    
+		
+
+
 	
-	<style>
-
-    .paging a {
-        /*
-        display: inline-block 인라인 요소의 특징과 블록 요소의 특징을 모두 갖는다
-        크기를 가질 수 있으며 텍스트 정렬도 적용받는다
-        */
-        
-        
-        text-decoration: none;
-        padding: 4px 8px;
-        border: 1px solid #4e73df;
-        color: #000;
-
-    }
-    /* 현재 페이징에 select 클래스를 적용한다*/
-    .paging a.select {
-        color: #4e73df;
-        background-color: white;
-        border-radius: .35rem;
-    }
-    </style>
     
 </head>
 <script type="text/javascript">
@@ -612,16 +594,21 @@ function deleteValue(){
                                         <tr>
                                         	<!-- <th class="text-center"><input name="select_all" id="select-all" type="checkbox" /></th> -->
                                             <th style="text-align:center; width:5%;"><input  id="allCheck" type="checkbox" name="allCheck"/></th>
-											<th style="text-align:center; width:10%;">번호</th>
+											<th style="text-align:center; width:7%;">번호</th>
 											<th style="text-align:center; width:70%;">제목</th>
-											<th style="text-align:center; width:15%;">작성자</th>
-											<th style="text-align:center; width:25%;">등록일</th>
-											<th style="text-align:center; width:10%;">조회수</th>
+											<th style="text-align:center; width:13%;">작성자</th>
+											<th style="text-align:center; width:20%;">등록일</th>
+											<th style="text-align:center; width:8%;">조회수</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody>
-                                    
+                                   <c:choose>
+   										<c:when test="${empty list || fn:length(list) == 0 }">
+											<td style="text-align:center;" colspan="6">게시물이 없습니다.</td>
+                                      </c:when>
+   
+ 										  <c:otherwise>
                                     
                                         <c:forEach items="${list}" var = "list">
 											<c:choose>
@@ -646,7 +633,10 @@ function deleteValue(){
 											<c:otherwise></c:otherwise>
 										</c:choose>
 						</c:forEach>
-                       </tbody>
+                      
+                          </c:otherwise>
+							</c:choose> 
+							</tbody>
                      </table>
                                 
                                 <div style="display:inline-block; float: right;">
@@ -656,26 +646,26 @@ function deleteValue(){
 							
 							
 							<%-- <li>현제 페이지 : ${scri.page}</li> --%>
-							<span style="display:inline-block; width:400px; height:35px;">
-							  <ul class="paging">
-							  </span>
-							    <c:if test="${pageMaker.prev}">
-							    	<li><a class="select" href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
-							    </c:if> 
-							
-							    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-							    	<li><a class="select" href="list${pageMaker.makeSearch(idx)}">${idx}</a></li>
-							    </c:forEach>
-							
-							    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-							    	<li><a class="select" href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
-							    </c:if> 
-							  </ul>
-							
-							
-                                
+
+                        	</div>
+                        								 <div style ="text-align: center;">
+
+ 						 <ul class="pagination">
+    						<c:if test="${pageMaker.prev}">
+    							<li><a href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+    						</c:if> 
+
+    						<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+    							<li <c:out value="${pageMaker.cri.page == idx ? 'class=info' : ''}" />>
+    							<a href="list${pageMaker.makeSearch(idx)}">${idx}</a></li>
+    						</c:forEach>
+
+    						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+    							<li><a href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+    						</c:if> 
+ 						 </ul>
+ 						 </div>
                             </div>
-                        </div>
                         </form>
                     </div>
                 </div>
