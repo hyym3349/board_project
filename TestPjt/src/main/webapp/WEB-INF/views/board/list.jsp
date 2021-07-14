@@ -444,7 +444,7 @@ function deleteValue(){
                             
                           
                        
-                        <form role="form" method="POST" action="/board/write">
+                        <div>
                         <div class="card-body">
                             <div class="table-responsive" >
                             
@@ -470,6 +470,9 @@ function deleteValue(){
   							   else{
    						    self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
   						   }
+								}
+								else{
+									
 								}
 						}
 	   						</script>
@@ -582,10 +585,10 @@ function deleteValue(){
 							    
 							  </div>
 							  <br>
-							    
-                        </form>
+							    </div>
+                        </div>
                     </div>
-
+				
                 </div>
                 <!-- /.container-fluid -->
                 
