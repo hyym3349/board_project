@@ -36,13 +36,13 @@ $(document).ready(function() {
 		"info" : false,
 		"paging": false, //페이징처리
 		"ordering": false, //칼럼별 정렬기능
-		"autoWidth": true, //가로자동
+		"autoWidth": false, //가로자동
 		"lengthChange": false, //데이터건수 변경
 		"pageLength": false, //기본 데이터건수
 		"lengthMenu": false, //데이터건수옵션
 		"order": false, //기본 정렬칼럼
 		"searching": false, //검색
-
+		"xscroll":false,
 		"language" : lang_kor /*글씨 바꾸기*/
 
 	});

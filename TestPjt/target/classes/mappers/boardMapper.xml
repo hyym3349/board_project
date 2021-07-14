@@ -63,8 +63,9 @@
 	
 	<sql id="search">
 		<if test="searchType != null">
-			<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'w'.toString()">AND WRITER LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND WRITER LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%'</if>
+			<if test="searchType == 'tw'.toString()">AND (TITLE LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%') and (WRITER LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%')</if>
 		</if>
 	</sql>
 	

@@ -546,10 +546,7 @@
 				<form name="updateForm" role="form" method="post" action="/board/update">
 					<input type="hidden" name="bno" value="${update.bno}" readonly="readonly"/>
 					
-					<div class="form-group">
-						<label for="bno">게시물 번호</label>
-						<input type="text" id="bno" name="bno" class="form-control" value="${update.bno}" readonly="readonly"/>
-					</div>
+				
 					
 					<div class="form-group">
 						<label for="title">제목</label>

@@ -665,6 +665,10 @@ window.onload = function() {
 
     <!-- Page level custom scripts -->
     <script src="/resources/boot/js/demo/datatables-demo.js"></script>
+    
+             <!--  jquery validate --> 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="/resources/boot/js/write.js"></script>
 
 </body>
 

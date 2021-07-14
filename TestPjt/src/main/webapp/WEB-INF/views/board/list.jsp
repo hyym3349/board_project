@@ -8,7 +8,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="en">
 
 <head>
 
@@ -91,7 +91,7 @@ function deleteValue(){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>게시판 - 테이블</title>
+    <title>Board_Table</title>
 	 <style type="text/css">
 			li {list-style: none; float: left; padding: 1px;}
 		</style>
@@ -107,7 +107,27 @@ function deleteValue(){
     <!-- Custom styles for this page -->
     <link href="/resources/boot/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     
-		
+	<style>
+    .paging a {
+        /*
+        display: inline-block 인라인 요소의 특징과 블록 요소의 특징을 모두 갖는다
+        크기를 가질 수 있으며 텍스트 정렬도 적용받는다
+        */
+        
+        
+        text-decoration: none;
+        padding: 4px 8px;
+        border: 1px solid #4e73df;
+        color: #000;
+
+    }
+    /* 현재 페이징에 select 클래스를 적용한다*/
+    .paging a.select {
+        color: #4e73df;
+        background-color: white;
+        border-radius: .35rem;
+    }
+    </style>
 
 
 	
@@ -165,12 +185,12 @@ function deleteValue(){
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <!-- <div class="sidebar-heading">
+<!--              <div class="sidebar-heading">
                 Interface
-            </div> -->
+            </div>  -->
 
             <!-- Nav Item - Pages Collapse Menu -->
-<!--             <li class="nav-item">
+             <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
@@ -183,10 +203,10 @@ function deleteValue(){
                         <a class="collapse-item" href="cards.html">Cards</a>
                     </div>
                 </div>
-            </li> -->
+            </li>  -->
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <!-- <li class="nav-item">
+             <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
@@ -202,10 +222,10 @@ function deleteValue(){
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>
-            </li> -->
+            </li>  -->
 
             <!-- Divider -->
-            <!-- <hr class="sidebar-divider"> -->
+<!--              <hr class="sidebar-divider"> -->
 
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -224,8 +244,8 @@ function deleteValue(){
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="/home">Login</a>
                         <a class="collapse-item" id="registerBtn" type="button">Register</a>
-                        <!-- <a class="collapse-item" href="forgot-password.html">Forgot Password</a> -->
-                        <!-- <div class="collapse-divider"></div>
+<!--                          <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.html">404 Page</a>
                         <a class="collapse-item" href="blank.html">Blank Page</a> -->
@@ -234,7 +254,7 @@ function deleteValue(){
             </li>
 
             <!-- Nav Item - Charts -->
-<!--             <li class="nav-item">
+            <!--  <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a> 
@@ -297,7 +317,7 @@ function deleteValue(){
                      <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">BOARD
-                            <!-- <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+<!--                              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
@@ -340,128 +360,7 @@ function deleteValue(){
 
 
 
-<!--                         Nav Item - Alerts
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                Counter - Alerts
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            Dropdown - Alerts
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
- -->
-
-
-
-
-
-
-<!--                         Nav Item - Messages
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                Counter - Messages
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            Dropdown - Messages
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="/resources/boot/img/undraw_profile_1.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="/resources/boot/img/undraw_profile_2.svg"
-                                            alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="/resources/boot/img/undraw_profile_3.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li> -->
+                        
 
 
 
@@ -488,15 +387,15 @@ function deleteValue(){
                                     Profile
                                 </a>
                                 
-<!--                                 <a class="dropdown-item" href="#">
+<!--                                  <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
-                                </a> -->
+                                </a> 
                                 
-<!--                                 <a class="dropdown-item" href="#">
+                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
-                                </a> -->
+                                </a>  -->
                                 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -547,43 +446,62 @@ function deleteValue(){
                        
                         <form role="form" method="POST" action="/board/write">
                         <div class="card-body">
-                            <div class="table-responsive">
+                            <div class="table-responsive" >
                             
                             <input style="width:90px; height:35px;" type="button" value="선택삭제" class="btn btn-outline-primary" onclick="deleteValue();">
-                           
                             
                             
                             <div class="search" style ="float: right;">
-                            <span style="display:inline-block; width:100px; height:35px;">
-   							 <select style="width:100px; height:35px;" class="form-control navbar-left list-group"  name="searchType">
-      							<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>--전체--</option>
+                            <span style="display:inline-block; width:110px; height:35px;">
+   							 <select style="width:110px; height:35px;" class="form-control navbar-left list-group"  name="searchType">
+      							<%-- <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>--전체--</option> --%>
      							 <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
      							 <option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
+     							 <option value="tw"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+작성자</option>
     						</select>
+    						<script>
+    						
+							function enterkey() {
+								if (window.event.keyCode == 13) {
+								if($('#keywordInput').val() == ''){
+  								   swal("검색어를 입력해주세요","","warning")
+  								   
+  							   }
+  							   else{
+   						    self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+  						   }
+								}
+						}
+	   						</script>
+	
 							</span>
 							<span style="display:inline-block; width:200px; height:36px;">
     						<input class="form-control navbar-left list-group" style="width:200px; height:36px;" type="search" placeholder="검색하기..." name="keyword" id="keywordInput" onkeyup="enterkey()" value="${scri.keyword}"/>
 							</span>
-							<script>
-							function enterkey() {
-						        if (window.event.keyCode == 13) {
-						 
-						             // 엔터키가 눌렸을 때 실행할 내용
-						        	self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
-						        }
-						}
-    						</script>
 
-							<span style="display:inline-block; width:60px; height:36px;">
+
+							<span style="display:inline-block; width:62px; height:36px;">
     						<button  style="width:60px; height:34px;" id="searchBtn" type="button" class="btn btn-outline-primary">검색</button>
     						</span>
+    						
+    						<span style="display:inline-block; width:110px; height:36px;">
+    						<a href = "/board/list"><button style="width:110px; height:34px;" id="searchBtn" type="button" class="btn btn-outline-primary">전체글보기</button></a>
+    						</span>
+
     						<script>
      						 $(function(){
      						   $('#searchBtn').click(function() {
+     							   if($('#keywordInput').val() == ''){
+     								   swal("검색어를 입력해주세요","","warning")
+     							   }
+     							   else{
       						    self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
-     						   });
+     						   }
+     
+     							   });
     						  });   
    						 </script>
+
  						 </div>
  						 <br />
  						 
@@ -646,28 +564,28 @@ function deleteValue(){
 							
 							
 							<%-- <li>현제 페이지 : ${scri.page}</li> --%>
+							<br>
 
-                        	</div>
-                        								 <div style ="text-align: center;">
-
- 						 <ul class="pagination">
-    						<c:if test="${pageMaker.prev}">
-    							<li><a href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
-    						</c:if> 
-
-    						<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-    							<li <c:out value="${pageMaker.cri.page == idx ? 'class=info' : ''}" />>
-    							<a href="list${pageMaker.makeSearch(idx)}">${idx}</a></li>
-    						</c:forEach>
-
-    						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-    							<li><a href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
-    						</c:if> 
- 						 </ul>
- 						 </div>
                             </div>
+                             <div class="paging">
+							    <c:if test="${pageMaker.prev}">
+							    	<li><a class="select" href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+							    </c:if> 
+							
+							    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+							    	<li><a class="select" href="list${pageMaker.makeSearch(idx)}">${idx}</a></li>
+							    </c:forEach>
+							
+							    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+							    	<li><a class="select" href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+							    </c:if> 
+							    
+							  </div>
+							  <br>
+							    
                         </form>
                     </div>
+
                 </div>
                 <!-- /.container-fluid -->
                 
@@ -739,7 +657,14 @@ function deleteValue(){
 
     <!-- Page level custom scripts -->
     <script src="/resources/boot/js/demo/datatables-demo.js"></script>
+    
 
+    
+	<style>
+	.table-responsive{
+	overflow-x: clip;
+	}
+	</style>
 </body>
 
 </html>
