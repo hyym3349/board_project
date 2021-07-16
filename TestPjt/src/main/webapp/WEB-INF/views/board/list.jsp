@@ -13,9 +13,9 @@
 <head>
 
 	<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-	<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+
+	  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 	
 <script type="text/javascript">
 
@@ -51,37 +51,44 @@ function deleteValue(){
         }
     }
     if (valueArr.length == 0){
-    	swal("선택된 글이 없습니다.","삭제할 게시물을 선택해주세요.","info");
+    	Swal.fire("선택된 글이 없습니다.","삭제할 게시물을 선택해주세요.","info");
     }
     else{
     	
-		var chk = confirm("정말 삭제하시겠습니까?");
-		if(chk == true){
-		$.ajax({
-		    url : url,                    // 전송 URL
-		    type : 'POST',                // GET or POST 방식
-		    traditional : true,
-		    data : {
-		    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
-		    },
-            success: function(jdata){
-                if(jdata = 1) {
-                    swal("삭제 성공","","success");
-                    location.replace("list")
-                }
-                else{
-                    swal("삭제 실패","","error");
-                }
-            }
-		});
-	}
-		else{
-			swal("취소하셨습니다.","","info");
-			}
+    	Swal.fire({
+            title: '정말 삭제하시겠습니까?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '삭제하기',
+            cancelButtonText: '취소'
+          }).then((chk) => {  if(chk.isConfirmed){
+			$.ajax({
+			    url : url,                    // 전송 URL
+			    type : 'POST',                // GET or POST 방식
+			    traditional : true,
+			    data : {
+			    	valueArr : valueArr        // 보내고자 하는 data 변수 설정
+			    },
+	            success: function(jdata){
+	                if(jdata = 1) {
+	                	Swal.fire("삭제 성공","","success");
+	                    location.replace("list")
+	                }
+	                else{
+	                	  Swal.fire("삭제 실패","","error");
+	                }
+	            }
+			});
 		}
+		else{
+			Swal.fire("취소하셨습니다.","","info");
+			}
+		})
+    }
 }
-
-	</script>
+</script>
 	
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -464,7 +471,7 @@ function deleteValue(){
 							function enterkey() {
 								if (window.event.keyCode == 13) {
 								if($('#keywordInput').val() == ''){
-  								   swal("검색어를 입력해주세요","","warning")
+									Swal.fire("검색어를 입력해주세요","","warning")
   								   
   							   }
   							   else{
@@ -495,7 +502,7 @@ function deleteValue(){
      						 $(function(){
      						   $('#searchBtn').click(function() {
      							   if($('#keywordInput').val() == ''){
-     								   swal("검색어를 입력해주세요","","warning")
+     								  Swal.fire("검색어를 입력해주세요","","warning")
      							   }
      							   else{
       						    self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
@@ -576,7 +583,7 @@ function deleteValue(){
 							    </c:if> 
 							
 							    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-							    	<li><a class="select" href="list${pageMaker.makeSearch(idx)}">${idx}</a></li>
+							    	<li class="action"><a class="select" href="list${pageMaker.makeSearch(idx)}">${idx}</a></li>
 							    </c:forEach>
 							
 							    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
@@ -662,12 +669,20 @@ function deleteValue(){
     <script src="/resources/boot/js/demo/datatables-demo.js"></script>
     
 
-    
 	<style>
 	.table-responsive{
 	overflow-x: clip;
 	}
 	</style>
+			  <!-- 합쳐지고 최소화된 최신 CSS -->
+	<script src="/resources/css/bootstrap.min.css"></script>
+	<!-- 부가적인 테마 -->
+	<script src="/resources/css/bootstrap.css"></script>
+			  <!-- 합쳐지고 최소화된 최신 CSS -->
+	<script src="/resources/js/bootstrap.min.js"></script>
+	<!-- 부가적인 테마 -->
+	<script src="/resources/js/bootstrap.js"></script>
+    
 </body>
 
 </html>

@@ -5,12 +5,26 @@
 <mapper namespace="memberMapper">
 	<!-- 회원가입 -->
 	<insert id="register">
-	    INSERT INTO MP_MEMBER(   USERID 
-	   					       , USERPASS 
-	   					       , USERNAME 	)
-	                  VALUES(    #{userId} 
+	    INSERT INTO MP_MEMBER(   USERNO 
+	   					       , USERID 
+	   					       , USERPASS
+	   					       , USERNAME
+	   					       , USERBIRTH
+	   					       , USERNICK
+	   					       , USEREMAIL
+	   					       , USERTELL
+	   					       , USERGENDER
+	   					       )
+	                  VALUES(    MP_MEMBER_SEQ.NEXTVAL  
+	                 		   , #{userId}
 	                 		   , #{userPass}
-	                 		   , #{userName})
+	                 		   , #{userName}
+	                 		   , #{userBirth}
+	                 		   , #{userNick}
+	                 		   , #{userEmail}
+	                 		   , #{userTell}
+	                 		   , #{userGender}
+	                 		   )
     </insert>
     
  <!-- 로그인 -->

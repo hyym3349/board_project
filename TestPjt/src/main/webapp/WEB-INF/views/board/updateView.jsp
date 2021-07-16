@@ -11,7 +11,7 @@
 <html lang="en">
 
 <head>
-	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 	
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,7 +39,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.2/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     
 </head>
 
@@ -95,7 +95,7 @@
 			var updateForm = $("form[name='updateForm'] .chk").length;
 			for(var i = 0; i<updateForm; i++){
 				if($(".chk").eq(i).val() == "" || $(".chk").eq(i).val() == null){
-					swal($(".chk").eq(i).attr("title"),$(".chk").eq(i).attr("title2"),"warning");
+					Swal.fire($(".chk").eq(i).attr("title"),$(".chk").eq(i).attr("title2"),"warning");
 					return true;
 				}
 			}
@@ -103,7 +103,7 @@
 			 var content = document.getElementById("content").value;;
 	         if(content == "" || content == null || content == '&nbsp;' || 
 	         content == '<br>' || content == '<br/>' || content == '<p>&nbsp;</p>' || content == '<p><br></p>'){ 
-	        	 swal("본문을 작성해주세요.","","warning"); 
+	        	 Swal.fire("본문을 작성해주세요.","","warning"); 
 	        	 oEditors.getById["content"].exec("FOCUS"); //포커싱 
 	        	 return true; 
 	        	 }
@@ -617,7 +617,7 @@ window.onload = function() {
 			document.querySelector(".count span").innerHTML = len; 
 			
 			if(len > 2000) { 
-				swal("최대 2000자까지 입력 가능합니다.","","warning"); 
+				Swal.fire("최대 2000자까지 입력 가능합니다.","","warning"); 
 				} 
 			}); 
 		}, 1000) }

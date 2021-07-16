@@ -37,7 +37,7 @@ public class MemberController {
 		int result = service.idChk(vo);
 		try {
 			if(result == 1) {
-				return "/member/register";
+				return "/board/register";
 			}else if(result == 0) {
 				service.register(vo);
 			}
@@ -46,7 +46,8 @@ public class MemberController {
 		} catch (Exception e) {
 			throw new RuntimeException();
 		}
-		return "redirect:/";
+		
+		return "redirect:/board/register";
 	}
 	
 	// 로그인 POST

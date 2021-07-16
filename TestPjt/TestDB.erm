@@ -41,11 +41,11 @@
 		<suspend_validator>false</suspend_validator>
 		<export_setting>
 			<export_ddl_setting>
-				<output_path></output_path>
-				<encoding></encoding>
-				<line_feed></line_feed>
+				<output_path>TestDB.sql</output_path>
+				<encoding>x-windows-949</encoding>
+				<line_feed>CR+LF</line_feed>
 				<is_open_after_saved>true</is_open_after_saved>
-				<environment_id>null</environment_id>
+				<environment_id>0</environment_id>
 				<category_id>null</category_id>
 				<ddl_target>
 					<create_comment>true</create_comment>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2021-06-28 16:12:55</creation_date>
-			<updated_date>2021-07-13 09:46:19</updated_date>
+			<updated_date>2021-07-14 15:01:06</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -1363,7 +1363,7 @@
 			<connections>
 				<relation>
 					<id>1</id>
-					<source>0</source>
+					<source>3</source>
 					<target>2</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -1385,7 +1385,7 @@
 				</relation>
 				<relation>
 					<id>2</id>
-					<source>3</source>
+					<source>0</source>
 					<target>2</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -1581,7 +1581,7 @@
 				<normal_column>
 					<id>23</id>
 					<referenced_column>25</referenced_column>
-					<relation>2</relation>
+					<relation>1</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1615,7 +1615,7 @@
 				<normal_column>
 					<id>24</id>
 					<referenced_column>0</referenced_column>
-					<relation>1</relation>
+					<relation>2</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
