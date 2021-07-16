@@ -29,7 +29,7 @@
     
  <!-- 로그인 -->
 	<select id="login" resultType="com.project.vo.MemberVO">
-	SELECT USERID, USERPASS, USERNAME
+	SELECT USERID, USERPASS, USERNAME, USERNICK, USERTELL, USERBIRTH, USEREMAIL, USERGENDER, USEREDITDATE
 	  FROM MP_MEMBER
 	 WHERE USERID = #{userId}
 	   AND USERPASS = #{userPass}   
@@ -38,9 +38,16 @@
 
 <!-- 회원정보 수정 -->
 	<update id="memberUpdate">
-		UPDATE MP_MEMBER SET 
+		UPDATE MP_MEMBER 
+		SET 
+		USERNAME = #{userName},
+		USERNICK = #{userNick},
+		USERTELL = #{userTell},
+		USERBIRTH = #{userBirth},
+		USEREMAIL = #{userEmail},
 		USERPASS = #{userPass},
-		USERNAME = #{userName}
+		USERGENDER = #{userGender},
+		USEREDITDATE =	sysdate
 		WHERE USERID = #{userId}
 	</update>
 	

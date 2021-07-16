@@ -25,23 +25,7 @@
     <link href="/resources/boot/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#logoutBtn").on("click", function(){
-			location.href="member/logout";
-		})
-		$("#registerBtn").on("click", function(){
-			location.href="member/register";
-		})
-		
-		
-		
-		$("#memberUpdateBtn").on("click", function(){
-			location.href="member/memberUpdateView";
-		})
-		
-	})
-</script>
+
 <body class="bg-gradient-primary">
 
 <!-- 로그인 창 시작-->
@@ -62,7 +46,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user" name='homeForm' method="post" action="/member/login">
+                                    <form class="user" name='homeForm' method="post" action="/member/home">
                                     <c:if test="${member == null}">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
@@ -95,15 +79,15 @@
 								<div class="form-group">
 								<p style="text-align: center;">${member.userId}님 환영 합니다!</p>
 								<div class="form-group">
-								<a href="/board/list"><button class="btn btn-info btn-user btn-block" type="button">게시판</button></a>
+								<button class="btn btn-info btn-user btn-block" id="boardList" type="button">게시판</button>
 								</div>
 								<div class="form-group">
-								<a href="member/memberUpdateView"><button class="btn btn-primary btn-user btn-block" id="memberUpdateBtn" type="button">회원정보수정</button></a>
+								<button class="btn btn-primary btn-user btn-block" id="memberUpdateBtn" type="button">회원정보수정</button>
 								</div>
 								<div class="form-group">
-								<a href="/member/memberDeleteView"><button class="btn btn-google btn-user btn-block" type="button">회원탈퇴</button></a>
+								<button class="btn btn-google btn-user btn-block" id="memberDeleteBtn" type="button">회원탈퇴</button></a>
 								</div>
-								<a href="member/logout"><button class="btn btn-facebook btn-user btn-block" id="logoutBtn" type="button">로그아웃</button></a>
+								<button class="btn btn-facebook btn-user btn-block" id="logoutBtn" type="button">로그아웃</button>
 							</div>
 						</c:if>
 		
@@ -137,7 +121,28 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/resources/boot/js/sb-admin-2.min.js"></script>
-
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#logoutBtn").on("click", function(){
+			location.href="member/logout";
+		})
+		$("#registerBtn").on("click", function(){
+			location.href="member/register";
+		})
+		
+		$("#memberDeleteBtn").on("click", function(){
+			location.href="member/memberDeleteView";
+		})
+		
+		$("#memberUpdateBtn").on("click", function(){
+			location.href="member/memberUpdateView";
+		})
+		$("#boardList").on("click", function(){
+			location.href="board/list?userId="+ ${member.userId};
+		})
+		
+	})
+</script>
 </body>
 
 </html>

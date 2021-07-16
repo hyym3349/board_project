@@ -16,7 +16,7 @@ import com.project.service.MemberService;
 import com.project.vo.MemberVO;
 
 @Controller
-@RequestMapping("/member/")
+@RequestMapping("/member")
 public class MemberController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
@@ -37,7 +37,7 @@ public class MemberController {
 		int result = service.idChk(vo);
 		try {
 			if(result == 1) {
-				return "/board/register";
+				return "/member/register";
 			}else if(result == 0) {
 				service.register(vo);
 			}
@@ -47,11 +47,11 @@ public class MemberController {
 			throw new RuntimeException();
 		}
 		
-		return "redirect:/board/register";
+		return "redirect:/member/register";
 	}
 	
 	// 로그인 POST
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/home", method = RequestMethod.POST)
 	public String login(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception{
 		logger.info("post login");
 		

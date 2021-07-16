@@ -287,6 +287,7 @@
                      <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">BOARD
+                        
                             <!-- <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
@@ -540,7 +541,7 @@
 			<section id="container">
 				<form name="writeForm" method="post" action="/board/write">
 
-					
+					<c:if test="${member.userId != null}">
 					<div class="form-group">
 						<label for="title" class="col-sm-2 control-label" >제목</label>
 						<input type="text" maxlength="50" id="title" name="title" class="chk form-control" title="제목을 입력하세요." title2="*참고 : 50자 이하로 입력해주세요*"/>
@@ -548,7 +549,7 @@
 					
 					<div class="form-group">
 						<label for="writer" class="col-sm-2 control-label">작성자</label>
-						<input type="text" maxlength="5" id="writer" name="writer" class="chk form-control" title="작성자을 입력하세요." title2="*참고 : 5자 이하로 입력해주세요*" />
+						<input type="text" value="${member.userId}" readonly="readonly" maxlength="5" id="writer" name="writer" class="chk form-control" title="작성자을 입력하세요." title2="*참고 : 5자 이하로 입력해주세요*" />
 					</div>
 		
 					<div class="form-group">
@@ -563,7 +564,10 @@
 						
 					   </span>
 					   <button class="cancel_btn btn btn-outline-primary" >취소</button>
-					
+					</c:if>
+							<c:if test="${member.userId == null}">
+								<p>로그인 후에 작성하실 수 있습니다.</p>
+							</c:if>
 				</form>
 			</section>
 			<br />

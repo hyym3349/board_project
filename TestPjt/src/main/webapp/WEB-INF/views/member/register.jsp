@@ -34,8 +34,25 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 </head>
-
-
+<script>
+function fn_idChk(){
+			$.ajax({
+				url : "/member/idChk",
+				type : "post",
+				dataType : "json",
+				data : {"userId" : $("#userId").val()},
+				success : function(data){
+					if(data == 1){
+						alert("중복된 아이디입니다.");
+					}
+					else if(data == 0){
+						$("#idChk").attr("value", "Y");
+						alert("사용가능한 아이디입니다.");
+					}
+				}
+			})
+		}
+</script>
 <body id="page-top">
 
 	<!-- Page Wrapper -->
@@ -282,7 +299,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="userEmail" name="userEmail"
+                                    <input type="email" class="form-control form-control-user" maxlength="20" id="userEmail" name="userEmail"
                                         placeholder="Email Address">
                                 </div>
                                 <div class="form-group row">
@@ -393,6 +410,7 @@
 	<!-- Page level custom scripts -->
 	<script src="/resources/boot/js/demo/chart-area-demo.js"></script>
 	<script src="/resources/boot/js/demo/chart-pie-demo.js"></script>
+	
 	<style>
 	.box-radio-input input[type="radio"]{
   display:none;
@@ -514,12 +532,6 @@
 				}else if(idChkVal == "Y"){
 					$("#regForm").submit();
 				}
-				// 취소
-				$(".cencle").on("click", function(){
-					
-					location.href = "/login";
-							    
-				})
 				
 			});
 			
@@ -539,26 +551,7 @@
 			 }
 			 return;
 			}
-		function fn_idChk(){
-			$.ajax({
-				url : "/member/idChk",
-				type : "post",
-				dataType : "json",
-				data : {"userId" : $("#userId").val()},
-				success : function(data){
-					if(data == "" || data == null){
-						alert("값을 입력해주세요.");
-					}
-					else if(data == 1){
-						alert("중복된 아이디입니다.");
-					}
-					else if(data == 0){
-						$("#idChk").attr("value", "Y");
-						alert("사용가능한 아이디입니다.");
-					}
-				}
-			})
-		}
+		
 	</script>
 </body>
 

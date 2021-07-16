@@ -324,6 +324,7 @@ function deleteValue(){
                      <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">BOARD
+                                           
 <!--                              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                 aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
@@ -332,6 +333,7 @@ function deleteValue(){
                                 </button>
                             </div> -->
                         </div>
+
                     </form> 
 
                     <!-- Topbar Navbar -->
@@ -367,7 +369,6 @@ function deleteValue(){
 
 
 
-                        
 
 
 
@@ -375,12 +376,14 @@ function deleteValue(){
 
 
                         <div class="topbar-divider d-none d-sm-block"></div>
-
+						
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
+                        
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                사용자 : <%= request.getParameter("userId") %>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle"
                                     src="/resources/boot/img/undraw_profile.svg">
                             </a>
@@ -389,7 +392,7 @@ function deleteValue(){
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="/member/memberUpdateView">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -405,7 +408,7 @@ function deleteValue(){
                                 </a>  -->
                                 
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="/member/logout" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -568,7 +571,7 @@ function deleteValue(){
                      </table>
                                 
                                 <div style="display:inline-block; float: right;">
-                                <a href="/board/writeView"><input  type="button" value="글 작성" class="btn btn-outline-primary"></a>
+                                <a href="/board/writeView?userId=${member.userId}"><input  type="button" value="글 작성" class="btn btn-outline-primary"></a>
 								</div>
 							 
 							
@@ -637,15 +640,15 @@ function deleteValue(){
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">로그아웃 하시겠습니까?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">로그아웃시 로그인 페이지로 이동합니다.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+                    <a class="btn btn-primary" href="/member/logout">로그아웃</a>
                 </div>
             </div>
         </div>
