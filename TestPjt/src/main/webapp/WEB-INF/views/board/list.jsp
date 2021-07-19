@@ -529,7 +529,8 @@ function deleteValue(){
                                     
                                         <tr>
                                         	<!-- <th class="text-center"><input name="select_all" id="select-all" type="checkbox" /></th> -->
-                                            <th style="text-align:center; width:5%;"><input  id="allCheck" type="checkbox" name="allCheck"/></th>
+                                            <th style="text-align:center; width:5%;"><input  id="allCheck" type="checkbox" name="allCheck" disabled="disabled"/></th>
+                                           
 											<th style="text-align:center; width:7%;">번호</th>
 											<th style="text-align:center; width:70%;">제목</th>
 											<th style="text-align:center; width:13%;">작성자</th>
@@ -550,7 +551,12 @@ function deleteValue(){
 											<c:choose>
 												<c:when test="${list.deleted == 'N'}">
 													<tr>
+													<c:if test="${list.writer == member.userId}">
 														<td style="text-align:center;"><input name="RowCheck" type="checkbox" value="${list.bno}"/></td>
+														</c:if>
+														<c:if test="${list.writer != member.userId}">
+														<td style="text-align:center;"><input name="RowCheck" type="checkbox" disabled="disabled" value="${list.bno}"/></td>
+														</c:if>
 														<%-- <td class="text-center">${list.bno}</td> --%>
 														<td style="text-align:center;"><c:out value="${list.bno}" /></td>
 														<td title="${list.title}"style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">

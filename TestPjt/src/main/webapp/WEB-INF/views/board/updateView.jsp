@@ -473,32 +473,33 @@ response.setHeader("Cache-Control", "no-cache");
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                사용자 : ${member.userId}
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle"
                                     src="/resources/boot/img/undraw_profile.svg">
                             </a>
                             
                             
-                            <!-- Dropdown - User Information -->
+                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="/member/memberUpdateView">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
                                 
-<!--                                 <a class="dropdown-item" href="#">
+<!--                                  <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
-                                </a> -->
+                                </a> 
                                 
-<!--                                 <a class="dropdown-item" href="#">
+                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
-                                </a> -->
+                                </a>  -->
                                 
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="/member/logout" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -575,7 +576,7 @@ response.setHeader("Cache-Control", "no-cache");
 					
 					<div class="form-group">
 						<label for="editor">수정자</label>
-						<input type="text" maxlength="5" id="editor" name="editor" class="chk form-control" title="수정자를 입력하세요."  title2="*참고 : 5자 이하로 입력해주세요*" value="${update.editor}"/>
+						<input type="text" maxlength="5" id="editor" name="editor" class="chk form-control" title="수정자를 입력하세요."  title2="*참고 : 5자 이하로 입력해주세요*" readonly="readonly" value="${member.userId}"/>
 					</div>
 					
 					<div class="form-group">
@@ -662,15 +663,15 @@ window.onload = function() {
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">로그아웃 하시겠습니까?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">로그아웃시 로그인 페이지로 이동합니다.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+                    <a class="btn btn-primary" href="/member/logout">로그아웃</a>
                 </div>
             </div>
         </div>
