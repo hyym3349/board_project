@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page session="false" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<% 
+response.setHeader("Pragma","no-cache"); 
+response.setDateHeader("Expires",0); 
+response.setHeader("Cache-Control", "no-cache");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -382,7 +387,7 @@ function deleteValue(){
                         
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
-                                사용자 : <%= request.getParameter("userId") %>
+                                사용자 : ${member.userId}
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle"
                                     src="/resources/boot/img/undraw_profile.svg">
@@ -571,7 +576,7 @@ function deleteValue(){
                      </table>
                                 
                                 <div style="display:inline-block; float: right;">
-                                <a href="/board/writeView?userId=<%= request.getParameter("userId") %>"><input  type="button" value="글 작성" class="btn btn-outline-primary"></a>
+                                <a href ="/board/writeView"><input  type="button" value="글 작성" class="btn btn-outline-primary"></a>
 								</div>
 							 
 							

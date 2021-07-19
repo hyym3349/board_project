@@ -1,7 +1,16 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<% 
+response.setHeader("Pragma","no-cache"); 
+response.setDateHeader("Expires",0); 
+response.setHeader("Cache-Control", "no-cache");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -138,7 +147,7 @@
 			location.href="member/memberUpdateView";
 		})
 		$("#boardList").on("click", function(){
-			location.href="board/list?userId="+ ${member.userId};
+			location.href="board/list";
 		})
 		
 	})

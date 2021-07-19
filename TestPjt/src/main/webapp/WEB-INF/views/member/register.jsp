@@ -3,10 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ page session="false"%>
+
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
+<% 
+response.setHeader("Pragma","no-cache"); 
+response.setDateHeader("Expires",0); 
+response.setHeader("Cache-Control", "no-cache");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -245,7 +249,7 @@ function fn_idChk(){
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false">
-							사용자 : ${member.userId}<span
+							사용자 : ${member.userId} <span
 								class="mr-2 d-none d-lg-inline text-gray-600 small">
 								
 								</span> <img class="img-profile rounded-circle"
