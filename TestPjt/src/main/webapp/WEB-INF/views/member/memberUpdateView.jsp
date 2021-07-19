@@ -94,7 +94,7 @@
                                 
  								<div class="form-group row">
  									<div class="col-sm-6 mb-3 mb-sm-0">	
-										<label class="box-radio-input"><input type="radio" name="userGender" value="M" ><span>남자</span></label>
+										<label class="box-radio-input"><input type="radio" name="userGender" value="M" checked="checked"><span>남자</span></label>
 								</div>
 									<div class="col-sm-6">
                     					<label class="box-radio-input"><input type="radio" name="userGender" value="F" ><span>여자</span></label>
@@ -180,16 +180,47 @@
 			})
 		
 			$("#submit").on("click", function(){
-				if($("#userPass").val()==""){
-					alert("비밀번호를 입력해주세요.");
-					$("#userPass").focus();
-					return false;
-				}
 				if($("#userName").val()==""){
 					alert("성명을 입력해주세요.");
 					$("#userName").focus();
 					return false;
 				}
+				if($("#userNick").val()==""){
+					alert("닉네임을 입력해주세요.");
+					$("#userNick").focus();
+					return false;
+				}
+				if($("#userTell").val()==""){
+					alert("전화번호를 입력해주세요.");
+					$("#userTell").focus();
+					return false;
+				}
+				if($("#userBirth").val()==""){
+					alert("생년월일을 입력해주세요.");
+					$("#userBirth").focus();
+					return false;
+				}
+				if($("#userEmail").val()==""){
+					alert("이메일을 입력해주세요.");
+					$("#userEmail").focus();
+					return false;
+				}
+				if($("#userPass").val()==""){
+					alert("비밀번호를 입력해주세요.");
+					$("#userPass").focus();
+					return false;
+				}
+				if($("#userPass2").val()==""){
+					alert("비밀번호확인을 입력해주세요.");
+					$("#userPass2").focus();
+					return false;
+				}
+				if($("#userGender").val()==""){
+					alert("성별을 선택해주세요.");
+					$("#userGender").focus();
+					return false;
+				}
+
 			});
 			
 				

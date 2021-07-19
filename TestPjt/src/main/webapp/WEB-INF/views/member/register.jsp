@@ -244,9 +244,11 @@ function fn_idChk(){
 						<li class="nav-item dropdown no-arrow"><a
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <span
-								class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas
-									McGee</span> <img class="img-profile rounded-circle"
+							aria-expanded="false">
+							사용자 : ${member.userId}<span
+								class="mr-2 d-none d-lg-inline text-gray-600 small">
+								
+								</span> <img class="img-profile rounded-circle"
 								src="/resources/boot/img/undraw_profile.svg">
 						</a></li>
 
@@ -299,7 +301,7 @@ function fn_idChk(){
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" maxlength="20" id="userEmail" name="userEmail"
+                                    <input type="email" class="form-control form-control-user" maxlength="50" id="userEmail" name="userEmail"
                                         placeholder="Email Address">
                                 </div>
                                 <div class="form-group row">
@@ -441,10 +443,101 @@ function fn_idChk(){
 }
 	</style>
 	<script type="text/javascript">
-		$(document).ready(function(){
+	$(document).ready(function(){
+		// 취소
+		$(".cencle").on("click", function(){
+			location.href = "/";
+		})
+		
+		$("#submit").on("click", function(){
+			if($("#userId").val()==""){
+				alert("아이디를 입력해주세요.");
+				$("#userId").focus();
+				return false;
+			}
+			if($("#userName").val()==""){
+				alert("성명을 입력해주세요.");
+				$("#userName").focus();
+				return false;
+			}
+			if($("#userNick").val() == ""){
+				alert("닉네임을 입력해주세요.");
+				$("#userNick").focus();
+				return false;
+			}
+			if($("#userTell").val()==""){
+				alert("핸드폰번호를 입력하세요.");
+				$("#userTell").focus();
+				return false;
+			}
 
-
-			$("#submit").on("click", function(){
+			if($("#userBirth").val() == ""){
+				alert("생년월일을 입력해주세요.");
+				$("#userBirth").focus();
+				return false;
+			}
+			if($("#userEmail").val()==""){
+				alert("이메일을 입력해주세요.");
+				$("#userEmail").focus();
+				return false;
+			}
+			if($("#userPass").val()==""){
+				alert("비밀번호를 입력해주세요.");
+				$("#userPass").focus();
+				return false;
+			}
+			if($("#userPass2").val()==""){
+				alert("비밀번호확인을 입력해주세요.");
+				$("#userPass2").focus();
+				return false;
+			}
+			var idChkVal = $("#idChk").val();
+			if(idChkVal == "N"){
+				alert("중복확인 버튼을 눌러주세요.");
+				return false;
+			}else if(idChkVal == "Y"){
+				$("#regForm").submit();
+			}
+			var regx = /^[a-zA-Z0-9]*$/;
+			if (!num_regx.test($("#userTell").val())){
+				   alert("핸드폰번호는 숫자만 입력가능합니다");
+				   $("#userTell").focus();
+				   return false;
+				}
+		});
+	})
+	function fn_idChk(){
+			$.ajax({
+				url : "/member/idChk",
+				type : "post",
+				dataType : "json",
+				data : {"userId" : $("#userId").val()},
+				success : function(data){
+					if(data == 1){
+						alert("중복된 아이디입니다.");
+					}else if(data == 0){
+						$("#idChk").attr("value", "Y");
+						alert("사용가능한 아이디입니다.");
+					}
+				}
+			})
+		}
+	function passchk(){
+		 var userPass = $("#userPass").val()
+		 var userPass2 = $("#userPass2").val()
+		 if (userPass2.length == 0 || userPass2 == null) {
+			 $("#chk").text("비밀번호를 입력하세요");
+			 right = 0;
+		 } else if (userPass != userPass2) {
+			 alert("비밀번호가 다릅니다.");
+			 right = 0;
+		 } else {   
+			 alert("비밀번호가 동일합니다.");
+			 right = 1;
+		 }
+		 return;
+		}
+			/*  $("#submit").on("click", function(){
 				var right = 0;
 				var regx = /^[a-zA-Z0-9]*$/;
 				var chk1 = /\d/;
@@ -488,7 +581,7 @@ function fn_idChk(){
 				}
 				
 				if(right == 0){
-					alert("비밀번호가 동일한지 확인하세요.");
+					
 				}
 				
 				if(userName == ""){
@@ -535,23 +628,9 @@ function fn_idChk(){
 				
 			});
 			
-		});
-		function passchk(){
-			 var userPass = $("#userPass").val()
-			 var userPass2 = $("#userPass2").val()
-			 if (userPass2.length == 0 || userPass2 == null) {
-				 $("#chk").text("비밀번호를 입력하세요");
-				 right = 0;
-			 } else if (userPass != userPass2) {
-				 alert("비밀번호가 다릅니다.");
-				 right = 0;
-			 } else {   
-				 alert("비밀번호가 동일합니다.");
-				 right = 1;
-			 }
-			 return;
-			}
-		
+		}); */
+
+		 
 	</script>
 </body>
 

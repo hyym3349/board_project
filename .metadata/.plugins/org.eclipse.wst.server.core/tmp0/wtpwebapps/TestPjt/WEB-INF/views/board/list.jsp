@@ -381,7 +381,7 @@ function deleteValue(){
                         <li class="nav-item dropdown no-arrow">
                         
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
                                 사용자 : <%= request.getParameter("userId") %>
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle"
@@ -571,7 +571,7 @@ function deleteValue(){
                      </table>
                                 
                                 <div style="display:inline-block; float: right;">
-                                <a href="/board/writeView?userId=${member.userId}"><input  type="button" value="글 작성" class="btn btn-outline-primary"></a>
+                                <a href="/board/writeView?userId=<%= request.getParameter("userId") %>"><input  type="button" value="글 작성" class="btn btn-outline-primary"></a>
 								</div>
 							 
 							

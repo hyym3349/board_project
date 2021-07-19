@@ -16,7 +16,7 @@ import com.project.service.MemberService;
 import com.project.vo.MemberVO;
 
 @Controller
-@RequestMapping("/member")
+@RequestMapping("/member/*")
 public class MemberController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
