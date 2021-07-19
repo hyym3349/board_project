@@ -1,6 +1,5 @@
 package com.project.dao;
 
-import com.project.vo.MdSecurityVO;
 import com.project.vo.MemberVO;
 
 public interface MemberDAO {
@@ -23,6 +22,5 @@ public interface MemberDAO {
 	// 아이디 중복체크
 	public int idChk(MemberVO vo) throws Exception;
 
-	public void mdsecurityok(MdSecurityVO mdsecurityvo);
 
 }

@@ -14,7 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.service.MemberService;
 import com.project.util.FileSecurityMd;
-import com.project.vo.MdSecurityVO;
 import com.project.vo.MemberVO;
 
 @Controller
@@ -41,6 +40,8 @@ public class MemberController {
 			if(result == 1) {
 				return "/home";
 			}else if(result == 0) {
+				String enpassword = FileSecurityMd.MD5(vo.getUserPass());
+				  vo.setUserPass(enpassword);
 				
 				service.register(vo);
 			}
@@ -60,12 +61,15 @@ public class MemberController {
 		
 		HttpSession session = req.getSession();
 		MemberVO login = service.login(vo);
+		String pwdMatch = FileSecurityMd.MD5(vo.getUserPass());
 		
-		if(login == null) {
+		if(login != null && pwdMatch.equals(login.getUserPass()) == true) {
+			session.setAttribute("member", login);
+
+		}else {
+	
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
-		}else {
-			session.setAttribute("member", login);
 		}
 		
 		return "redirect:/home";
@@ -139,21 +143,5 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping(value = "/passinsert", method = RequestMethod.GET)
-	public void getPassinsert() throws Exception {
-		logger.info("get passinsert");
-	}
-	
-	// md5security 예제
-	 @RequestMapping(value = "/passinsert", method = RequestMethod.POST)
-	 public String postPassinsert(MdSecurityVO mdsecurityvo) throws Exception {
-	  // ============비밀번호암호화============//
-	  String enpassword = FileSecurityMd.MD5(mdsecurityvo.getPass());
-	  mdsecurityvo.setPass(enpassword);
-	  // ============비밀번호암호화============//
-	  service.mdsecurityok(mdsecurityvo);
-	  
-	  return "redirect:/member/passinsert";
-	 }
 	 
 }

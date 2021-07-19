@@ -559,7 +559,7 @@ response.setHeader("Cache-Control", "no-cache");
 				Swal.fire("비밀번호가 다릅니다.","다시 입력해주세요","warning");
 			 right = 0;
 		 } else {   
-				Swal.fire("비밀번호가 동일합니다.","","success");
+				Swal.fire("비밀번호가 동일합니다.","이어서 진행해주세요.","success");
 			 right = 1;
 		 }
 		 return;

@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="memberMapper">
 	<!-- 회원가입 -->
-	<insert id="register">
+	<insert id="register" parameterType="com.project.vo.MemberVO">
 	    INSERT INTO MP_MEMBER(   USERNO 
 	   					       , USERID 
 	   					       , USERPASS
@@ -31,8 +31,7 @@
 	<select id="login" resultType="com.project.vo.MemberVO">
 	SELECT USERID, USERPASS, USERNAME, USERNICK, USERTELL, USERBIRTH, USEREMAIL, USERGENDER, USEREDITDATE
 	  FROM MP_MEMBER
-	 WHERE USERID = #{userId}
-	   AND USERPASS = #{userPass}   
+	 WHERE USERID = #{userId}   
 	</select>
 
 
@@ -71,9 +70,6 @@
 		WHERE USERID = #{userId}
 	</select>
 	
-   <!-- MD5 암호화 -->
-   <insert id = "passinsert" parameterType="com.project.vo.MdSecurityVO">
-   INSERT INTO PASSTEST (PASS) VALUES (#{pass})
-   </insert>
+
    
 </mapper>
