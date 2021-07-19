@@ -80,8 +80,8 @@ response.setHeader("Cache-Control", "no-cache");
              					<a href="/board/index" class="btn btn-google btn-user btn-block">
                                     <i class="fab  fa-fw"></i> 로그인 취소
                                 </a>
-                                <a href="/board/list" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab -f fa-fw"></i> 게시판
+                                <a href="/board/index" class="btn btn-facebook btn-user btn-block">
+                                    <i class="fab -f fa-fw"></i> 홈
                                 </a>
                                 </c:if>
 								<c:if test="${member != null }">
@@ -100,14 +100,13 @@ response.setHeader("Cache-Control", "no-cache");
 							</div>
 						</c:if>
 		
-                                    </form>
+                                    
                                     <hr>
-                                    <div class="text-center">
-                                        <!-- <a class="small" href="forgot-password.html">Forgot Password?</a> -->
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="/member/register">Create an Account!</a>
-                                    </div>
+     
+                                   
+                                        <button class="btn btn-secondary btn-user btn-block" id="registerBtn" type="button">회원가입</button>
+                                   
+                                    </form>
                                 </div>
                             </div>
                         </div>

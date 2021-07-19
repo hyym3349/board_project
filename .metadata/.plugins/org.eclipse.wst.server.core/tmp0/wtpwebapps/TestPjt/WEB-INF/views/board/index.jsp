@@ -135,7 +135,7 @@ response.setHeader("Cache-Control", "no-cache");
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapsePages"
 				aria-expanded="true" aria-controls="collapsePages"> <i
-					class="fas fa-fw fa-folder"></i> <span>Pages</span>
+					class="fas fa-fw fa-folder"></i> <span>USER</span>
 			</a>
 				<div id="collapsePages" class="collapse"
 					aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -244,7 +244,14 @@ response.setHeader("Cache-Control", "no-cache");
 						<li class="nav-item dropdown no-arrow"><a
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">사용자 : ${member.userId} <span
+							aria-expanded="false">
+							<c:if test="${member.userId != null}">
+							사용자 : ${member.userId} 
+							</c:if>
+							<c:if test="${member.userId == null}">
+							로그인해주세요.
+							</c:if>
+							<span
 								class="mr-2 d-none d-lg-inline text-gray-600 small"></span> <img class="img-profile rounded-circle"
 								src="/resources/boot/img/undraw_profile.svg">
 						</a>

@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.project.dao.MemberDAO;
+import com.project.vo.MdSecurityVO;
 import com.project.vo.MemberVO;
 
 @Service
@@ -52,6 +53,13 @@ public class MemberServiceImpl implements MemberService {
 	public int idChk(MemberVO vo) throws Exception {
 		int result = dao.idChk(vo);
 		return result;
+	}
+
+	@Override
+	public void mdsecurityok(MdSecurityVO mdsecurityvo) {
+		// TODO Auto-generated method stub
+		dao.mdsecurityok(mdsecurityvo); 
+
 	}
 	
 }

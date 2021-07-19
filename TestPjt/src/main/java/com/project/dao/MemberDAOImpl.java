@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.project.vo.MdSecurityVO;
 import com.project.vo.MemberVO;
 
 @Repository
@@ -53,5 +54,11 @@ public class MemberDAOImpl implements MemberDAO {
 	public int idChk(MemberVO vo) throws Exception {
 		int result = sql.selectOne("memberMapper.idChk", vo);
 		return result;
+	}
+
+	@Override
+	public void mdsecurityok(MdSecurityVO mdsecurityvo) {
+		// TODO Auto-generated method stub
+		sql.insert("memberMapper.passinsert", mdsecurityvo); 
 	}
 }

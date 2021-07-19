@@ -14,7 +14,7 @@ response.setHeader("Cache-Control", "no-cache");
 <html lang="en">
 
 <head>
-
+	  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -36,25 +36,7 @@ response.setHeader("Cache-Control", "no-cache");
 
 
 </head>
-<script>
-function fn_idChk(){
-			$.ajax({
-				url : "/member/idChk",
-				type : "post",
-				dataType : "json",
-				data : {"userId" : $("#userId").val()},
-				success : function(data){
-					if(data == 1){
-						alert("중복된 아이디입니다.");
-					}
-					else if(data == 0){
-						$("#idChk").attr("value", "Y");
-						alert("사용가능한 아이디입니다.");
-					}
-				}
-			})
-		}
-</script>
+
 <body id="page-top">
 
 	<!-- Page Wrapper -->
@@ -138,7 +120,7 @@ function fn_idChk(){
 			<li class="nav-item active"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapsePages"
 				aria-expanded="true" aria-controls="collapsePages"> <i
-					class="fas fa-fw fa-folder"></i> <span>PAGES</span>
+					class="fas fa-fw fa-folder"></i> <span>USER</span>
 			</a>
 				<div id="collapsePages" class="collapse"
 					aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -247,7 +229,13 @@ function fn_idChk(){
                         
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
-                                사용자 : ${member.userId}
+                                
+                                <c:if test="${member.userId != null}">
+							사용자 : ${member.userId} 
+							</c:if>
+							<c:if test="${member.userId == null}">
+							로그인해주세요.
+							</c:if>
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle"
                                     src="/resources/boot/img/undraw_profile.svg">
@@ -310,6 +298,16 @@ function fn_idChk(){
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password" class="form-control form-control-user"
+                                             maxlength="20" id="userPass" name="userPass" placeholder="Password">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control form-control-user"
+                                            maxlength="20" id="userPass2" name="userPass2" onchange="passchk()" placeholder="Repeat Password">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" maxlength="12" id="userName" name="userName"
                                             placeholder="Name">
                                     </div>
@@ -332,16 +330,7 @@ function fn_idChk(){
                                     <input type="email" class="form-control form-control-user" maxlength="50" id="userEmail" name="userEmail"
                                         placeholder="Email Address">
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                             maxlength="20" id="userPass" name="userPass" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            maxlength="20" id="userPass2" name="userPass2" onchange="passchk()" placeholder="Repeat Password">
-                                    </div>
-                                </div>
+                                
                                 
  								<div class="form-group row">
  									<div class="col-sm-6 mb-3 mb-sm-0">	
@@ -357,17 +346,14 @@ function fn_idChk(){
                                 <a href="/board/index" class="btn btn-google btn-user btn-block">
                                     <i class="fab  fa-fw"></i> 회원가입 취소
                                 </a>
-                                <a href="/board/list" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab -f fa-fw"></i> 게시판
+                                <a href="/board/index" class="btn btn-facebook btn-user btn-block">
+                                    <i class="fab -f fa-fw"></i> 홈
                                 </a>
-                            </form>
+                           
                             <hr>
-                            <div class="text-center">
-                                <!-- <a class="small" href="forgot-password.html">Forgot Password?</a> -->
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="/home">Already have an account? Login!</a>
-                            </div>
+           
+                                <a href="/home"><button class="btn btn-secondary btn-user btn-block" id="loginBtn" type="button">로그인</button> </a>
+                             </form>
                         </div>
                     </div>
                 </div>
@@ -476,59 +462,75 @@ function fn_idChk(){
 		
 		$("#submit").on("click", function(){
 			if($("#userId").val()==""){
-				alert("아이디를 입력해주세요.");
+				Swal.fire("아이디를 입력해주세요.","","warning");
 				$("#userId").focus();
 				return false;
 			}
+			if($("#userPass").val()==""){
+				Swal.fire("비밀번호를 입력해주세요.","","warning");
+				$("#userPass").focus();
+				return false;
+			}
+			if($("#userPass").val().length <= 5){
+				Swal.fire("패스워드 6글자 이상으로 입력!","","warning");
+				$("#userPass").focus();
+				return false;
+			}
+			if($("#userPass2").val()==""){
+				Swal.fire("비밀번호확인을 입력해주세요.","","warning");
+				$("#userPass2").focus();
+				return false;
+			}
+			if($("#userPass2").val().length <= 5){
+				Swal.fire("패스워드 6글자 이상으로 입력!","","warning");
+				$("#userPass2").focus();
+				return false;
+			}
 			if($("#userName").val()==""){
-				alert("성명을 입력해주세요.");
+				Swal.fire("이름을 입력해주세요.","","warning");
 				$("#userName").focus();
 				return false;
 			}
 			if($("#userNick").val() == ""){
-				alert("닉네임을 입력해주세요.");
+				Swal.fire("닉네임을 입력해주세요.","","warning");
 				$("#userNick").focus();
 				return false;
 			}
 			if($("#userTell").val()==""){
-				alert("핸드폰번호를 입력하세요.");
+				Swal.fire("전화번호를 입력해주세요.","","warning");
 				$("#userTell").focus();
 				return false;
 			}
 
 			if($("#userBirth").val() == ""){
-				alert("생년월일을 입력해주세요.");
+				Swal.fire("생년월일을 입력해주세요.","","warning");
 				$("#userBirth").focus();
 				return false;
 			}
 			if($("#userEmail").val()==""){
-				alert("이메일을 입력해주세요.");
+				Swal.fire("이메일을 입력해주세요.","","warning");
 				$("#userEmail").focus();
 				return false;
 			}
-			if($("#userPass").val()==""){
-				alert("비밀번호를 입력해주세요.");
-				$("#userPass").focus();
-				return false;
-			}
-			if($("#userPass2").val()==""){
-				alert("비밀번호확인을 입력해주세요.");
-				$("#userPass2").focus();
-				return false;
-			}
+			
 			var idChkVal = $("#idChk").val();
 			if(idChkVal == "N"){
-				alert("중복확인 버튼을 눌러주세요.");
+				Swal.fire("중복확인을 눌러주세요.","","info");
 				return false;
 			}else if(idChkVal == "Y"){
 				$("#regForm").submit();
 			}
 			var regx = /^[a-zA-Z0-9]*$/;
 			if (!num_regx.test($("#userTell").val())){
-				   alert("핸드폰번호는 숫자만 입력가능합니다");
+				Swal.fire("숫자만 입력해주세요.","","warning");
 				   $("#userTell").focus();
 				   return false;
 				}
+			 var userPass = $("#userPass").val()
+			 var userPass2 = $("#userPass2").val()
+			 if (userPass2.length != userPass2) {
+				 Swal.fire($("#chk").text("비밀번호를 입력하세요"),"","warning");
+			 } 
 		});
 	})
 	function fn_idChk(){
@@ -539,10 +541,10 @@ function fn_idChk(){
 				data : {"userId" : $("#userId").val()},
 				success : function(data){
 					if(data == 1){
-						alert("중복된 아이디입니다.");
+						Swal.fire("중복된 아이디입니다.","다른 아이디를 입력해주세요","warning");
 					}else if(data == 0){
 						$("#idChk").attr("value", "Y");
-						alert("사용가능한 아이디입니다.");
+						Swal.fire("사용가능한 이이디입니다.","","success");
 					}
 				}
 			})
@@ -554,10 +556,10 @@ function fn_idChk(){
 			 $("#chk").text("비밀번호를 입력하세요");
 			 right = 0;
 		 } else if (userPass != userPass2) {
-			 alert("비밀번호가 다릅니다.");
+				Swal.fire("비밀번호가 다릅니다.","다시 입력해주세요","warning");
 			 right = 0;
 		 } else {   
-			 alert("비밀번호가 동일합니다.");
+				Swal.fire("비밀번호가 동일합니다.","","success");
 			 right = 1;
 		 }
 		 return;
@@ -657,6 +659,7 @@ function fn_idChk(){
 
 		 
 	</script>
+
 </body>
 
 </html>

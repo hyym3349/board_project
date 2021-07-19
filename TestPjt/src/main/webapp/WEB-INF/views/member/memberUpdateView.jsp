@@ -14,7 +14,7 @@ response.setHeader("Cache-Control", "no-cache");
 <html lang="en">
 
 <head>
-
+	  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -56,6 +56,18 @@ response.setHeader("Cache-Control", "no-cache");
                                         <input type="text" class="form-control form-control-user" maxlength="15" id="userId" name="userId"
                                             placeholder="ID" value="${member.userId}" readonly="readonly">
                                     </div>
+                                    <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <label class="control-label" for="Password">비밀번호</label>
+                                        <input type="password" class="form-control form-control-user"
+                                             maxlength="20" id="userPass" name="userPass" placeholder="Password">
+                                    </div>
+                                    <div class="col-sm-6">
+                                    <label class="control-label" for="userPass2">비밀번호 확인</label>
+                                        <input type="password" class="form-control form-control-user"
+                                            maxlength="20" id="userPass2" name="userPass2" onchange="passchk()" placeholder="Repeat Password">
+                                    </div>
+                                </div>
 
                                 </div>
                                 <div class="form-group row">
@@ -87,18 +99,7 @@ response.setHeader("Cache-Control", "no-cache");
                                     <input type="email" class="form-control form-control-user" maxlength="20" id="userEmail" name="userEmail"
                                         placeholder="Email Address" value="${member.userEmail}">
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <label class="control-label" for="Password">비밀번호</label>
-                                        <input type="password" class="form-control form-control-user"
-                                             maxlength="20" id="userPass" name="userPass" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                    <label class="control-label" for="userPass2">비밀번호 확인</label>
-                                        <input type="password" class="form-control form-control-user"
-                                            maxlength="20" id="userPass2" name="userPass2" onchange="passchk()" placeholder="Repeat Password">
-                                    </div>
-                                </div>
+                                
                                 
  								<div class="form-group row">
  									<div class="col-sm-6 mb-3 mb-sm-0">	
@@ -188,52 +189,81 @@ response.setHeader("Cache-Control", "no-cache");
 			})
 		
 			$("#submit").on("click", function(){
-				if($("#userName").val()==""){
-					alert("성명을 입력해주세요.");
-					$("#userName").focus();
-					return false;
-				}
-				if($("#userNick").val()==""){
-					alert("닉네임을 입력해주세요.");
-					$("#userNick").focus();
-					return false;
-				}
-				if($("#userTell").val()==""){
-					alert("전화번호를 입력해주세요.");
-					$("#userTell").focus();
-					return false;
-				}
-				if($("#userBirth").val()==""){
-					alert("생년월일을 입력해주세요.");
-					$("#userBirth").focus();
-					return false;
-				}
-				if($("#userEmail").val()==""){
-					alert("이메일을 입력해주세요.");
-					$("#userEmail").focus();
-					return false;
-				}
 				if($("#userPass").val()==""){
-					alert("비밀번호를 입력해주세요.");
+					Swal.fire("비밀번호를 입력해주세요.","","warning");
+					$("#userPass").focus();
+					return false;
+				}
+				if($("#userPass").val().length <= 5){
+					Swal.fire("패스워드 6글자 이상으로 입력!","","warning");
 					$("#userPass").focus();
 					return false;
 				}
 				if($("#userPass2").val()==""){
-					alert("비밀번호확인을 입력해주세요.");
+					Swal.fire("비밀번호확인을 입력해주세요.","","warning");
 					$("#userPass2").focus();
 					return false;
 				}
-				if($("#userGender").val()==""){
-					alert("성별을 선택해주세요.");
-					$("#userGender").focus();
+				if($("#userPass2").val().length <= 5){
+					Swal.fire("패스워드확인 6글자 이상으로 입력!","","warning");
+					$("#userPass2").focus();
 					return false;
 				}
+				if($("#userName").val()==""){
+					Swal.fire("성명을 입력해주세요.","","warning");
+					$("#userName").focus();
+					return false;
+				}
+				if($("#userNick").val()==""){
+					Swal.fire("닉네임을 입력해주세요.","","warning");
+					$("#userNick").focus();
+					return false;
+				}
+				if($("#userTell").val()==""){
+					Swal.fire("전화번호를 입력해주세요.","","warning");
+					$("#userTell").focus();
+					return false;
+				}
+				if($("#userBirth").val()==""){
+					Swal.fire("생년월일을 입력해주세요.","","warning");
+					$("#userBirth").focus();
+					return false;
+				}
+				if($("#userEmail").val()==""){
+					Swal.fire("이메일을 입력해주세요.","","warning");
+					$("#userEmail").focus();
+					return false;
+				}
+				
+				var regx = /^[a-zA-Z0-9]*$/;
+				if (!num_regx.test($("#userTell").val())){
+					Swal.fire("숫자만 입력해주세요.","","warning");
+					   $("#userTell").focus();
+					   return false;
+					}
+				var userPass = $("#userPass").val()
+				 var userPass2 = $("#userPass2").val()
+				 if (userPass2.length != userPass2) {
+					 Swal.fire($("#chk").text("비밀번호를 입력하세요"),"","warning");
+				 } 
 
 			});
-			
-				
-			
 		})
+			function passchk(){
+		 var userPass = $("#userPass").val()
+		 var userPass2 = $("#userPass2").val()
+		 if (userPass2.length == 0 || userPass2 == null) {
+			 $("#chk").text("비밀번호를 입력하세요");
+			 right = 0;
+		 } else if (userPass != userPass2) {
+				Swal.fire("비밀번호가 다릅니다.","다시 입력해주세요","warning");
+			 right = 0;
+		 } else {   
+				Swal.fire("비밀번호가 동일합니다.","","success");
+			 right = 1;
+		 }
+		 return;
+		}
 	</script>
 </body>
 

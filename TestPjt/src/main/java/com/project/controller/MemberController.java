@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.service.MemberService;
+import com.project.util.FileSecurityMd;
+import com.project.vo.MdSecurityVO;
 import com.project.vo.MemberVO;
 
 @Controller
-@RequestMapping("/member/*")
+@RequestMapping("/member")
 public class MemberController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
@@ -37,8 +39,9 @@ public class MemberController {
 		int result = service.idChk(vo);
 		try {
 			if(result == 1) {
-				return "/member/register";
+				return "/home";
 			}else if(result == 0) {
+				
 				service.register(vo);
 			}
 			// 요기에서~ 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기 
@@ -47,7 +50,7 @@ public class MemberController {
 			throw new RuntimeException();
 		}
 		
-		return "redirect:/member/register";
+		return "redirect:/home";
 	}
 	
 	// 로그인 POST
@@ -134,5 +137,23 @@ public class MemberController {
 		int result = service.idChk(vo);
 		return result;
 	}
-
+	
+	
+	@RequestMapping(value = "/passinsert", method = RequestMethod.GET)
+	public void getPassinsert() throws Exception {
+		logger.info("get passinsert");
+	}
+	
+	// md5security 예제
+	 @RequestMapping(value = "/passinsert", method = RequestMethod.POST)
+	 public String postPassinsert(MdSecurityVO mdsecurityvo) throws Exception {
+	  // ============비밀번호암호화============//
+	  String enpassword = FileSecurityMd.MD5(mdsecurityvo.getPass());
+	  mdsecurityvo.setPass(enpassword);
+	  // ============비밀번호암호화============//
+	  service.mdsecurityok(mdsecurityvo);
+	  
+	  return "redirect:/member/passinsert";
+	 }
+	 
 }

@@ -1,5 +1,6 @@
 package com.project.service;
 
+import com.project.vo.MdSecurityVO;
 import com.project.vo.MemberVO;
 
 public interface MemberService {
@@ -15,5 +16,7 @@ public interface MemberService {
 	public int passChk(MemberVO vo) throws Exception;
 	
 	public int idChk(MemberVO vo) throws Exception;
+
+	public void mdsecurityok(MdSecurityVO mdsecurityvo);
 
 }

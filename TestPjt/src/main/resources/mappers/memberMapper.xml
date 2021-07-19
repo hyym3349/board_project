@@ -70,5 +70,10 @@
 		SELECT COUNT(*) FROM MP_MEMBER
 		WHERE USERID = #{userId}
 	</select>
+	
+   <!-- MD5 암호화 -->
+   <insert id = "passinsert" parameterType="com.project.vo.MdSecurityVO">
+   INSERT INTO PASSTEST (PASS) VALUES (#{pass})
+   </insert>
    
 </mapper>
