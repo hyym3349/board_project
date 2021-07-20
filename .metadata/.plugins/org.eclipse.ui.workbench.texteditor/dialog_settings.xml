@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="updateForm"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="updateForm"/>
 			<item value="favicon"/>
 			<item value="writeView"/>
 			<item value="board"/>
@@ -15,14 +16,6 @@
 			<item value="submit"/>
 			<item value="chk"/>
 			<item value="swal"/>
-			<item value="                                        &lt;!-- Topbar Search --&gt;"/>
-			<item value="form"/>
-			<item value="card shadow mb-4"/>
-			<item value="class=&quot;col-xl-8 col-lg-7&quot;"/>
-			<item value="ALERTS CENTE"/>
-			<item value="undraw_profile"/>
-			<item value="undraw_profile_1"/>
-			<item value="/board/img/undraw_profile_1.svg"/>
 		</list>
 		<list key="replacehistory">
 		</list>

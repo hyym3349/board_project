@@ -27,6 +27,7 @@ public interface BoardService {
 	// 게시물 선택삭제
 	public void delete(String bno) throws Exception;
 
+	// 회원탈퇴 + 게시물 삭제
 	public int boardDelete(MemberVO vo);
 	
 }

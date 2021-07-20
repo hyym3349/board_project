@@ -104,7 +104,8 @@
     	WHERE BNO = #{bno}
     </update>
     
-<delete id="boardDelete"> 
+  <!-- 회원탈퇴 + 게시물 삭제 -->
+	<delete id="boardDelete"> 
        DELETE FROM 
           MP_BOARD 
        WHERE 

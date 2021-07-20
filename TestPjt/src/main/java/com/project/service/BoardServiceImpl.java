@@ -44,7 +44,7 @@ public class BoardServiceImpl implements BoardService {
 	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public BoardVO read(int bno) throws Exception {
-			dao.boardHit(bno);
+		dao.boardHit(bno);
 		return dao.read(bno);
 	}
 	
@@ -62,6 +62,7 @@ public class BoardServiceImpl implements BoardService {
 		dao.delete(bno);
 	}
 	
+	// 회원탈퇴 + 게시물 삭제
 	@Override
 	public int boardDelete(MemberVO vo) {
 		return dao.boardDelete(vo);

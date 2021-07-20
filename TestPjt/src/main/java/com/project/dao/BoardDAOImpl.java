@@ -68,6 +68,7 @@ public class BoardDAOImpl implements BoardDAO {
 		sqlSession.update("boardMapper.boardHit", bno);
 	}
 	
+	// 회원탈퇴 + 게시물 삭제
 	@Override
 	public int boardDelete(MemberVO vo) {
 		
