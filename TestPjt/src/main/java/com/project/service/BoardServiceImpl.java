@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.project.dao.BoardDAO;
 import com.project.vo.BoardVO;
+import com.project.vo.MemberVO;
 import com.project.vo.SearchCriteria;
 
 @Service
@@ -61,5 +62,9 @@ public class BoardServiceImpl implements BoardService {
 		dao.delete(bno);
 	}
 	
+	@Override
+	public int boardDelete(MemberVO vo) {
+		return dao.boardDelete(vo);
+	}
 
 }

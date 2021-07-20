@@ -3,6 +3,7 @@ package com.project.dao;
 import java.util.List;
 
 import com.project.vo.BoardVO;
+import com.project.vo.MemberVO;
 import com.project.vo.SearchCriteria;
 
 
@@ -28,4 +29,6 @@ public interface BoardDAO {
 	
 	// 게시판 조회수
 	public void boardHit(int bno) throws Exception;
+
+	public int boardDelete(MemberVO vo);
 }

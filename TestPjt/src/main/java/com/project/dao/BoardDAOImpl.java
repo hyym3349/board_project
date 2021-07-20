@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.project.vo.BoardVO;
+import com.project.vo.MemberVO;
 import com.project.vo.SearchCriteria;
 
 
@@ -65,6 +66,12 @@ public class BoardDAOImpl implements BoardDAO {
 	public void boardHit(int bno) throws Exception {
 
 		sqlSession.update("boardMapper.boardHit", bno);
+	}
+	
+	@Override
+	public int boardDelete(MemberVO vo) {
+		
+		return sqlSession.delete("boardMapper.boardDelete", vo);
 	}
 
 }

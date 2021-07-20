@@ -104,5 +104,11 @@
     	WHERE BNO = #{bno}
     </update>
     
+<delete id="boardDelete"> 
+       DELETE FROM 
+          MP_BOARD 
+       WHERE 
+          writer = #{userId} 
+    </delete> 
 	
 </mapper>

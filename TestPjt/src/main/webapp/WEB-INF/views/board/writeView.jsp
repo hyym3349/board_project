@@ -465,24 +465,23 @@ response.setHeader("Cache-Control", "no-cache");
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 						
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                        
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
-                                <c:if test="${member.userId != null}">
+						<!-- Nav Item - User Information -->
+						<li class="nav-item dropdown no-arrow"><a
+							class="nav-link dropdown-toggle" href="#" id="userDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">
+							<c:if test="${member.userId != null}">
 							사용자 : ${member.userId} 
 							</c:if>
 							<c:if test="${member.userId == null}">
 							로그인해주세요.
 							</c:if>
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-                                <img class="img-profile rounded-circle"
-                                    src="/resources/boot/img/undraw_profile.svg">
-                            </a>
-                            
-                            
-                            <!-- Dropdown - User Information -->
+							<span
+								class="mr-2 d-none d-lg-inline text-gray-600 small"></span> <img class="img-profile rounded-circle"
+								src="/resources/boot/img/undraw_profile.svg">
+						</a>
+						<!-- Dropdown - User Information -->
+						<c:if test="${member.userId != null}">
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="/member/memberUpdateView">
@@ -506,12 +505,22 @@ response.setHeader("Cache-Control", "no-cache");
                                     Logout
                                 </a>
                             </div>
-                        </li>
+                            </c:if>
+                            <c:if test="${member.userId == null}">
+                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="/home">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Login
+                                </a>
+                            </div>
+                            </c:if>
+						</li>
 
-                    </ul>
+					</ul>
 
-                </nav>
-                <!-- End of Topbar -->
+				</nav>
+				<!-- End of Topbar -->
 
 
 
@@ -577,7 +586,7 @@ response.setHeader("Cache-Control", "no-cache");
 					   <button class="cancel_btn btn btn-outline-primary" >취소</button>
 					</c:if>
 							<c:if test="${member.userId == null}">
-								<p>로그인 후에 작성하실 수 있습니다.</p>
+								로그인 후에 작성하실 수 있습니다.
 							</c:if>
 				</form>
 			</section>

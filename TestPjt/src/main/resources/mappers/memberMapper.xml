@@ -44,7 +44,6 @@
 		USERTELL = #{userTell},
 		USERBIRTH = #{userBirth},
 		USEREMAIL = #{userEmail},
-		USERPASS = #{userPass},
 		USERGENDER = #{userGender},
 		USEREDITDATE =	sysdate
 		WHERE USERID = #{userId}
@@ -54,7 +53,6 @@
 	<delete id="memberDelete">
 	DELETE FROM MP_MEMBER
 	WHERE USERID = #{userId}
-	  AND USERPASS = #{userPass} 
 	</delete>
 
 <!-- 패스워드 체크 -->

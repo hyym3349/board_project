@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.project.service.BoardService;
 import com.project.service.MemberService;
 import com.project.util.FileSecurityMd;
 import com.project.vo.MemberVO;
@@ -24,7 +25,8 @@ public class MemberController {
 	
 	@Inject
 	MemberService service;
-	
+	@Inject
+	BoardService Boardservice;
 	// 회원가입 get
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void getRegister() throws Exception {
@@ -83,22 +85,27 @@ public class MemberController {
 		
 		return "redirect:/home";
 	}
-	
+	// 회원정보 수정 GET
 	@RequestMapping(value="/memberUpdateView", method = RequestMethod.GET)
 	public String registerUpdateView() throws Exception{
 		
 		return "member/memberUpdateView";
 	}
-
+	// 회원정보 수정 POST
 	@RequestMapping(value="/memberUpdate", method = RequestMethod.POST)
 	public String registerUpdate(MemberVO vo, HttpSession session) throws Exception{
-		
+		/*
+		 * MemberVO login = service.login(vo); String pwdMatch =
+		 * FileSecurityMd.MD5(vo.getUserPass());
+		 * 
+		 * if(pwdMatch.equals(login.getUserPass())) { service.memberUpdate(vo);
+		 * session.invalidate(); } else { return "/home"; }
+		 */
 		service.memberUpdate(vo);
-		
 		session.invalidate();
-		
 		return "redirect:/home";
 	}
+
 	
 	// 회원 탈퇴 get
 	@RequestMapping(value="/memberDeleteView", method = RequestMethod.GET)
@@ -110,18 +117,16 @@ public class MemberController {
 	@RequestMapping(value="/memberDelete", method = RequestMethod.POST)
 	public String memberDelete(MemberVO vo, HttpSession session, RedirectAttributes rttr) throws Exception{
 		
-		// 세션에 있는 member를 가져와 member변수에 넣기
-		MemberVO member = (MemberVO) session.getAttribute("member");
-		// 세션에있는 비밀번호
-		String sessionPass = member.getUserPass();
-		// vo로 들어오는 비밀번호
-		String voPass = vo.getUserPass();
-		
-		if(!(sessionPass.equals(voPass))) {
-			rttr.addFlashAttribute("msg", false);
-			return "redirect:/member/memberDeleteView";
-		}
+		/*
+		 * // 세션에 있는 member를 가져와 member변수에 넣기 MemberVO member = (MemberVO)
+		 * session.getAttribute("member"); // 세션에있는 비밀번호 String sessionPass =
+		 * member.getUserPass(); // vo로 들어오는 비밀번호 String voPass = vo.getUserPass();
+		 * 
+		 * if(!(sessionPass.equals(voPass))) { rttr.addFlashAttribute("msg", false);
+		 * return "redirect:/member/memberDeleteView"; }
+		 */
 		service.memberDelete(vo);
+		Boardservice.boardDelete(vo);
 		session.invalidate();
 		return "redirect:/home";
 	}
@@ -129,8 +134,14 @@ public class MemberController {
 	// 패스워드 체크
 	@ResponseBody
 	@RequestMapping(value="/passChk", method = RequestMethod.POST)
-	public int passChk(MemberVO vo) throws Exception {
-		int result = service.passChk(vo);
+	public boolean passChk(MemberVO vo) throws Exception {
+		MemberVO login = service.login(vo);
+		String pwdChk = FileSecurityMd.MD5(vo.getUserPass());
+		/*
+		 * System.out.println("login.getUserPass()=>"+login.getUserPass());
+		 * System.out.println("pwdChk=>"+pwdChk);
+		 */
+		boolean result = pwdChk.equals(login.getUserPass());
 		return result;
 	}
 	

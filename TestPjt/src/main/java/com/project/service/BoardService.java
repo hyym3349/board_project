@@ -3,6 +3,7 @@ package com.project.service;
 import java.util.List;
 
 import com.project.vo.BoardVO;
+import com.project.vo.MemberVO;
 import com.project.vo.SearchCriteria;
 
 
@@ -25,5 +26,7 @@ public interface BoardService {
 	
 	// 게시물 선택삭제
 	public void delete(String bno) throws Exception;
+
+	public int boardDelete(MemberVO vo);
 	
 }

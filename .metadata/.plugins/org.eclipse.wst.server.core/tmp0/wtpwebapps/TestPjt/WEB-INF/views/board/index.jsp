@@ -256,6 +256,7 @@ response.setHeader("Cache-Control", "no-cache");
 								src="/resources/boot/img/undraw_profile.svg">
 						</a>
 						<!-- Dropdown - User Information -->
+						<c:if test="${member.userId != null}">
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="/member/memberUpdateView">
@@ -279,6 +280,16 @@ response.setHeader("Cache-Control", "no-cache");
                                     Logout
                                 </a>
                             </div>
+                            </c:if>
+                            <c:if test="${member.userId == null}">
+                               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="/home">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Login
+                                </a>
+                            </div>
+                            </c:if>
 						</li>
 
 					</ul>

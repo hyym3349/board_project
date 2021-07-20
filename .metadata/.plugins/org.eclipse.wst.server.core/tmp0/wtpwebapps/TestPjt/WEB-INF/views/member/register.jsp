@@ -224,25 +224,23 @@ response.setHeader("Cache-Control", "no-cache");
 
 
 
-						 <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                        
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
-                                
-                                <c:if test="${member.userId != null}">
+						<!-- Nav Item - User Information -->
+						<li class="nav-item dropdown no-arrow"><a
+							class="nav-link dropdown-toggle" href="#" id="userDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">
+							<c:if test="${member.userId != null}">
 							사용자 : ${member.userId} 
 							</c:if>
 							<c:if test="${member.userId == null}">
 							로그인해주세요.
 							</c:if>
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-                                <img class="img-profile rounded-circle"
-                                    src="/resources/boot/img/undraw_profile.svg">
-                            </a>
-                            
-                            
-                            <!-- Dropdown - User Information -->
+							<span
+								class="mr-2 d-none d-lg-inline text-gray-600 small"></span> <img class="img-profile rounded-circle"
+								src="/resources/boot/img/undraw_profile.svg">
+						</a>
+						<!-- Dropdown - User Information -->
+						<c:if test="${member.userId != null}">
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="/member/memberUpdateView">
@@ -266,12 +264,22 @@ response.setHeader("Cache-Control", "no-cache");
                                     Logout
                                 </a>
                             </div>
-                        </li>
+                            </c:if>
+                            <c:if test="${member.userId == null}">
+                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="/home">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Login
+                                </a>
+                            </div>
+                            </c:if>
+						</li>
 
-                    </ul>
+					</ul>
 
-                </nav>
-                <!-- End of Topbar -->
+				</nav>
+				<!-- End of Topbar -->
 				
 				<!-- 회원가입 창 시작-->
     <div class="container">
@@ -554,13 +562,13 @@ response.setHeader("Cache-Control", "no-cache");
 		 var userPass2 = $("#userPass2").val()
 		 if (userPass2.length == 0 || userPass2 == null) {
 			 $("#chk").text("비밀번호를 입력하세요");
-			 right = 0;
+			
 		 } else if (userPass != userPass2) {
 				Swal.fire("비밀번호가 다릅니다.","다시 입력해주세요","warning");
-			 right = 0;
+			
 		 } else {   
 				Swal.fire("비밀번호가 동일합니다.","이어서 진행해주세요.","success");
-			 right = 1;
+			
 		 }
 		 return;
 		}

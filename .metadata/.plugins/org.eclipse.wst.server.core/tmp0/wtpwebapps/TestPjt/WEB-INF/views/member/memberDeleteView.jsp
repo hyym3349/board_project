@@ -15,7 +15,7 @@ response.setHeader("Cache-Control", "no-cache");
 <html lang="en">
 
 <head>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -55,7 +55,7 @@ response.setHeader("Cache-Control", "no-cache");
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">회원 탈퇴</h1>
                                     </div>
-                                    <form class="user" action="/member/memberDelete" method="post" id="delForm">
+                                    <form class="user" action="/member/memberDelete" id="delForm" method="post" id="delForm">
                                         <div class="form-group">
                                         <label class="control-label" for="userId">아이디</label>
                                             <input type="text" class="form-control form-control-user"
@@ -71,8 +71,10 @@ response.setHeader("Cache-Control", "no-cache");
                                             <input type="text" class="form-control form-control-user"
                                                   id="userName" name="userName" value="${member.userName}" readonly="readonly"/>
                                         </div>
+                                        </form>
                                         
                                         <hr>
+                                        <form class="user">
              					<button class="btn btn-google btn-user btn-block" type="button" id="submit">회원탈퇴</button>
                                 <input type="button" value="취소" class="btn btn-primary btn-user btn-block" onclick="goBack();"/>
   
@@ -123,25 +125,37 @@ response.setHeader("Cache-Control", "no-cache");
 		
 			$("#submit").on("click", function(){
 				if($("#userPass").val()==""){
-					alert("비밀번호를 입력해주세요.");
+					Swal.fire("비밀번호를 입력해주세요.","","info");
 					$("#userPass").focus();
 					return false;
 				}
 				$.ajax({
 					url : "/member/passChk",
 					type : "POST",
-					dataType : "json",
+					dateType : "json",
 					data : $("#delForm").serializeArray(),
 					success: function(data){
 						
-						if(data==0){
-							alert("패스워드가 틀렸습니다.");
-							return;
-						}else{
-							if(confirm("회원탈퇴하시겠습니까?")){
-								$("#delForm").submit();
-							}
+							if(data==true){
 							
+							Swal.fire({
+					            title: '회원탈퇴하시겠습니까?',
+					            icon: 'question',
+					            showCancelButton: true,
+					            confirmButtonColor: '#3085d6',
+					            cancelButtonColor: '#d33',
+					            confirmButtonText: '탈퇴하기',
+					            cancelButtonText: '취소'
+					          }).then((chk) => {  if(chk.isConfirmed){
+					        	  $("#delForm").submit();
+							}
+							else{
+								Swal.fire("취소하셨습니다.","","info");
+								}
+							})
+						}else{
+							Swal.fire("패스워드가 틀렸습니다.","","error");
+							return;
 						}
 					}
 				})
