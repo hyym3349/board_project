@@ -12,6 +12,7 @@ response.setDateHeader("Expires",0);
 response.setHeader("Cache-Control", "no-cache");
 %>
 <!DOCTYPE html>
+<c:if test="${member.userId != null}">
 <html lang="en">
 
 <head>
@@ -167,3 +168,9 @@ response.setHeader("Cache-Control", "no-cache");
 		})
 	</script>
 </html>
+</c:if>
+<c:if test="${member.userId == null}">
+<script>
+location.href = "/home";
+</script>
+</c:if>

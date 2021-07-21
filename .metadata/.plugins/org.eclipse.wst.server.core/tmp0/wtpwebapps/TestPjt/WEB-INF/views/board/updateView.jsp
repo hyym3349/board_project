@@ -208,7 +208,7 @@ response.setHeader("Cache-Control", "no-cache");
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                USER ADMIN
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -555,7 +555,7 @@ response.setHeader("Cache-Control", "no-cache");
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <a class="m-0 font-weight-bold text-primary">Board updateView</a>
+                            <a style="text-decoration: none;" class="m-0 font-weight-bold text-primary">Board updateView</a>
                         </div>
                         
 				<div class="container">

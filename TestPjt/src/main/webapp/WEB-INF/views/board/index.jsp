@@ -129,7 +129,7 @@ response.setHeader("Cache-Control", "no-cache");
 			<!-- <hr class="sidebar-divider"> -->
 
 			<!-- Heading -->
-			<div class="sidebar-heading">Addons</div>
+			<div class="sidebar-heading">USER ADMIN</div>
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
@@ -297,6 +297,9 @@ response.setHeader("Cache-Control", "no-cache");
 				</nav>
 				<!-- End of Topbar -->
 
+				<div style="text-align:center; line-height: 500px; font-size: 100px;">
+				안녕하세요
+				</div>
 
 			</div>
 			<!-- End of Main Content -->

@@ -130,16 +130,17 @@ function deleteValue(){
         text-decoration: none;
         padding: 4px 8px;
         border: 1px solid #4e73df;
-        color: #000;
 
     }
     /* 현재 페이징에 select 클래스를 적용한다*/
     .paging a.select {
         color: #4e73df;
-        background-color: white;
         border-radius: .35rem;
     }
+
     </style>
+
+	
 
 
 	
@@ -241,7 +242,7 @@ function deleteValue(){
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Addons
+                USER ADMIN
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -468,7 +469,7 @@ function deleteValue(){
                   
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <a class="m-0 font-weight-bold text-primary">Board list</a>
+                            <a style="text-decoration: none;" class="m-0 font-weight-bold text-primary">Board list</a>
                          </div>    
                             
                           
@@ -477,12 +478,12 @@ function deleteValue(){
                         <div class="card-body">
                             <div class="table-responsive" >
                             
-                            <input style="width:90px; height:35px;" type="button" value="선택삭제" class="btn btn-outline-primary" onclick="deleteValue();">
+                            <input style="width:90px; height:35px; " type="button" value="선택삭제" class="btn btn-outline-primary" onclick="deleteValue();">
                             
                             
                             <div class="search" style ="float: right;">
                             <span style="display:inline-block; width:110px; height:35px;">
-   							 <select style="width:110px; height:35px;" class="form-control navbar-left list-group"  name="searchType">
+   							 <select style="width:110px; height:35px; cursor: pointer;" class="form-control navbar-left list-group "  name="searchType">
       							<%-- <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>--전체--</option> --%>
      							 <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
      							 <option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
@@ -543,7 +544,7 @@ function deleteValue(){
                                     
                                         <tr>
                                         	<!-- <th class="text-center"><input name="select_all" id="select-all" type="checkbox" /></th> -->
-                                            <th style="text-align:center; width:5%;"><input  id="allCheck" type="checkbox" name="allCheck" disabled="disabled"/></th>
+                                            <th style="text-align:center; width:5%;"><input style=" cursor: pointer;" id="allCheck" type="checkbox" name="allCheck" /></th>
                                            
 											<th style="text-align:center; width:7%;">번호</th>
 											<th style="text-align:center; width:70%;">제목</th>
@@ -566,14 +567,14 @@ function deleteValue(){
 												<c:when test="${list.deleted == 'N'}">
 													<tr>
 													<c:if test="${list.writer == member.userId}">
-														<td style="text-align:center;"><input name="RowCheck" type="checkbox" value="${list.bno}"/></td>
+														<td style="text-align:center;"><input style=" cursor: pointer;" name="RowCheck" type="checkbox" value="${list.bno}"/></td>
 														</c:if>
 														<c:if test="${list.writer != member.userId}">
-														<td style="text-align:center;"><input name="RowCheck" type="checkbox" disabled="disabled" value="${list.bno}"/></td>
+														<td style="text-align:center;"><input  type="checkbox" disabled="disabled" value="${list.bno}"/></td>
 														</c:if>
 														<%-- <td class="text-center">${list.bno}</td> --%>
 														<td style="text-align:center;"><c:out value="${list.bno}" /></td>
-														<td title="${list.title}"style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+														<td title="${list.title}" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; text-decoration: none;">
 														<a href="/board/readView?bno=${list.bno}&
 														page=${scri.page}&
 														perPageNum=${scri.perPageNum}&
@@ -611,11 +612,11 @@ function deleteValue(){
 							    </c:if> 
 							
 							    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-							    	<li class="action"><a class="select" href="list${pageMaker.makeSearch(idx)}">${idx}</a></li>
+							    	<li ><a style="${pageMaker.cri.page == idx ? 'color:white; background:#4e73df;' : '' }" class="select" href="list${pageMaker.makeSearch(idx)}">${idx}</a></li>
 							    </c:forEach>
 							
 							    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-							    	<li><a class="select" href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+							    	<li><a class="select pag" href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
 							    </c:if> 
 							    
 							  </div>

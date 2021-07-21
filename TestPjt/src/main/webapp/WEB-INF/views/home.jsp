@@ -66,20 +66,18 @@ response.setHeader("Cache-Control", "no-cache");
                                             <input type="password" class="form-control form-control-user"
                                                  id="userPass" name="userPass" placeholder="비밀번호">
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
                                                 <label class="custom-control-label" for="customCheck">로그인 유지</label>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <button class="btn btn-primary btn-user btn-block" type="submit">로그인</button>
                                         <c:if test="${msg == false}">
 			 								<p style="color: red;"> 로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
 										</c:if>
                                         <hr>
-             					<a href="/board/index" class="btn btn-google btn-user btn-block">
-                                    <i class="fab  fa-fw"></i> 로그인 취소
-                                </a>
+             					
                                 <a href="/board/index" class="btn btn-facebook btn-user btn-block">
                                     <i class="fab -f fa-fw"></i> 홈
                                 </a>

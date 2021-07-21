@@ -114,7 +114,7 @@ response.setHeader("Cache-Control", "no-cache");
 			<!-- <hr class="sidebar-divider"> -->
 
 			<!-- Heading -->
-			<div class="sidebar-heading">Addons</div>
+			<div class="sidebar-heading">USER ADMIN</div>
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item active"><a class="nav-link collapsed" href="#"
