@@ -15,7 +15,7 @@
 	   					       , USERTELL
 	   					       , USERGENDER
 	   					       )
-	                  VALUES(    #{userNo}
+	                  VALUES(    MP_MEMBER_SEQ.NEXTVAL
 	                 		   , #{userId}
 	                 		   , #{userPass}
 	                 		   , #{userName}
@@ -29,7 +29,7 @@
     
  <!-- 로그인 -->
 	<select id="login" resultType="com.project.vo.MemberVO">
-	SELECT USERID, USERPASS, USERNAME, USERNICK, USERTELL, USERBIRTH, USEREMAIL, USERGENDER, USEREDITDATE
+	SELECT USERNO, USERID, USERPASS, USERNAME, USERNICK, USERTELL, USERBIRTH, USEREMAIL, USERGENDER, USEREDITDATE
 	  FROM MP_MEMBER
 	 WHERE USERID = #{userId}   
 	</select>

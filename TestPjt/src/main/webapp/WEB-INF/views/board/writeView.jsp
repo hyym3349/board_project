@@ -573,7 +573,7 @@ response.setHeader("Cache-Control", "no-cache");
 					
 					<div class="form-group">
 						<label for="writer" class="col-sm-2 control-label">작성자</label>
-						<input type="text" value="${member.userName}" readonly="readonly" maxlength="5" id="writer" name="writer" class="chk form-control" title="작성자을 입력하세요." title2="*참고 : 5자 이하로 입력해주세요*" />
+						<input type="text" value="${member.userId}" readonly="readonly" maxlength="5" id="writer" name="writer" class="chk form-control" />
 					</div>
 		
 					<div class="form-group">

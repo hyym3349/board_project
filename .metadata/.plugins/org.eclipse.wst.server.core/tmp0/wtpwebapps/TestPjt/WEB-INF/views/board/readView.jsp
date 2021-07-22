@@ -575,7 +575,7 @@ response.setHeader("Cache-Control", "no-cache");
 						
 						<hr />
 						<div>
-						<c:if test="${read.writer == member.userId}">
+						<c:if test="${read.userName == member.userName}">
 					<button type="submit" class="update_btn btn btn-outline-primary">수정</button>
 					
 					</c:if>

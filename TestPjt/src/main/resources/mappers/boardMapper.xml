@@ -12,7 +12,7 @@
 	   					      , WRITER
 	   					      , DELETED
   )
-	                 VALUES(    #{bno}
+	                 VALUES(    MP_BOARD_SEQ.NEXTVAL
 	                 		  , #{title}
 	                 		  , #{content}
 	                 		  , #{writer}  
@@ -50,7 +50,7 @@
 		         	  MP_MEMBER M
 		          
 		         WHERE DELETED = 'N'
-		     	 AND B.WRITER = M.USERID
+		         AND B.WRITER = M.USERID
 		         	<include refid="search"></include>
 		                       ) MP
 		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd} 
@@ -64,7 +64,7 @@
 		   FROM MP_BOARD B,
 		   		MP_MEMBER M
 		   WHERE BNO > 0 
-		   AND B.WRITER = M.USERID
+		   AND B.WRITER = M.USERNAME
 		<include refid="search"></include>	
 		   AND DELETED = 'N'
 	</select>
@@ -90,7 +90,7 @@
 		 FROM MP_BOARD B,
 		 	  MP_MEMBER M
 		 WHERE BNO = #{bno}
-		 AND B.WRITER = M.USERID
+		 AND B.WRITER = M.USERNAME
 	</select>
 	
 	    <update id="update" parameterType="com.project.vo.BoardVO">
@@ -120,7 +120,7 @@
        DELETE FROM 
           MP_BOARD 
        WHERE 
-          writer = #{userId} 
+          WRITER = #{userId} 
     </delete> 
 	
 </mapper>

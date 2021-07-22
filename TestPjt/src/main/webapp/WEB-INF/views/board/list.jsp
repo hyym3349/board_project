@@ -570,10 +570,10 @@ function deleteValue(){
 											<c:choose>
 												<c:when test="${list.deleted == 'N'}">
 													<tr>
-													<c:if test="${list.writer == member.userId}">
+													<c:if test="${list.userName == member.userName}">
 														<td style="text-align:center;"><input style=" cursor: pointer;" name="RowCheck" type="checkbox" value="${list.bno}"/></td>
 														</c:if>
-														<c:if test="${list.writer != member.userId}">
+														<c:if test="${list.userName != member.userName}">
 														<td style="text-align:center;"><input  type="checkbox" disabled="disabled" value="${list.bno}"/></td>
 														</c:if>
 														<%-- <td class="text-center">${list.bno}</td> --%>
