@@ -72,19 +72,24 @@ response.setHeader("Cache-Control", "no-cache");
                                                 <label class="custom-control-label" for="customCheck">로그인 유지</label>
                                             </div>
                                         </div> -->
-                                        <button class="btn btn-primary btn-user btn-block" type="submit">로그인</button>
                                         <c:if test="${msg == false}">
 			 								<p style="color: red;"> 로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
 										</c:if>
+										<div class="form-group">
+                                        <button class="btn btn-primary btn-user btn-block" type="submit">로그인</button>
+                                        </div>
+                                        <div class="form-group">
+                                        <a href="/member/register"><button class="btn btn-info btn-user btn-block" type="button">회원가입</button></a>
+                                        </div>
                                         <hr>
              					
                                 <a href="/board/index" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab -f fa-fw"></i> 홈
+                                    <i class="fab -f fa-fw"></i>홈
                                 </a>
                                 </c:if>
 								<c:if test="${member != null }">
 								<div class="form-group">
-								<p style="text-align: center;">${member.userId}님 환영 합니다!</p>
+								<p style="text-align: center;">${member.userName}님 환영 합니다!</p>
 								<div class="form-group">
 								<button class="btn btn-info btn-user btn-block" id="boardList" type="button">게시판</button>
 								</div>
@@ -92,7 +97,7 @@ response.setHeader("Cache-Control", "no-cache");
 								<button class="btn btn-primary btn-user btn-block" id="memberUpdateBtn" type="button">회원정보수정</button>
 								</div>
 								<div class="form-group">
-								<button class="btn btn-google btn-user btn-block" id="memberDeleteBtn" type="button">회원탈퇴</button></a>
+								<button class="btn btn-google btn-user btn-block" id="memberDeleteBtn" type="button">회원탈퇴</button>
 								</div>
 								<button class="btn btn-facebook btn-user btn-block" id="logoutBtn" type="button">로그아웃</button>
 							</div>
@@ -102,7 +107,7 @@ response.setHeader("Cache-Control", "no-cache");
                                     <hr>
      
                                    
-                                        <button class="btn btn-secondary btn-user btn-block" id="registerBtn" type="button">회원가입</button>
+                                        
                                    
                                     </form>
                                 </div>

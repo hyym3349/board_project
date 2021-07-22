@@ -256,7 +256,11 @@ function deleteValue(){
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="/home">Login</a>
+                        <c:if test="${member.userId == null}">
                         <a class="collapse-item" id="registerBtn" type="button">Register</a>
+                        </c:if>
+                        <c:if test="${member.userId != null}">
+                        </c:if>
 <!--                          <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                          <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
@@ -389,7 +393,7 @@ function deleteValue(){
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false">
 							<c:if test="${member.userId != null}">
-							사용자 : ${member.userId} 
+							사용자 : ${member.userName} 
 							</c:if>
 							<c:if test="${member.userId == null}">
 							로그인해주세요.
@@ -539,7 +543,7 @@ function deleteValue(){
  						 <br />
  						 
  						     <!-- DataTales Example -->
-                                <table class="table table-bordered"  style="table-layout:fixed">
+                           <table class="table table-bordered"  style="table-layout:fixed">
                                     <thead>
                                     
                                         <tr>
@@ -554,13 +558,13 @@ function deleteValue(){
                                         </tr>
                                     </thead>
                                     
-                                    <tbody>
-                                   <c:choose>
-   										<c:when test="${empty list || fn:length(list) == 0 }">
-											<td style="text-align:center;" colspan="6">게시물이 없습니다.</td>
-                                      </c:when>
+                              <tbody>
+                               <c:choose>
+   								<c:when test="${empty list || fn:length(list) == 0 }">
+								  <td style="text-align:center;" colspan="6">게시물이 없습니다.</td>
+                                   </c:when>
    
- 										  <c:otherwise>
+ 									<c:otherwise>
                                     
                                         <c:forEach items="${list}" var = "list">
 											<c:choose>
@@ -573,7 +577,7 @@ function deleteValue(){
 														<td style="text-align:center;"><input  type="checkbox" disabled="disabled" value="${list.bno}"/></td>
 														</c:if>
 														<%-- <td class="text-center">${list.bno}</td> --%>
-														<td style="text-align:center;"><c:out value="${list.bno}" /></td>
+														<td style="text-align:center;"><c:out value="${list.RNUM}" /></td>
 														<td title="${list.title}" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; text-decoration: none;">
 														<a href="/board/readView?bno=${list.bno}&
 														page=${scri.page}&
@@ -581,7 +585,7 @@ function deleteValue(){
 														searchType=${scri.searchType}&
 														keyword=${scri.keyword}"><c:out value="${list.title}" /></a>
 														</td>
-														<td style="text-align:center;"><c:out value="${list.writer}" /></td>
+														<td style="text-align:center;"><c:out value="${list.userName}" /></td>
 														<td style="text-align:center;"><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 														<td style="text-align:center;"><c:out  value="${list.hit}" /></td>
 													</tr>	
@@ -589,12 +593,12 @@ function deleteValue(){
 												</c:when>
 											<c:otherwise></c:otherwise>
 										</c:choose>
-						</c:forEach>
+									</c:forEach>
                       
-                          </c:otherwise>
-							</c:choose> 
+                          			</c:otherwise>
+								</c:choose> 
 							</tbody>
-                     </table>
+                    	 </table>
                                 
                                 <div style="display:inline-block; float: right;">
                                 <a href ="/board/writeView"><input  type="button" value="글 작성" class="btn btn-outline-primary"></a>

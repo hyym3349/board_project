@@ -222,7 +222,11 @@ response.setHeader("Cache-Control", "no-cache");
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="/home">Login</a>
+                        <c:if test="${member.userId == null}">
                         <a class="collapse-item" id="registerBtn" type="button">Register</a>
+                        </c:if>
+                        <c:if test="${member.userId != null}">
+                        </c:if>
                         <!-- <a class="collapse-item" href="forgot-password.html">Forgot Password</a> -->
                         <!-- <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
@@ -475,7 +479,7 @@ response.setHeader("Cache-Control", "no-cache");
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false">
 							<c:if test="${member.userId != null}">
-							사용자 : ${member.userId} 
+							사용자 : ${member.userName} 
 							</c:if>
 							<c:if test="${member.userId == null}">
 							로그인해주세요.
@@ -581,7 +585,7 @@ response.setHeader("Cache-Control", "no-cache");
 		
 					<div class="form-group">
 						<label for="writer">작성자</label>
-						<input type="text" id="writer" name="writer" class="form-control" value="${update.writer}" readonly="readonly"/>
+						<input type="text" id="writer" name="writer" class="form-control" value="${update.userName}" readonly="readonly"/>
 					</div>
 						
 					<div class="form-group">
@@ -591,7 +595,7 @@ response.setHeader("Cache-Control", "no-cache");
 					
 					<div class="form-group">
 						<label for="editor">수정자</label>
-						<input type="text" maxlength="5" id="editor" name="editor" class="chk form-control" title="수정자를 입력하세요."  title2="*참고 : 5자 이하로 입력해주세요*" readonly="readonly" value="${member.userId}"/>
+						<input type="text" maxlength="5" id="editor" name="editor" class="chk form-control" title="수정자를 입력하세요."  title2="*참고 : 5자 이하로 입력해주세요*" readonly="readonly" value="${member.userName}"/>
 					</div>
 					
 					<div class="form-group">

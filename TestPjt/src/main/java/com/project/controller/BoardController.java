@@ -52,10 +52,9 @@ public class BoardController {
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(service.listCount(scri));
-		
 		model.addAttribute("pageMaker", pageMaker);
 		//System.out.println(pageMaker);
-
+		/* System.out.println(service.list(scri)); */
 		return "board/list";
 		
 	}

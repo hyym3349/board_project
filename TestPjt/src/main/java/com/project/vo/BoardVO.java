@@ -2,6 +2,9 @@ package com.project.vo;
 
 import java.util.Date;
 
+import lombok.Data;
+
+@Data
 public class BoardVO {
 	
 	private int bno;
@@ -13,66 +16,8 @@ public class BoardVO {
 	private Date editdate;
 	private String editor;
 	private String deleted;
+	private int RNUM;
 	
-	public int getBno() {
-		return bno;
-	}
-	public void setBno(int bno) {
-		this.bno = bno;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	@Override
-	public String toString() {
-		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regdate="
-				+ regdate + ", hit=" + hit + ", editdate=" + editdate + ", editor=" + editor + ", deleted=" + deleted
-				+ "]";
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public String getWriter() {
-		return writer;
-	}
-	public void setWriter(String writer) {
-		this.writer = writer;
-	}
-	public Date getRegdate() {
-		return regdate;
-	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
-	}
-	public int getHit() {
-		return hit;
-	}
-	public void setHit(int hit) {
-		this.hit = hit;
-	}
-	public Date getEditdate() {
-		return editdate;
-	}
-	public void setEditdate(Date editdate) {
-		this.editdate = editdate;
-	}
-	public String getEditor() {
-		return editor;
-	}
-	public void setEditor(String editor) {
-		this.editor = editor;
-	}
-	public String getDeleted() {
-		return deleted;
-	}
-	public void setDeleted(String deleted) {
-		this.deleted = deleted;
-	}
+	private String userName;
 	
 }

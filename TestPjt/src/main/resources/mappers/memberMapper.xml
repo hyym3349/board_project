@@ -15,7 +15,7 @@
 	   					       , USERTELL
 	   					       , USERGENDER
 	   					       )
-	                  VALUES(    MP_MEMBER_SEQ.NEXTVAL  
+	                  VALUES(    #{userNo}
 	                 		   , #{userId}
 	                 		   , #{userPass}
 	                 		   , #{userName}

@@ -186,7 +186,11 @@ response.setHeader("Cache-Control", "no-cache");
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="/home">Login</a>
+                        <c:if test="${member.userId == null}">
                         <a class="collapse-item" id="registerBtn" type="button">Register</a>
+                        </c:if>
+                        <c:if test="${member.userId != null}">
+                        </c:if>
                         <!-- <a class="collapse-item" href="forgot-password.html">Forgot Password</a> -->
                         <!-- <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
@@ -439,7 +443,7 @@ response.setHeader("Cache-Control", "no-cache");
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false">
 							<c:if test="${member.userId != null}">
-							사용자 : ${member.userId} 
+							사용자 : ${member.userName} 
 							</c:if>
 							<c:if test="${member.userId == null}">
 							로그인해주세요.
@@ -549,7 +553,7 @@ response.setHeader("Cache-Control", "no-cache");
 							
 							<div class="form-group">
 								<label for="writer" class="col-sm-2 control-label">작성자</label>
-								<input type="text" id="writer" name="writer" class="form-control" value="${read.writer}" readonly="readonly"/>
+								<input type="text" id="writer" name="writer" class="form-control" value="${read.userName}" readonly="readonly"/>
 								
 							</div>
 								
@@ -560,7 +564,7 @@ response.setHeader("Cache-Control", "no-cache");
 							
 							<div class="form-group">
 								<label for="editor" class="col-sm-2 control-label">수정자</label>
-								<input type="text" id="editor" name="editor" class="form-control" value="${read.editor}" readonly="readonly"/>
+								<input type="text" id="editor" name="editor" class="form-control" value="${read.userName}" readonly="readonly"/>
 								
 							</div>
 							<div class="form-group">
