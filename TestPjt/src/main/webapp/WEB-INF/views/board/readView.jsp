@@ -485,6 +485,11 @@ response.setHeader("Cache-Control", "no-cache");
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Login
                                 </a>
+                                </a>
+                            <a class="dropdown-item" href="/member/register">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Register
+                                </a> 
                             </div>
                             </c:if>
 						</li>
@@ -575,9 +580,8 @@ response.setHeader("Cache-Control", "no-cache");
 						
 						<hr />
 						<div>
-						<c:if test="${read.userName == member.userName}">
+						<c:if test="${read.writer == member.userId}">
 					<button type="submit" class="update_btn btn btn-outline-primary">수정</button>
-					
 					</c:if>
 					<button type="submit" class="list_btn btn btn-outline-primary">목록</button>
 				</div>

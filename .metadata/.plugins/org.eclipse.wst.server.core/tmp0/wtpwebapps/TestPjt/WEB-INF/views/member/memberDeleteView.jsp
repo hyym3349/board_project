@@ -56,7 +56,7 @@ response.setHeader("Cache-Control", "no-cache");
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">회원 탈퇴</h1>
                                     </div>
-                                    <form class="user" action="/member/memberDelete" id="delForm" method="post" id="delForm">
+                                    <form class="user" action="/member/memberDelete"  method="post" id="delForm">
                                         <div class="form-group">
                                         <label class="control-label" for="userId">아이디</label>
                                             <input type="text" class="form-control form-control-user"
@@ -65,7 +65,7 @@ response.setHeader("Cache-Control", "no-cache");
                                         <div class="form-group">
                                         <label class="control-label" for="userPass">패스워드</label>
                                             <input type="password" class="form-control form-control-user"
-                                                  id="userPass" name="userPass" placeholder="비밀번호입력..." >
+                                                  id="userPass" maxlength="20" name="userPass" placeholder="비밀번호입력..." >
                                         </div>
                                         <div class="form-group">
                                         <label class="control-label" for="userName">성명</label>
@@ -163,9 +163,6 @@ response.setHeader("Cache-Control", "no-cache");
 				
 			});
 			
-				
-			
-		})
 	</script>
 </html>
 </c:if>

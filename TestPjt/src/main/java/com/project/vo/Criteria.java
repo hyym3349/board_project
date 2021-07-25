@@ -1,13 +1,20 @@
 package com.project.vo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Criteria {
 	
+	private static final Logger logger = LoggerFactory.getLogger(SearchCriteria.class);
+
 	private int page;
 	private int perPageNum;
 	private int rowStart;
 	private int rowEnd;
+	private int rStart;
 	
 	public Criteria() {
+		
 		this.page = 1;
 		this.perPageNum = 10;
 	}
@@ -41,12 +48,14 @@ public class Criteria {
 	}
 	
 	public int getRowStart() {
-		rowStart = ((page - 1) * perPageNum) + 1;
+		rowStart = rStart - (perPageNum * (page - 1));
+		logger.info("" + rowStart);
 		return rowStart;
 	}
 	
 	public int getRowEnd() {
-		rowEnd = rowStart + perPageNum - 1;
+		rowEnd = rowStart - perPageNum + 1;
+		logger.info("" + rowEnd);
 		return rowEnd;
 	}
 
@@ -54,6 +63,14 @@ public class Criteria {
 	public String toString() {
 		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + ", rowStart=" + rowStart + ", rowEnd=" + rowEnd
 				+ "]";
+	}
+
+	public int getrStart() {
+		return rStart;
+	}
+
+	public void setrStart(int rStart) {
+		this.rStart = rStart;
 	}
 	
 	

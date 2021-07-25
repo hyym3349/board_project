@@ -274,8 +274,13 @@ response.setHeader("Cache-Control", "no-cache");
                                 aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="/home">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    
                                     Login
                                 </a>
+                            <a class="dropdown-item" href="/member/register">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Register
+                                </a> 
                             </div>
                             </c:if>
 						</li>
@@ -320,7 +325,7 @@ response.setHeader("Cache-Control", "no-cache");
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" maxlength="12" id="userName" name="userName"
+                                        <input type="text" class="form-control form-control-user" maxlength="5" id="userName" name="userName"
                                             placeholder="Name">
                                     </div>
                                     <div class="col-sm-6">
@@ -552,11 +557,16 @@ response.setHeader("Cache-Control", "no-cache");
 				dataType : "json",
 				data : {"userId" : $("#userId").val()},
 				success : function(data){
+					console.log(data)
 					if(data == 1){
 						Swal.fire("중복된 아이디입니다.","다른 아이디를 입력해주세요","warning");
 					}else if(data == 0){
 						$("#idChk").attr("value", "Y");
 						Swal.fire("사용가능한 이이디입니다.","","success");
+					}
+					else {
+						Swal.fire("공백입니다.","","success");
+						
 					}
 				}
 			})

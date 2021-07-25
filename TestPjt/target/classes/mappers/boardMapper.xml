@@ -44,8 +44,8 @@
 		               B.EDITDATE,
 		               B.EDITOR,
 		               B.DELETED,
-		               ROW_NUMBER() OVER(ORDER BY BNO DESC) AS RNUM,
-		               M.USERNAME
+		               M.USERNAME,
+		               ROW_NUMBER() OVER(ORDER BY BNO ASC) AS RNUM
 		         FROM MP_BOARD B,
 		         	  MP_MEMBER M
 		          
@@ -53,7 +53,7 @@
 		         AND B.WRITER = M.USERID
 		         	<include refid="search"></include>
 		                       ) MP
-		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd} 
+		WHERE RNUM BETWEEN #{rowEnd} AND #{rowStart} 
 
 		ORDER BY BNO DESC
 	</select>
@@ -64,7 +64,7 @@
 		   FROM MP_BOARD B,
 		   		MP_MEMBER M
 		   WHERE BNO > 0 
-		   AND B.WRITER = M.USERNAME
+		   AND B.WRITER = M.USERID
 		<include refid="search"></include>	
 		   AND DELETED = 'N'
 	</select>
@@ -72,12 +72,18 @@
 	<sql id="search">
 		<if test="searchType != null">
 			<if test="searchType == 't'.toString()">AND TITLE LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%'</if>
-			<if test="searchType == 'w'.toString()">AND WRITER LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%'</if>
-			<if test="searchType == 'tw'.toString()">AND (TITLE LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%') and (WRITER LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%')</if>
+			<if test="searchType == 'w'.toString()">AND USERNAME LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%'</if>
+			<if test="searchType == 'tw'.toString()">AND (TITLE LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%') and (USERNAME LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%')</if>
 		</if>
 	</sql>
 	
-		<select id="read" parameterType="int" resultType="com.project.vo.BoardVO">
+	<select id="rStart" parameterType="com.project.vo.SearchCriteria" resultType="int">
+	SELECT COUNT(*)
+	FROM MP_BOARD
+	WHERE DELETED = 'N'
+	</select>
+	
+	<select id="read" parameterType="int" resultType="com.project.vo.BoardVO">
 		SELECT	B.BNO
 			  , B.TITLE
 			  , B.CONTENT
@@ -90,7 +96,7 @@
 		 FROM MP_BOARD B,
 		 	  MP_MEMBER M
 		 WHERE BNO = #{bno}
-		 AND B.WRITER = M.USERNAME
+		 AND B.WRITER = M.USERID
 	</select>
 	
 	    <update id="update" parameterType="com.project.vo.BoardVO">

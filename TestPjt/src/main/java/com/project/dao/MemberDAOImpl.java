@@ -55,5 +55,12 @@ public class MemberDAOImpl implements MemberDAO {
 		return result;
 	}
 
+	// 비밀번호 수정
+	@Override
+	public void memberPassUpdate(MemberVO vo) {
+		// TODO Auto-generated method stub
+		sql.update("memberMapper.memberPassUpdate", vo);
+	}
+
 
 }

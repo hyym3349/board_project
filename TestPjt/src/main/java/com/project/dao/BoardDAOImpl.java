@@ -39,6 +39,13 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectOne("boardMapper.listCount", scri);
 	}
 	
+	// 페이지 스타트
+	@Override
+	public int rStart(SearchCriteria scri) throws Exception {
+		
+		return sqlSession.selectOne("boardMapper.rStart", scri);
+	}
+	
 	// 게시물 조회
 	@Override
 	public BoardVO read(int bno) throws Exception {

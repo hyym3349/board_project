@@ -29,7 +29,7 @@ public class BoardServiceImpl implements BoardService {
 	// 게시물 목록 조회
 	@Override
 	public List<BoardVO> list(SearchCriteria scri) throws Exception {
-
+		scri.setrStart(dao.listCount(scri));
 		return dao.list(scri);
 	}
 	
@@ -38,6 +38,13 @@ public class BoardServiceImpl implements BoardService {
 	public int listCount(SearchCriteria scri) throws Exception {
 		
 		return dao.listCount(scri);
+	}
+	
+	// 페이지 스타트
+	@Override
+	public int rStart(SearchCriteria scri) throws Exception {
+		
+		return dao.rStart(scri);
 	}
 	
 	// 게시물 조회

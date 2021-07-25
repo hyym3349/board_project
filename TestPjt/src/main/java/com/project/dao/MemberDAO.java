@@ -13,6 +13,9 @@ public interface MemberDAO {
 	// 회원정보 수정
 	public void memberUpdate(MemberVO vo)throws Exception;
 	
+	// 비밀번호 수정
+	public void memberPassUpdate(MemberVO vo);
+	
 	// 회원 탈퇴
 	public void memberDelete(MemberVO vo)throws Exception;
 	
@@ -21,6 +24,8 @@ public interface MemberDAO {
 	
 	// 아이디 중복체크
 	public int idChk(MemberVO vo) throws Exception;
+
+
 
 
 }

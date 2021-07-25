@@ -2,6 +2,7 @@ package com.project.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,24 +49,26 @@ public class BoardController {
 	public String table(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
 		logger.info("list");
 
-		model.addAttribute("list", service.list(scri));
 		PageMaker pageMaker = new PageMaker();
+		model.addAttribute("list", service.list(scri));
+		
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(service.listCount(scri));
 		model.addAttribute("pageMaker", pageMaker);
 		//System.out.println(pageMaker);
-		System.out.println(service.list(scri));
+		/* System.out.println(service.list(scri)); */
 		return "board/list";
 		
 	}
 	
 	// 게시판 조회
 	@RequestMapping(value = "/readView", method = RequestMethod.GET)
-	public String read(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
+	public String read(BoardVO boardVO,HttpSession session, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
 		logger.info("read");
 		
 		model.addAttribute("read", service.read(boardVO.getBno()));
 		model.addAttribute("scri", scri);
+		/* System.out.println(service.read(boardVO.getBno())); */
 		return "board/readView";
 	}
 	

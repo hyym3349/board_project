@@ -18,6 +18,9 @@ public interface BoardDAO {
 	// 게시물 총 개수
 	public int listCount(SearchCriteria scri) throws Exception;
 	
+	// 페이지 스타트
+	public int rStart(SearchCriteria scri) throws Exception;
+	
 	// 게시물 조회
 	public BoardVO read(int bno) throws Exception;
 	

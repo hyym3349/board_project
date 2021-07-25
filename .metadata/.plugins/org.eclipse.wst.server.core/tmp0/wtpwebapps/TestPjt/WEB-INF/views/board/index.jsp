@@ -292,6 +292,11 @@ response.setHeader("Cache-Control", "no-cache");
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Login
                                 </a>
+                                </a>
+                            <a class="dropdown-item" href="/member/register">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Register
+                                </a> 
                             </div>
                             </c:if>
 						</li>

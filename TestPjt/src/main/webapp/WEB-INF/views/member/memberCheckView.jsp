@@ -23,7 +23,7 @@ response.setHeader("Cache-Control", "no-cache");
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Board_memberDelete</title>
+    <title>Board_memberCheck</title>
 
     <!-- Custom fonts for this template-->
     <link href="/resources/boot/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -54,9 +54,10 @@ response.setHeader("Cache-Control", "no-cache");
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">회원 탈퇴</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">비밀번호 확인</h1>
                                     </div>
-                                    <form class="user" action="/member/memberDelete"  method="post" id="delForm">
+                                    <form class="user"  method="post" id="checkForm">
+                                    
                                         <div class="form-group">
                                         <label class="control-label" for="userId">아이디</label>
                                             <input type="text" class="form-control form-control-user"
@@ -67,16 +68,11 @@ response.setHeader("Cache-Control", "no-cache");
                                             <input type="password" class="form-control form-control-user"
                                                   id="userPass" maxlength="20" name="userPass" placeholder="비밀번호입력..." >
                                         </div>
-                                        <div class="form-group">
-                                        <label class="control-label" for="userName">성명</label>
-                                            <input type="text" class="form-control form-control-user"
-                                                  id="userName" name="userName" value="${member.userName}" readonly="readonly"/>
-                                        </div>
                                         </form>
                                         
                                         <hr>
                                         <form class="user">
-             					<button class="btn btn-google btn-user btn-block" type="button" id="submit">회원탈퇴</button>
+             					<button class="btn btn-google btn-user btn-block" type="button" id="submit">회원정보수정</button>
                                 <input type="button" value="취소" class="btn btn-primary btn-user btn-block" onclick="goBack();"/>
   
                                     </form>
@@ -85,6 +81,7 @@ response.setHeader("Cache-Control", "no-cache");
 											비밀번호가 맞지 않습니다.
 										</c:if>
 									</div>
+									
                                 </div>
                             </div>
                         </div>
@@ -134,26 +131,12 @@ response.setHeader("Cache-Control", "no-cache");
 					url : "/member/passChk",
 					type : "POST",
 					dateType : "json",
-					data : $("#delForm").serializeArray(),
+					data : $("#checkForm").serializeArray(),
 					success: function(data){
-						
+							
 							if(data==true){
 							
-							Swal.fire({
-					            title: '회원탈퇴하시겠습니까?',
-					            icon: 'question',
-					            showCancelButton: true,
-					            confirmButtonColor: '#3085d6',
-					            cancelButtonColor: '#d33',
-					            confirmButtonText: '탈퇴하기',
-					            cancelButtonText: '취소'
-					          }).then((chk) => {  if(chk.isConfirmed){
-					        	  $("#delForm").submit();
-							}
-							else{
-								Swal.fire("취소하셨습니다.","","info");
-								}
-							})
+							location.href = "/member/memberModifyView";
 						}else{
 							Swal.fire("패스워드가 틀렸습니다.","","error");
 							return;
@@ -163,6 +146,9 @@ response.setHeader("Cache-Control", "no-cache");
 				
 			});
 			
+				
+			
+		})
 	</script>
 </html>
 </c:if>

@@ -36,7 +36,7 @@
 
 
 <!-- 회원정보 수정 -->
-	<update id="memberUpdate">
+	<update id="memberUpdate"  parameterType="com.project.vo.MemberVO">
 		UPDATE MP_MEMBER 
 		SET 
 		USERNAME = #{userName},
@@ -48,7 +48,16 @@
 		USEREDITDATE =	sysdate
 		WHERE USERID = #{userId}
 	</update>
-	
+
+<!-- 회원비밀번호 수정 -->
+	<update id="memberPassUpdate"  parameterType="com.project.vo.MemberVO">
+		UPDATE MP_MEMBER 
+		SET 
+		USERPASS = #{userPass}
+		WHERE USERID = #{userId}
+	</update>
+
+
 <!-- 회원탈퇴 -->
 	<delete id="memberDelete">
 	DELETE FROM MP_MEMBER

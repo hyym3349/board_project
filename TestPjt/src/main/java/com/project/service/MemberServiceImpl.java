@@ -55,5 +55,11 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public void memberPassUpdate(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.memberPassUpdate(vo);
+	}
+
 	
 }

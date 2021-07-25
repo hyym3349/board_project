@@ -94,11 +94,9 @@ response.setHeader("Cache-Control", "no-cache");
 								<button class="btn btn-info btn-user btn-block" id="boardList" type="button">게시판</button>
 								</div>
 								<div class="form-group">
-								<button class="btn btn-primary btn-user btn-block" id="memberUpdateBtn" type="button">회원정보수정</button>
+								<button class="btn btn-primary btn-user btn-block" id="memberCheckBtn" type="button">회원정보 관리</button>
 								</div>
-								<div class="form-group">
-								<button class="btn btn-google btn-user btn-block" id="memberDeleteBtn" type="button">회원탈퇴</button>
-								</div>
+								
 								<button class="btn btn-facebook btn-user btn-block" id="logoutBtn" type="button">로그아웃</button>
 							</div>
 						</c:if>
@@ -151,7 +149,9 @@ response.setHeader("Cache-Control", "no-cache");
 		$("#boardList").on("click", function(){
 			location.href="board/list";
 		})
-		
+		$("#memberCheckBtn").on("click", function(){
+			location.href="member/memberCheckView";
+		})
 	})
 </script>
 </body>

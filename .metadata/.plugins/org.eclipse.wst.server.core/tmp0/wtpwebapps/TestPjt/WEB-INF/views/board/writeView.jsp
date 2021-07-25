@@ -517,6 +517,11 @@ response.setHeader("Cache-Control", "no-cache");
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Login
                                 </a>
+                                </a>
+                            <a class="dropdown-item" href="/member/register">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Register
+                                </a> 
                             </div>
                             </c:if>
 						</li>
@@ -573,7 +578,8 @@ response.setHeader("Cache-Control", "no-cache");
 					
 					<div class="form-group">
 						<label for="writer" class="col-sm-2 control-label">작성자</label>
-						<input type="text" value="${member.userId}" readonly="readonly" maxlength="5" id="writer" name="writer" class="chk form-control" />
+						<label for="writer" class="form-control">${member.userName}</label>
+						<input type="hidden" value="${member.userId}" id="writer" name="writer" class="chk form-control" />
 					</div>
 		
 					<div class="form-group">
@@ -590,7 +596,7 @@ response.setHeader("Cache-Control", "no-cache");
 					   <button class="cancel_btn btn btn-outline-primary" >취소</button>
 					</c:if>
 							<c:if test="${member.userId == null}">
-								로그인 후에 작성하실 수 있습니다.
+								<a style="text-decoration:none;" href="/home">로그인</a> 후에 작성하실 수 있습니다.
 							</c:if>
 				</form>
 			</section>

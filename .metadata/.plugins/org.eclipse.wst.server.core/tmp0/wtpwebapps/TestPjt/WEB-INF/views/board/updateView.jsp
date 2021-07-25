@@ -521,6 +521,11 @@ response.setHeader("Cache-Control", "no-cache");
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Login
                                 </a>
+                                </a>
+                            <a class="dropdown-item" href="/member/register">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Register
+                                </a> 
                             </div>
                             </c:if>
 						</li>
@@ -585,7 +590,7 @@ response.setHeader("Cache-Control", "no-cache");
 		
 					<div class="form-group">
 						<label for="writer">작성자</label>
-						<input type="text" id="writer" name="writer" class="form-control" value="${update.userName}" readonly="readonly"/>
+						<input type="text" id="writer" name="writer" class="form-control" value="${member.userName}" readonly="readonly"/>
 					</div>
 						
 					<div class="form-group">
@@ -595,7 +600,8 @@ response.setHeader("Cache-Control", "no-cache");
 					
 					<div class="form-group">
 						<label for="editor">수정자</label>
-						<input type="text" maxlength="5" id="editor" name="editor" class="chk form-control" title="수정자를 입력하세요."  title2="*참고 : 5자 이하로 입력해주세요*" readonly="readonly" value="${member.userName}"/>
+						<label for="editor" class="form-control">${member.userName}</label>
+						<input type="hidden" maxlength="5" id="editor" name="editor" class="chk form-control" title="수정자를 입력하세요."  title2="*참고 : 5자 이하로 입력해주세요*" readonly="readonly" value="${member.userId}"/>
 					</div>
 					
 					<div class="form-group">

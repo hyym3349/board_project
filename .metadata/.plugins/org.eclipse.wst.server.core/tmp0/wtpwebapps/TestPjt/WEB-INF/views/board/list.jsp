@@ -435,6 +435,11 @@ function deleteValue(){
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Login
                                 </a>
+                                </a>
+                            <a class="dropdown-item" href="/member/register">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Register
+                                </a> 
                             </div>
                             </c:if>
 						</li>
@@ -488,7 +493,7 @@ function deleteValue(){
                             <div class="search" style ="float: right;">
                             <span style="display:inline-block; width:110px; height:35px;">
    							 <select style="width:110px; height:35px; cursor: pointer;" class="form-control navbar-left list-group "  name="searchType">
-      							<%-- <option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>--전체--</option> --%>
+      							<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>--전체--</option>
      							 <option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
      							 <option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
      							 <option value="tw"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+작성자</option>
@@ -526,18 +531,12 @@ function deleteValue(){
     						</span>
 
     						<script>
-     						 $(function(){
-     						   $('#searchBtn').click(function() {
-     							   if($('#keywordInput').val() == ''){
-     								  Swal.fire("검색어를 입력해주세요","","warning")
-     							   }
-     							   else{
-      						    self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
-     						   }
-     
-     							   });
-    						  });   
-   						 </script>
+						      $(function(){
+						        $('#searchBtn').click(function() {
+						          self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+						        });
+						      });   
+						    </script>
 
  						 </div>
  						 <br />
