@@ -70,9 +70,9 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	// 게시판 조회수
 	@Override
-	public void boardHit(int bno) throws Exception {
+	public int boardHit(int bno) throws Exception {
 
-		sqlSession.update("boardMapper.boardHit", bno);
+		return sqlSession.update("boardMapper.boardHit", bno);
 	}
 	
 	// 회원탈퇴 + 게시물 삭제

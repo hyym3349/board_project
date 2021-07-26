@@ -31,7 +31,7 @@ public interface BoardDAO {
 	public void delete(String bno) throws Exception;
 	
 	// 게시판 조회수
-	public void boardHit(int bno) throws Exception;
+	public int boardHit(int bno) throws Exception;
 
 	// 회원탈퇴 + 게시물 삭제
 	public int boardDelete(MemberVO vo);

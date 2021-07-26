@@ -34,7 +34,8 @@
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
+		<!-- <priority value="warn" /> -->
+		<level value="info" />
 		<appender-ref ref="console" />
 	</root>
 	

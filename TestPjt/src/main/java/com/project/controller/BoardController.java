@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.service.BoardService;
 import com.project.vo.BoardVO;
+import com.project.vo.MemberVO;
 import com.project.vo.PageMaker;
 import com.project.vo.SearchCriteria;
 
@@ -63,12 +64,26 @@ public class BoardController {
 	
 	// 게시판 조회
 	@RequestMapping(value = "/readView", method = RequestMethod.GET)
-	public String read(BoardVO boardVO,HttpSession session, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
+	public String read(BoardVO boardVO, HttpSession session, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
+		
 		logger.info("read");
 		
+		BoardVO writer = service.read(boardVO.getBno());
+		/* System.out.println(writer.getWriter()); */
+		
+		MemberVO login = (MemberVO)session.getAttribute("member"); 
+		if(login != null && !login.getUserId().equals(writer.getWriter())) {
+		    service.boardHit(boardVO.getBno());
+		}
+		 
 		model.addAttribute("read", service.read(boardVO.getBno()));
 		model.addAttribute("scri", scri);
-		/* System.out.println(service.read(boardVO.getBno())); */
+		
+		/*
+		 * System.out.println("게시판조회 : " + service.read(boardVO.getBno()));
+		 * System.out.println("세션 아이디 : " + (MemberVO)session.getAttribute("member"));
+		 */
+		
 		return "board/readView";
 	}
 	

@@ -51,9 +51,17 @@ public class BoardServiceImpl implements BoardService {
 	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@Override
 	public BoardVO read(int bno) throws Exception {
-		dao.boardHit(bno);
+		
 		return dao.read(bno);
 	}
+	
+	// 게시물 조회수
+	@Override
+	public int boardHit(int bno) throws Exception {
+		
+		return dao.boardHit(bno);
+	}
+	
 	
 	// 게시물 목록 수정
 	@Override

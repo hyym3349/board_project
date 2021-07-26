@@ -74,7 +74,7 @@ public class MemberController {
 			session.setAttribute("member", null);
 			rttr.addFlashAttribute("msg", false);
 		}
-
+		/* System.out.println("로그인 세션 : " + login); */
 		return "redirect:/home";
 	}
 

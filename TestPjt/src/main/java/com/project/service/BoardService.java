@@ -32,5 +32,8 @@ public interface BoardService {
 
 	// 회원탈퇴 + 게시물 삭제
 	public int boardDelete(MemberVO vo);
+
+	// 게시물 조회수
+	public int boardHit(int bno) throws Exception;
 	
 }
