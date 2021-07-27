@@ -599,7 +599,7 @@ response.setHeader("Cache-Control", "no-cache");
 					   
 					</c:if>
 							<c:if test="${member.userId == null}">
-								<a style="text-decoration:none;" href="/home">로그인</a> 후에 작성하실 수 있습니다.
+								게시글은<a style="text-decoration:none;" href="/home"> 로그인</a> 후에 작성하실 수 있습니다.
 							</c:if>
 				</form>
 			</section>

@@ -16,7 +16,8 @@ response.setHeader("Cache-Control", "no-cache");
 <html lang="en">
 
 <head>
-
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -56,7 +57,7 @@ response.setHeader("Cache-Control", "no-cache");
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">댓글 수정</h1>
                                     </div>
-									<form  name="updateForm" role="form" method="post" action="/board/replyUpdate">
+									<form  id="updateForm" name="updateForm" method="post">
 										<input type="hidden" name="bno" value="${replyUpdate.bno}" readonly="readonly"/>
 										<input type="hidden" id="rno" name="rno" value="${replyUpdate.rno}" />
 										<input type="hidden" id="page" name="page" value="${scri.page}"> 
@@ -65,15 +66,15 @@ response.setHeader("Cache-Control", "no-cache");
 										<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
 										
 										<div class="form-group">
-										<label for="userno" class="col-sm-2 control-label">이름</label>
+										<label for="userno" class="col-sm-3 control-label">작성자</label>
 											<label for="userno" class="form-control" style="border:1px solid; padding:10px; border-radius: 10px; background-color:#eaecf4; border-color:#d1d3e2">${member.userName}</label>	
 											<input type="hidden" id="userno" name="userno" value="${member.userNo}"/>
 												 
 										</div>
 													   
 										<div class="form-group"> 
-											<label for="content" class="col-sm-2 control-label">내용</label>
-											<textarea maxlength="500"class="form-control content" name="content" id="content" rows="10" cols="36"><c:out value="${replyUpdate.content}" /></textarea>
+											<label for="content" class="col-sm-4 control-label">댓글 내용</label>
+											<textarea placeholder="수정할 내용을 입력해주세요" maxlength="500"class="form-control content" name="content" id="content" rows="10" cols="36">${replyUpdate.content}</textarea>
 											<span style="color:#aaa;" id="counter">(0 / 최대 500자)</span>
 										</div>
 														
@@ -81,7 +82,7 @@ response.setHeader("Cache-Control", "no-cache");
 													
 					
 										<div>
-											<button type="submit" class="update_btn btn btn-outline-primary">저장</button>
+											<button type="button" onclick="validateForm()" class="btn btn-outline-primary">저장</button>
 											<button type="button" class="cancel_btn btn btn-outline-primary">취소</button>
 										</div>
 									</form>
@@ -108,7 +109,21 @@ response.setHeader("Cache-Control", "no-cache");
     <!-- Custom scripts for all pages-->
     <script src="/resources/boot/js/sb-admin-2.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script type="text/javascript">
+	function validateForm(){
+		
+	var form = document.updateForm;
 	
+	if(form.content.value.length == 0){
+		Swal.fire("내용을 입력하세요","","warning");
+		return false;
+	}
+	  var formObj = $("form[name='updateForm']");
+	  formObj.attr("action", "/board/replyUpdate");
+	  formObj.submit();
+	}
+	</script>
 	
 	<script type="text/javascript">
 		$(document).ready(function(){

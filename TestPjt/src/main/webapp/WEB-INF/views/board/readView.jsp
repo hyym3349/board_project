@@ -41,62 +41,7 @@ response.setHeader("Cache-Control", "no-cache");
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
-
-<script type="text/javascript">
-		$(document).ready(function(){
-			var formObj = $("form[name='readForm']");
-			
-			// 수정 
-			$(".update_btn").on("click", function(){
-				formObj.attr("action", "/board/updateView");
-				formObj.attr("method", "get");
-				formObj.submit();				
-			})
-			
-			// 선택삭제
-			$(".delete_btn").on("click", function(){
-				
-				var deleteYN = confirm("삭제하시겠습니까?");
-				if(deleteYN == true){
-					
-				formObj.attr("action", "/board/delete");
-				formObj.attr("method", "post");
-				formObj.submit();
-					
-				}
-			})
-			
-			
-			// 목록
-			$(".list_btn").on("click", function(){
-			
-			location.href = "/board/list?page=${scri.page}"
-			+"&perPageNum=${scri.perPageNum}"
-			+"&searchType=${scri.searchType}"
-			+"&keyword=${scri.keyword}";
-			})
-		
-		})
-
-	</script>
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#logoutBtn").on("click", function(){
-			location.href="member/logout";
-		})
-		$("#registerBtn").on("click", function(){
-			location.href="/member/register";
-		})
-		
-		
-		
-		$("#memberUpdateBtn").on("click", function(){
-			location.href="member/memberUpdateView";
-		})
-		
-	})
-</script>
+	
 
 <body id="page-top">
 
@@ -593,6 +538,7 @@ response.setHeader("Cache-Control", "no-cache");
 				
 					   <div id="reply">
 					   	<ol class = "replyList">
+					   	
 					   		<c:forEach items = "${replyList}" var="replyList">
 					   		<c:choose>
 								<c:when test="${replyList.deleted == 'N'}">
@@ -632,7 +578,7 @@ response.setHeader("Cache-Control", "no-cache");
 				<c:if test="${member.userId != null}">
 				<p style="font-weight:900;">댓글 작성</p>
 				
- 				<form name="replyForm" method="post" >
+ 				<form name="replyForm" id="replyForm" method="post" >
 				  <input type="hidden" id="bno" name="bno" value="${read.bno}" />
 				  <input type="hidden" id="page" name="page" value="${scri.page}"> 
 				  <input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
@@ -644,19 +590,19 @@ response.setHeader("Cache-Control", "no-cache");
 				    <label for="userno" class="form-control">${member.userName}</label>
 				    <input type="hidden" id="userno" name="userno" value="${member.userNo}"/>
 				    <br/>
-				     <label for="userno" class="col-sm-2 control-label">댓글 내용</label>
-				     <textarea id="content" name="content" maxlength="500" class="form-control content" rows="8" cols="36" ></textarea>
+				     <label for="content" class="col-sm-2 control-label">댓글 내용</label>
+				     <textarea placeholder="댓글 내용을 입력해주세요" id="content" name="content" maxlength="500" class="form-control content" rows="8" cols="36" ></textarea>
 				     <span style="color:#aaa;" id="counter">(0 / 최대 500자)</span>
 
 				  </div>
 				  <br>
 				  <div>
-				 	 <button type="button" class="replyWriteBtn btn btn-outline-primary" onclick="validateForm();">작성</button>
+				 	 <button type="button" onclick="validateForm()" class="btn btn-outline-primary" >작성</button>
 				  </div>
 				</form>
 				</c:if>
 				<c:if test="${member.userId == null}">
-								<a style="text-decoration:none;" href="/home">로그인</a> 후에 작성하실 수 있습니다.
+								댓글은 <a style="text-decoration:none;" href="/home"> 로그인</a> 후에 작성하실 수 있습니다.
 							</c:if>
 				<!-- 댓글 작성 끝 -->	   
 					   
@@ -737,14 +683,78 @@ response.setHeader("Cache-Control", "no-cache");
     <!-- Page level custom scripts -->
     <script src="/resources/boot/js/demo/datatables-demo.js"></script>
 
-	<script>
-	// 댓글 작성 
-	$(".replyWriteBtn").on("click", function(){
-		  var formObj = $("form[name='replyForm']");
-		  formObj.attr("action", "/board/replyWrite");
-		  formObj.submit();
-		});
+	<script type="text/javascript">
+	function validateForm(){
+		
+	var form = document.replyForm;
 	
+	if(form.content.value.length == 0){
+		Swal.fire("내용을 입력하세요","","warning");
+		return false;
+	}
+	  var formObj = $("form[name='replyForm']");
+	  formObj.attr("action", "/board/replyWrite");
+	  formObj.submit();
+	}
+	</script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var formObj = $("form[name='readForm']");
+			
+			// 수정 
+			$(".update_btn").on("click", function(){
+				formObj.attr("action", "/board/updateView");
+				formObj.attr("method", "get");
+				formObj.submit();				
+			})
+			
+			// 선택삭제
+			$(".delete_btn").on("click", function(){
+				
+				var deleteYN = confirm("삭제하시겠습니까?");
+				if(deleteYN == true){
+					
+				formObj.attr("action", "/board/delete");
+				formObj.attr("method", "post");
+				formObj.submit();
+					
+				}
+			})
+			
+			
+			// 목록
+			$(".list_btn").on("click", function(){
+			
+			location.href = "/board/list?page=${scri.page}"
+			+"&perPageNum=${scri.perPageNum}"
+			+"&searchType=${scri.searchType}"
+			+"&keyword=${scri.keyword}";
+			})
+		
+		})
+
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#logoutBtn").on("click", function(){
+				location.href="member/logout";
+			})
+			$("#registerBtn").on("click", function(){
+				location.href="/member/register";
+			})
+			
+			
+			
+			$("#memberUpdateBtn").on("click", function(){
+				location.href="member/memberUpdateView";
+			})
+			
+		})
+	</script>
+
+	<script>
 	// 댓글 수정 View
 	$(".replyUpdateBtn").on("click", function(){
 		location.href = "/board/replyUpdateView?bno=${read.bno}"
@@ -780,6 +790,7 @@ response.setHeader("Cache-Control", "no-cache");
 	});
 	
 	</script>
+
 </body>
 
 </html>
