@@ -488,7 +488,7 @@ response.setHeader("Cache-Control", "no-cache");
  					 <input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
 					 <input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
 				</form>
-
+			<p style="font-weight:900; color:#4e73df; font-size:20px;">게시물</p>
 
 							<div class="form-group">
 								<label for="title" class="col-sm-2 control-label">제목</label>
@@ -534,7 +534,7 @@ response.setHeader("Cache-Control", "no-cache");
 				
 				<hr>
 				<!-- 댓글 -->
-				<p style="font-weight:900;">댓글 목록</p>
+				<p style="font-weight:900; color:#4e73df; font-size:20px;">댓글 목록</p>
 				
 					   <div id="reply">
 					   	<ol class = "replyList">
@@ -542,7 +542,7 @@ response.setHeader("Cache-Control", "no-cache");
 					   		<c:forEach items = "${replyList}" var="replyList">
 					   		<c:choose>
 								<c:when test="${replyList.deleted == 'N'}">
-						   		<li> 
+						   		<li style="font-weight:bold;"> 
 						   			<p>
 						   			작성자 : ${replyList.userName}<br />
 						   			</p>
@@ -562,6 +562,7 @@ response.setHeader("Cache-Control", "no-cache");
 									<hr />
 									</c:if>
 									<c:if test="${replyList.userName != member.userName}">
+									<p style="font-weight:100; font-size:5px;">* 작성자만 수정/삭제 가능 *</p>
 									<hr />
 									</c:if>
 						   		</li>
@@ -576,7 +577,7 @@ response.setHeader("Cache-Control", "no-cache");
 				<hr>
 				<!-- 댓글 작성 -->
 				<c:if test="${member.userId != null}">
-				<p style="font-weight:900;">댓글 작성</p>
+				<p style="font-weight:900; color:#4e73df; font-size:20px;">댓글 작성</p>
 				
  				<form name="replyForm" id="replyForm" method="post" >
 				  <input type="hidden" id="bno" name="bno" value="${read.bno}" />
