@@ -584,7 +584,7 @@ response.setHeader("Cache-Control", "no-cache");
 		
 					<div class="form-group">
 						<label for="content" class="col-sm-2 control-label">내용</label>
-						<textarea name="content" id="content" rows="20" cols="121"></textarea>
+						<textarea name="content" maxlength="2000" id="content" rows="20" cols="121"></textarea>
 						<p class="count"><span>0</span> / 2000</p>
 					</div> 
 					
@@ -594,6 +594,9 @@ response.setHeader("Cache-Control", "no-cache");
 						
 					   </span>
 					   <button class="cancel_btn btn btn-outline-primary" >취소</button>
+					   
+					   
+					   
 					</c:if>
 							<c:if test="${member.userId == null}">
 								<a style="text-decoration:none;" href="/home">로그인</a> 후에 작성하실 수 있습니다.

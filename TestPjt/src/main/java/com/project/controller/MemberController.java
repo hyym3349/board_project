@@ -31,13 +31,13 @@ public class MemberController {
 	// 회원가입 get
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void getRegister() throws Exception {
-		logger.info("get register");
+		/* logger.info("get register"); */
 	}
 
 	// 회원가입 post
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String postRegister(MemberVO vo) throws Exception {
-		logger.info("post register");
+		/* logger.info("post register"); */
 		int result = service.idChk(vo);
 		try {
 			if (result == 1) {
@@ -60,7 +60,7 @@ public class MemberController {
 	// 로그인 POST
 	@RequestMapping(value = "/home", method = RequestMethod.POST)
 	public String login(MemberVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
-		logger.info("post login");
+		/* logger.info("post login"); */
 
 		HttpSession session = req.getSession();
 		MemberVO login = service.login(vo);

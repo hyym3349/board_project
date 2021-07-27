@@ -15,7 +15,7 @@ response.setHeader("Cache-Control", "no-cache");
 <html lang="en">
 
 <head>
-	
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
@@ -39,7 +39,7 @@ response.setHeader("Cache-Control", "no-cache");
     <link href="/resources/boot/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
+
 </head>
 
 <script type="text/javascript">
@@ -77,6 +77,7 @@ response.setHeader("Cache-Control", "no-cache");
 			})
 		
 		})
+
 	</script>
 
 <script type="text/javascript">
@@ -578,13 +579,87 @@ response.setHeader("Cache-Control", "no-cache");
 							</div>
 							
 						
-						<hr />
+						
 						<div>
 						<c:if test="${read.writer == member.userId}">
 					<button type="submit" class="update_btn btn btn-outline-primary">수정</button>
 					</c:if>
 					<button type="submit" class="list_btn btn btn-outline-primary">목록</button>
 				</div>
+				
+				<hr>
+				<!-- 댓글 -->
+				<p style="font-weight:900;">댓글 목록</p>
+				
+					   <div id="reply">
+					   	<ol class = "replyList">
+					   		<c:forEach items = "${replyList}" var="replyList">
+					   		<c:choose>
+								<c:when test="${replyList.deleted == 'N'}">
+						   		<li> 
+						   			<p>
+						   			작성자 : ${replyList.userName}<br />
+						   			</p>
+						   			<p>
+						   			작성날짜 : <fmt:formatDate value="${replyList.regdate}" pattern ="yyyy-MM-dd HH:mm:ss" />
+						   			</p>
+						   			<p>
+						   			수정날짜 : <fmt:formatDate value="${replyList.editdate}" pattern ="yyyy-MM-dd HH:mm:ss" />
+						   			</p>
+						   			
+						   			<p>댓글 내용 : ${replyList.content}</p>
+						   			<c:if test="${replyList.userName == member.userName}">
+						   			<div>
+									  <button type="button" class="replyUpdateBtn btn btn-outline-primary" data-rno="${replyList.rno}">수정</button>
+									  <button type="button" class="replyDeleteBtn btn btn-outline-primary" data-rno="${replyList.rno}">삭제</button>
+									</div>
+									<hr />
+									</c:if>
+									<c:if test="${replyList.userName != member.userName}">
+									<hr />
+									</c:if>
+						   		</li>
+						   		</c:when>
+						   		<c:otherwise></c:otherwise>
+						   		</c:choose>
+						   			</c:forEach>
+						   		
+					   	</ol>
+					   </div>
+				<!-- 댓글 끝 -->
+				<hr>
+				<!-- 댓글 작성 -->
+				<c:if test="${member.userId != null}">
+				<p style="font-weight:900;">댓글 작성</p>
+				
+ 				<form name="replyForm" method="post" >
+				  <input type="hidden" id="bno" name="bno" value="${read.bno}" />
+				  <input type="hidden" id="page" name="page" value="${scri.page}"> 
+				  <input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
+				  <input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
+				  <input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
+				
+				  <div>
+				    <label for="userno" class="col-sm-2 control-label">댓글 작성자</label>
+				    <label for="userno" class="form-control">${member.userName}</label>
+				    <input type="hidden" id="userno" name="userno" value="${member.userNo}"/>
+				    <br/>
+				     <label for="userno" class="col-sm-2 control-label">댓글 내용</label>
+				     <textarea id="content" name="content" maxlength="500" class="form-control content" rows="8" cols="36" ></textarea>
+				     <span style="color:#aaa;" id="counter">(0 / 최대 500자)</span>
+
+				  </div>
+				  <br>
+				  <div>
+				 	 <button type="button" class="replyWriteBtn btn btn-outline-primary" onclick="validateForm();">작성</button>
+				  </div>
+				</form>
+				</c:if>
+				<c:if test="${member.userId == null}">
+								<a style="text-decoration:none;" href="/home">로그인</a> 후에 작성하실 수 있습니다.
+							</c:if>
+				<!-- 댓글 작성 끝 -->	   
+					   
 				</section>
 				<br />
 		</div>
@@ -662,6 +737,49 @@ response.setHeader("Cache-Control", "no-cache");
     <!-- Page level custom scripts -->
     <script src="/resources/boot/js/demo/datatables-demo.js"></script>
 
+	<script>
+	// 댓글 작성 
+	$(".replyWriteBtn").on("click", function(){
+		  var formObj = $("form[name='replyForm']");
+		  formObj.attr("action", "/board/replyWrite");
+		  formObj.submit();
+		});
+	
+	// 댓글 수정 View
+	$(".replyUpdateBtn").on("click", function(){
+		location.href = "/board/replyUpdateView?bno=${read.bno}"
+						+ "&page=${scri.page}"
+						+ "&perPageNum=${scri.perPageNum}"
+						+ "&searchType=${scri.searchType}"
+						+ "&keyword=${scri.keyword}"
+						+ "&rno="+$(this).attr("data-rno");
+	});
+			
+	// 댓글 삭제 View
+	$(".replyDeleteBtn").on("click", function(){
+		location.href = "/board/replyDeleteView?bno=${read.bno}"
+			+ "&page=${scri.page}"
+			+ "&perPageNum=${scri.perPageNum}"
+			+ "&searchType=${scri.searchType}"
+			+ "&keyword=${scri.keyword}"
+			+ "&rno="+$(this).attr("data-rno");
+	});
+	</script>
+	
+	<script>
+	//textarea 체크
+	$('.content').keyup(function (e){
+	    var content = $(this).val();
+	    $('#counter').html("("+content.length+" / 최대 500자)");    //글자수 실시간 카운팅
+
+	    if (content.length > 500){
+	        Swal.fire("500자까지 입력 가능합니다.","","info");
+	        $(this).val(content.substring(0, 500));
+	        $('#counter').html("(500 / 최대 500자)");
+	    }
+	});
+	
+	</script>
 </body>
 
 </html>

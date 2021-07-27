@@ -1,5 +1,7 @@
 package com.project.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,31 +16,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.service.BoardService;
+import com.project.service.ReplyService;
 import com.project.vo.BoardVO;
 import com.project.vo.MemberVO;
 import com.project.vo.PageMaker;
+import com.project.vo.ReplyVO;
 import com.project.vo.SearchCriteria;
 
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
 
-	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
+	 private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+	 
 	@Inject
 	BoardService service;
+	
+	@Inject
+	ReplyService replyService;
 	
 	// 게시판 글 작성 화면123
 	@RequestMapping(value = "/writeView", method = RequestMethod.GET)
 	public void writeView() throws Exception{
-		logger.info("writeView");
+		/* logger.info("writeView"); */
 		
 	}
 	
 	// 게시판 글 작성
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public String write(BoardVO boardVO) throws Exception{
-		logger.info("write");
+		/* logger.info("write"); */
 		
 		service.write(boardVO);
 		
@@ -48,8 +56,9 @@ public class BoardController {
 	// 게시판 목록 조회
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String table(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception{
-		logger.info("list");
-
+		/*
+		 * logger.info("list");
+		 */
 		PageMaker pageMaker = new PageMaker();
 		model.addAttribute("list", service.list(scri));
 		
@@ -66,7 +75,7 @@ public class BoardController {
 	@RequestMapping(value = "/readView", method = RequestMethod.GET)
 	public String read(BoardVO boardVO, HttpSession session, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
 		
-		logger.info("read");
+		/* logger.info("read"); */
 		
 		BoardVO writer = service.read(boardVO.getBno());
 		/* System.out.println(writer.getWriter()); */
@@ -83,6 +92,8 @@ public class BoardController {
 		 * System.out.println("게시판조회 : " + service.read(boardVO.getBno()));
 		 * System.out.println("세션 아이디 : " + (MemberVO)session.getAttribute("member"));
 		 */
+		List<ReplyVO> replyList = replyService.readReply(boardVO.getBno());
+		model.addAttribute("replyList", replyList);
 		
 		return "board/readView";
 	}
@@ -90,7 +101,7 @@ public class BoardController {
 	// 게시판 수정뷰
 	@RequestMapping(value = "/updateView", method = RequestMethod.GET)
 	public String updateView(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception{
-		logger.info("updateView");
+		/* logger.info("updateView"); */
 		
 		model.addAttribute("update", service.read(boardVO.getBno()));
 		model.addAttribute("scri", scri);
@@ -101,7 +112,7 @@ public class BoardController {
 	// 게시판 수정
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(BoardVO boardVO, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) throws Exception{
-		logger.info("update");
+		/* logger.info("update"); */
 		
 
 		service.update(boardVO);
@@ -138,8 +149,78 @@ public class BoardController {
 	// 페이지 홈
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public void index() throws Exception{
-		logger.info("index");
+		/* logger.info("index"); */
 		
 	}
 	
+	// 댓글 작성
+	@RequestMapping(value="/replyWrite", method = RequestMethod.POST)
+	public String replyWrite(ReplyVO vo, HttpSession session, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+		/* System.out.println(vo); */
+		replyService.writeReply(vo);
+		
+		rttr.addAttribute("bno", vo.getBno());
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
+		
+		
+		return "redirect:/board/readView";
+	}
+	
+	//댓글 수정 GET
+		@RequestMapping(value="/replyUpdateView", method = RequestMethod.GET)
+		public String replyUpdateView(ReplyVO vo, HttpSession session, SearchCriteria scri, Model model) throws Exception {
+			/* logger.info("reply Write"); */
+			
+			model.addAttribute("replyUpdate", replyService.selectReply(vo.getRno()));
+			model.addAttribute("scri", scri);
+			
+			return "/board/replyUpdateView";
+		}
+		
+	//댓글 수정 POST
+		@RequestMapping(value="/replyUpdate", method = RequestMethod.POST)
+		public String replyUpdate(ReplyVO vo, HttpSession session, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+			/* logger.info("reply Write"); */
+			
+			replyService.updateReply(vo);
+			
+			rttr.addAttribute("bno", vo.getBno());
+			rttr.addAttribute("page", scri.getPage());
+			rttr.addAttribute("perPageNum", scri.getPerPageNum());
+			rttr.addAttribute("searchType", scri.getSearchType());
+			rttr.addAttribute("keyword", scri.getKeyword());
+			
+			return "redirect:/board/readView";
+		}
+		
+	//댓글 삭제 GET
+		@RequestMapping(value="/replyDeleteView", method = RequestMethod.GET)
+		public String replyDeleteView(ReplyVO vo, HttpSession session, SearchCriteria scri, Model model) throws Exception {
+			/* logger.info("reply Write"); */
+			
+			model.addAttribute("replyDelete", replyService.selectReply(vo.getRno()));
+			model.addAttribute("scri", scri);
+			
+
+			return "/board/replyDeleteView";
+		}
+		
+	//댓글 삭제
+		@RequestMapping(value="/replyDelete", method = RequestMethod.POST)
+		public String replyDelete(ReplyVO vo, HttpSession session, SearchCriteria scri, RedirectAttributes rttr) throws Exception {
+			/* logger.info("reply Write"); */
+			
+			replyService.deleteReply(vo);
+			
+			rttr.addAttribute("bno", vo.getBno());
+			rttr.addAttribute("page", scri.getPage());
+			rttr.addAttribute("perPageNum", scri.getPerPageNum());
+			rttr.addAttribute("searchType", scri.getSearchType());
+			rttr.addAttribute("keyword", scri.getKeyword());
+			
+			return "redirect:/board/readView";
+		}
 }

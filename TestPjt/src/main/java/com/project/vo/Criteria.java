@@ -49,13 +49,13 @@ public class Criteria {
 	
 	public int getRowStart() {
 		rowStart = rStart - (perPageNum * (page - 1));
-		logger.info("" + rowStart);
+		/* logger.info("" + rowStart); */
 		return rowStart;
 	}
 	
 	public int getRowEnd() {
 		rowEnd = rowStart - perPageNum + 1;
-		logger.info("" + rowEnd);
+		/* logger.info("" + rowEnd); */
 		return rowEnd;
 	}
 

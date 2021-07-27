@@ -16,8 +16,14 @@ public class BoardVO {
 	private Date editdate;
 	private String editor;
 	private String deleted;
-	private int RNUM;
 	
+	private int RNUM;
 	private String userName;
 	
+	@Override
+	public String toString() {
+		return "BoardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regdate="
+				+ regdate + ", hit=" + hit + ", editdate=" + editdate + ", editor=" + editor + ", deleted=" + deleted
+				+ ", RNUM=" + RNUM + ", userName=" + userName + "]";
+	}
 }
