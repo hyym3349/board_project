@@ -1,6 +1,7 @@
 package com.project.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -38,4 +39,9 @@ public interface BoardService {
 	// 게시물 조회수
 	public int boardHit(int bno) throws Exception;
 	
+	// 첨부파일 조회
+	public List<Map<String, Object>> selectFileList(int bno) throws Exception;
+	
+	// 첨부파일 다운'
+	public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception;
 }

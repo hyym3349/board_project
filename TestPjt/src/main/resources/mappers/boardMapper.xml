@@ -132,6 +132,7 @@
           WRITER = #{userId} 
     </delete> 
     
+    <!-- 파일첨부 -->
     <insert id="insertFile" parameterType="hashMap">
 		INSERT INTO MP_FILE(
 			FILE_NO,
@@ -150,4 +151,22 @@
 		)
     </insert>
 	
+	<!-- 첨부파일 조회 -->
+	<select id="selectFileList" parameterType="int" resultType="hashMap">
+		SELECT FILE_NO,
+			   OGN_FILE_NAME,
+			   ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
+		  FROM MP_FILE
+		 WHERE BNO = #{BNO}
+		   AND DELETED = 'N'
+	</select>
+	
+	<!-- 첨부파일 다운 -->
+	<select id="selectFileInfo" parameterType="hashMap" resultType="hashMap">
+		SELECT 
+			STORED_FILE_NAME,
+			OGN_FILE_NAME
+		FROM MP_FILE
+		WHERE FILE_NO = #{FILE_NO}
+	</select>
 </mapper>

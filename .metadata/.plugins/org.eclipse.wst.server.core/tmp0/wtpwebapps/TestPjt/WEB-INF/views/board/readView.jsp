@@ -487,8 +487,9 @@ response.setHeader("Cache-Control", "no-cache");
  					 <input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
  					 <input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
 					 <input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
+					 <input type="hidden" id="FILE_NO" name="FILE_NO" value=""> 
 				</form>
-			<p style="font-weight:900; color:#4e73df; font-size:20px;">게시물</p>
+			<p  style="font-weight:900; color:#4e73df; font-size:20px;">게시물</p>
 
 							<div class="form-group">
 								<label for="title" class="col-sm-2 control-label">제목</label>
@@ -523,18 +524,25 @@ response.setHeader("Cache-Control", "no-cache");
 								<fmt:formatDate value="${read.editdate}" pattern="yyyy-MM-dd HH:mm:ss" />					
 							</div>
 							
+							<hr>
+							<p  style="font-weight:900; color:#4e73df; font-size:20px;">파일목록</p>
+							<div class="form-group" style="border: 0px solid #dbdbdb;">
+								<c:forEach var="file" items="${file}">
+									<a href="#" onclick="fn_fileDown('${file.FILE_NO}'); return false;">${file.OGN_FILE_NAME}</a> ( 파일크기 : ${file.FILE_SIZE}KB )<br>
+								</c:forEach>
+							</div>
+							<hr>
 						
-						
-						<div>
+						<div style ="float: right;">
 						<c:if test="${read.writer == member.userId}">
 					<button type="submit" class="update_btn btn btn-outline-primary">수정</button>
 					</c:if>
 					<button type="submit" class="list_btn btn btn-outline-primary">목록</button>
 				</div>
-				
+				<br><br>
 				<hr>
 				<!-- 댓글 -->
-				<p style="font-weight:900; color:#4e73df; font-size:20px;">댓글 목록</p>
+				<p  style="font-weight:900; color:#4e73df; font-size:20px;">댓글 목록</p>
 				
 					   <div id="reply">
 					   	<ol class = "replyList">
@@ -775,6 +783,14 @@ response.setHeader("Cache-Control", "no-cache");
 			+ "&keyword=${scri.keyword}"
 			+ "&rno="+$(this).attr("data-rno");
 	});
+	
+	// 첨부파일 다운
+	function fn_fileDown(fileNo){
+		var formObj = $("form[name='readForm']");
+		$("#FILE_NO").attr("value", fileNo);
+		formObj.attr("action", "/board/fileDown");
+		formObj.submit();
+	}
 	</script>
 	
 	<script>
