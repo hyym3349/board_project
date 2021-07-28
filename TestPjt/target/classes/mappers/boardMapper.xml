@@ -5,14 +5,17 @@
 <mapper namespace="boardMapper">
    
       <!-- 게시판 글 작성 -->
-   <insert id="insert">
+   <insert id="insert" parameterType="com.project.vo.BoardVO" useGeneratedKeys="true" keyProperty="bno">
+   	<selectKey keyProperty="bno" resultType="int" order="BEFORE">
+   		SELECT MP_BOARD_SEQ.NEXTVAL FROM DUAL
+   	</selectKey>
 	   INSERT INTO MP_BOARD(    BNO 
 	   					      , TITLE 
 	   					      , CONTENT 
 	   					      , WRITER
 	   					      , DELETED
   )
-	                 VALUES(    MP_BOARD_SEQ.NEXTVAL
+	                 VALUES(    #{bno}
 	                 		  , #{title}
 	                 		  , #{content}
 	                 		  , #{writer}  
@@ -128,5 +131,23 @@
        WHERE 
           WRITER = #{userId} 
     </delete> 
+    
+    <insert id="insertFile" parameterType="hashMap">
+		INSERT INTO MP_FILE(
+			FILE_NO,
+			BNO,
+			OGN_FILE_NAME,
+			STORED_FILE_NAME,
+			FILE_SIZE,
+			FILELOC
+		)VALUES(
+			SEQ_MP_FILE_NO.NEXTVAL,
+			#{BNO},
+			#{OGN_FILE_NAME},
+			#{STORED_FILE_NAME},
+			#{FILE_SIZE},
+			#{FILELOC}
+		)
+    </insert>
 	
 </mapper>

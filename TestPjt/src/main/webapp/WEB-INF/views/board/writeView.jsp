@@ -568,25 +568,34 @@ response.setHeader("Cache-Control", "no-cache");
 			<br />
 			
 			<section id="container">
-				<form name="writeForm" method="post" action="/board/write">
+				<form name="writeForm" method="post" action="/board/write" enctype="multipart/form-data">
 
 					<c:if test="${member.userId != null}">
 					<div class="form-group">
-						<label for="title" class="col-sm-2 control-label" >제목</label>
+						<label for="title" class="col-sm-2 control-label" style="font-weight:bold; font-size:18px; color:#4e73df;">제목</label>
 						<input type="text" maxlength="50" id="title" name="title" class="chk form-control" title="제목을 입력하세요." title2="*참고 : 50자 이하로 입력해주세요*"/>
 					</div>
 					
 					<div class="form-group">
-						<label for="writer" class="col-sm-2 control-label">작성자</label>
+						<label for="writer" class="col-sm-2 control-label" style="font-weight:bold; font-size:18px; color:#4e73df;">작성자</label>
 						<label for="writer" class="form-control">${member.userName}</label>
 						<input type="hidden" value="${member.userId}" id="writer" name="writer" class="chk form-control" />
 					</div>
 		
 					<div class="form-group">
-						<label for="content" class="col-sm-2 control-label">내용</label>
+						<label for="content" class="col-sm-2 control-label" style="font-weight:bold; font-size:18px; color:#4e73df;">내용</label>
 						<textarea name="content" maxlength="2000" id="content" rows="20" cols="121"></textarea>
 						<p class="count"><span>0</span> / 2000</p>
 					</div> 
+					
+					<div class="form-group" id="file-list">
+					<label for="file" class="col-sm-2 control-label" style="font-weight:bold; font-size:18px; color:#4e73df;">파일첨부</label>
+				        <!-- <a href="#this" onclick="addFile()" >파일추가</a> -->
+				        <div class="file-group">
+				            <input type="file" name="file"><!-- <a href='#this' name='file-delete'>삭제</a> -->
+				        </div>
+				    </div>
+
 					
 					<hr />
 					   <span>
@@ -705,6 +714,28 @@ window.onload = function() {
              <!--  jquery validate --> 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="/resources/boot/js/write.js"></script>
+
+<!-- 	<script type="text/javascript">
+	    $(document).ready(function() {
+	        $("a[name='file-delete']").on("click", function(e) {
+	            e.preventDefault();
+	            deleteFile($(this));
+	        });
+	    })
+	 
+	    function addFile() {
+	        var str = "<div class='file-group'><input type='file' name='file'><a href='#this' name='file-delete'>삭제</a></div>";
+	        $("#file-list").append(str);
+	        $("a[name='file-delete']").on("click", function(e) {
+	            e.preventDefault();
+	            deleteFile($(this));
+	        });
+	    }
+	 
+	    function deleteFile(obj) {
+	        obj.parent().remove();
+	    }
+	</script> -->
 
 </body>
 

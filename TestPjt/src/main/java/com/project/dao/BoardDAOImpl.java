@@ -1,6 +1,7 @@
 package com.project.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -80,6 +81,13 @@ public class BoardDAOImpl implements BoardDAO {
 	public int boardDelete(MemberVO vo) {
 		
 		return sqlSession.delete("boardMapper.boardDelete", vo);
+	}
+
+	// 첨부파일 업로드
+	@Override
+	public void insertFile(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		sqlSession.insert("boardMapper.insertFile", map);
 	}
 
 }

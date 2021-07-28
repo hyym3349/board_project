@@ -1,6 +1,7 @@
 package com.project.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.project.vo.BoardVO;
 import com.project.vo.MemberVO;
@@ -35,4 +36,7 @@ public interface BoardDAO {
 
 	// 회원탈퇴 + 게시물 삭제
 	public int boardDelete(MemberVO vo);
+
+	// 첨부파일 업로드
+	public void insertFile(Map<String, Object> map);
 }
