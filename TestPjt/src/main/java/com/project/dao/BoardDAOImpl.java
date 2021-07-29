@@ -104,4 +104,11 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectOne("boardMapper.selectFileInfo", map);
 	}
 
+	// 첨부파일 수정
+	@Override
+	public void updateFile(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		
+		sqlSession.update("boardMapper.updateFile", map);
+	}
 }

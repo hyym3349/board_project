@@ -526,9 +526,9 @@ function deleteValue(){
     						<button  style="width:60px; height:34px;" id="searchBtn" type="button" class="btn btn-outline-primary">검색</button>
     						</span>
     						
-    						<span style="display:inline-block; width:110px; height:36px;">
+    						<!-- <span style="display:inline-block; width:110px; height:36px;">
     						<a href = "/board/list"><button style="width:110px; height:34px;" id="searchBtn" type="button" class="btn btn-outline-primary">전체글보기</button></a>
-    						</span>
+    						</span> -->
 
     						<script>
 						      $(function(){

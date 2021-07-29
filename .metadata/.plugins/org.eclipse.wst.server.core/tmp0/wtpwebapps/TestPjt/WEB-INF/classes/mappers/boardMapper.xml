@@ -155,10 +155,12 @@
 	<select id="selectFileList" parameterType="int" resultType="hashMap">
 		SELECT FILE_NO,
 			   OGN_FILE_NAME,
-			   ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
+			   ROUND(FILE_SIZE/1024,1) AS FILE_SIZE,
+			   DELETED
 		  FROM MP_FILE
 		 WHERE BNO = #{BNO}
 		   AND DELETED = 'N'
+		   ORDER BY FILE_NO ASC
 	</select>
 	
 	<!-- 첨부파일 다운 -->
@@ -169,4 +171,16 @@
 		FROM MP_FILE
 		WHERE FILE_NO = #{FILE_NO}
 	</select>
+	
+	<!-- 첨부파일 삭제여부 -->
+	<update id="updateFile" parameterType="hashMap">
+    	UPDATE 
+    		MP_FILE 
+    	SET
+    		DELETED = 'Y'
+    	WHERE FILE_NO = #{FILE_NO}
+    </update>
+	
+	
+	
 </mapper>

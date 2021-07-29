@@ -12,6 +12,7 @@ response.setDateHeader("Expires",0);
 response.setHeader("Cache-Control", "no-cache");
 %>
 <!DOCTYPE html>
+<c:if test="${member.userId != null}">
 <html lang="en">
 
 <head>
@@ -572,9 +573,14 @@ response.setHeader("Cache-Control", "no-cache");
 			<br />
 			
 			<section id="container">
-				<form name="updateForm" role="form" method="post" action="/board/update">
+				<form name="updateForm" role="form" method="post" action="/board/update" enctype="multipart/form-data">
 					<input type="hidden" name="bno" value="${update.bno}" readonly="readonly"/>
-					
+					<input type="hidden" id="page" name="page" value="${scri.page}"> 
+					<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}"> 
+					<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}"> 
+					<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
+					<input type="hidden" id="fileNoDel" name="fileNoDel[]" value=""> 
+					<input type="hidden" id="fileNameDel" name="fileNameDel[]" value=""> 
 				
 					
 					<div class="form-group">
@@ -609,9 +615,28 @@ response.setHeader("Cache-Control", "no-cache");
 						<fmt:formatDate value="${update.editdate}" pattern="yyyy-MM-dd HH:mm:ss"/>					
 					</div>
 					<hr />
+					<div class="form-group">
+						<label for="editdate">첨부파일목록</label>
+								<div>
+								<div id="fileIndex">
+									<c:forEach var="file" items="${file}" varStatus="var">
+									<div>
+										<input type="hidden" id="FILE_NO" name="FILE_NO_${var.index}" value="${file.FILE_NO }">
+										<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="FILE_NO_${var.index}">
+										<a href="#" id="fileName" onclick="return false;">${file.OGN_FILE_NAME}</a> ( 파일크기 : ${file.FILE_SIZE}KB )
+										<button id="fileDel" onclick="fn_del('${file.FILE_NO}','FILE_NO_${var.index}');" type="button">삭제</button><br>
+									</div>
+									</c:forEach>
+								</div>
+							</div>
+						</div>
+							<hr>
+							
 					<div>
-						<button type="submit" onclick="len_chk();" class="save_btn btn btn-outline-primary">저장</button>
+						<button type="button" class="fileAdd_btn btn btn-outline-primary">파일추가</button>
+						<button type="button" onclick="len_chk();" class="save_btn btn btn-outline-primary">저장</button>
 						<button class="cancel_btn btn btn-outline-primary" >취소</button>
+						
 						
 					</div>
 					
@@ -718,7 +743,34 @@ window.onload = function() {
 
     <!-- Page level custom scripts -->
     <script src="/resources/boot/js/demo/datatables-demo.js"></script>
-
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var fileIndex = 1;
+		//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
+		$(".fileAdd_btn").on("click", function(){
+			$("#fileIndex").append("<div><input type='file' style='color:#4e73df;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
+		});
+		$(document).on("click","#fileDelBtn", function(){
+			$(this).parent().remove();
+			
+		});
+	});
+		var fileNoArry = new Array();
+		var fileNameArry = new Array();
+		function fn_del(value, name){
+			
+			fileNoArry.push(value);
+			fileNameArry.push(name);
+			$("#fileNoDel").attr("value", fileNoArry);
+			$("#fileNameDel").attr("value", fileNameArry);
+		}
+	</script>
 </body>
 
 </html>
+</c:if>
+<c:if test="${member.userId == null}">
+<script>
+location.href = "/board/list";
+</script>
+</c:if>

@@ -13,6 +13,7 @@ response.setDateHeader("Expires",0);
 response.setHeader("Cache-Control", "no-cache");
 %>
 <!DOCTYPE html>
+<c:if test="${member.userId != null}">
 <html lang="en">
 
 <head>
@@ -588,18 +589,17 @@ response.setHeader("Cache-Control", "no-cache");
 						<p class="count"><span>0</span> / 2000</p>
 					</div> 
 					
-					<div class="form-group" id="file-list">
-					<label for="file" class="col-sm-2 control-label" style="font-weight:bold; font-size:18px; color:#4e73df;">파일첨부</label>
-				        <!-- <a href="#this" onclick="addFile()" >파일추가</a> -->
-				        <div class="file-group">
-				            <input type="file" name="file"><!-- <a href='#this' name='file-delete'>삭제</a> -->
-				        </div>
+				    
+				    <div id="fileIndex" >
+				    <div><input type='file' style='color:#4e73df;  'name='file_"+(fileIndex++)+"'></input>
+				    <button type='button' style='float:right; color:#4e73df;' id='fileDelBtn' class="btn btn-outline-primary">삭제</button></div>
 				    </div>
 
 					
 					<hr />
 					   <span>
-						<button type="submit" class="write_btn btn btn-outline-primary">작성</button>
+					   <button class="fileAdd_btn btn btn-outline-primary" type="button"  >파일추가</button>
+						<button type="submit" class="write_btn btn btn-outline-primary" >작성</button>
 						
 					   </span>
 					   <button class="cancel_btn btn btn-outline-primary" >취소</button>
@@ -715,28 +715,26 @@ window.onload = function() {
     <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="/resources/boot/js/write.js"></script>
 
-<!-- 	<script type="text/javascript">
-	    $(document).ready(function() {
-	        $("a[name='file-delete']").on("click", function(e) {
-	            e.preventDefault();
-	            deleteFile($(this));
-	        });
-	    })
-	 
-	    function addFile() {
-	        var str = "<div class='file-group'><input type='file' name='file'><a href='#this' name='file-delete'>삭제</a></div>";
-	        $("#file-list").append(str);
-	        $("a[name='file-delete']").on("click", function(e) {
-	            e.preventDefault();
-	            deleteFile($(this));
-	        });
-	    }
-	 
-	    function deleteFile(obj) {
-	        obj.parent().remove();
-	    }
-	</script> -->
-
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var fileIndex = 1;
+		//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
+		$(".fileAdd_btn").on("click", function(){
+			$("#fileIndex").append("<br><div><input type='file' style='color:#4e73df;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right; color:#4e73df;' id='fileDelBtn' class='btn btn-outline-primary'>"+"삭제"+"</button></div>");
+		});
+		$(document).on("click","#fileDelBtn", function(){
+			$(this).parent().remove();
+			
+		});
+	});
+	    
+	</script>
 </body>
 
 </html>
+</c:if>
+<c:if test="${member.userId == null}">
+<script>
+location.href = "/board/list";
+</script>
+</c:if>

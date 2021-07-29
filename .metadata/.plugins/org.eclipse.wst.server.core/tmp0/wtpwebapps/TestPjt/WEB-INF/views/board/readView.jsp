@@ -535,7 +535,7 @@ response.setHeader("Cache-Control", "no-cache");
 						
 						<div style ="float: right;">
 						<c:if test="${read.writer == member.userId}">
-					<button type="submit" class="update_btn btn btn-outline-primary">수정</button>
+					<button type="submit" class="update_btn btn btn-outline-primary">수정 / 첨부파일 추가</button>
 					</c:if>
 					<button type="submit" class="list_btn btn btn-outline-primary">목록</button>
 				</div>
@@ -550,18 +550,18 @@ response.setHeader("Cache-Control", "no-cache");
 					   		<c:forEach items = "${replyList}" var="replyList">
 					   		<c:choose>
 								<c:when test="${replyList.deleted == 'N'}">
-						   		<li style="font-weight:bold;"> 
-						   			<p>
-						   			작성자 : ${replyList.userName}<br />
-						   			</p>
-						   			<p>
-						   			작성날짜 : <fmt:formatDate value="${replyList.regdate}" pattern ="yyyy-MM-dd HH:mm:ss" />
-						   			</p>
-						   			<p>
+						   		<div > 
+						   			<label style="font-weight:bold;">
+						   			<!-- 작성자 :  -->${replyList.userName}
+						   			</label>
+						   			<label style="float:right; font-weight:300; font-size:11px;" >
+						   			<!-- 작성날짜 :  --><fmt:formatDate value="${replyList.regdate}" pattern ="yyyy-MM-dd HH:mm:ss" />
+						   			</label>
+						   			<%-- <p style="font-weight:300; font-size:11px;">
 						   			수정날짜 : <fmt:formatDate value="${replyList.editdate}" pattern ="yyyy-MM-dd HH:mm:ss" />
-						   			</p>
+						   			</p> --%>
 						   			
-						   			<p>댓글 내용 : ${replyList.content}</p>
+						   			<p style="font-weight:500;">${replyList.content}</p>
 						   			<c:if test="${replyList.userName == member.userName}">
 						   			<div>
 									  <button type="button" class="replyUpdateBtn btn btn-outline-primary" data-rno="${replyList.rno}">수정</button>
@@ -570,10 +570,10 @@ response.setHeader("Cache-Control", "no-cache");
 									<hr />
 									</c:if>
 									<c:if test="${replyList.userName != member.userName}">
-									<p style="font-weight:100; font-size:5px;">* 작성자만 수정/삭제 가능 *</p>
+									<p style="font-weight:100; font-size:5px; color:red;">* 작성자만 수정/삭제 가능 *</p>
 									<hr />
 									</c:if>
-						   		</li>
+						   		</div>
 						   		</c:when>
 						   		<c:otherwise></c:otherwise>
 						   		</c:choose>
