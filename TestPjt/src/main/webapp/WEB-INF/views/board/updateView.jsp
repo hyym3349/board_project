@@ -222,7 +222,7 @@ response.setHeader("Cache-Control", "no-cache");
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="/home">Login</a>
+                        <a class="collapse-item" href="/home">Login Menu</a>
                         <c:if test="${member.userId == null}">
                         <a class="collapse-item" id="registerBtn" type="button">Register</a>
                         </c:if>
@@ -622,6 +622,7 @@ response.setHeader("Cache-Control", "no-cache");
 									<c:forEach var="fileNo" items="${file}" varStatus="var">
 									<div id="${fileNo.FILE_NO}">
 										<input type="hidden" id="FILE_NO" name="FILE_NO_${var.index}" value="${fileNo.FILE_NO }">
+										
 										<a href="#" id="fileName" onclick="return false;">${fileNo.OGN_FILE_NAME}</a> ( 파일크기 : ${fileNo.FILE_SIZE}KB )
 										<button style=' color:#4e73df;' class='btn btn-outline-error' id="fileDel" onclick="fn_del('${fileNo.FILE_NO}');" type="button">삭제</button><br>
 									</div>

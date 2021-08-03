@@ -79,7 +79,7 @@ response.setHeader("Cache-Control", "no-cache");
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active"><a class="nav-link"
-				href="index.html"> <i class="fas fa-fw fa-tachometer-alt"></i> <span>HOME</span></a>
+				href="index"> <i class="fas fa-fw fa-tachometer-alt"></i> <span>HOME</span></a>
 			</li>
 
 			<!-- Divider -->
@@ -141,7 +141,7 @@ response.setHeader("Cache-Control", "no-cache");
 					aria-labelledby="headingPages" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Login Screens:</h6>
-						<a class="collapse-item" href="/home">Login</a> 
+						<a class="collapse-item" href="/home">Login Menu</a> 
 						<c:if test="${member.userId == null}">
                         <a class="collapse-item" id="registerBtn" type="button">Register</a>
                         </c:if>

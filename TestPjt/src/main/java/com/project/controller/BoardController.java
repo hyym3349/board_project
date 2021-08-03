@@ -126,12 +126,11 @@ public class BoardController {
 						 @ModelAttribute("scri") SearchCriteria scri, 
 						 RedirectAttributes rttr,
 						 @RequestParam(value="fileNoDel[]") String[] files,
-						 @RequestParam(value="fileNameDel[]") String[] fileNames,
 						 MultipartHttpServletRequest mpRequest) throws Exception{
 		/* logger.info("update"); */
 		
 
-		service.update(boardVO, files, fileNames, mpRequest);
+		service.update(boardVO, files, mpRequest);
 		
 		rttr.addAttribute("page", scri.getPage());
 		rttr.addAttribute("perPageNum", scri.getPerPageNum());

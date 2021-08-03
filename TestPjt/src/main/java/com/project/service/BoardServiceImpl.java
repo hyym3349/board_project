@@ -78,11 +78,11 @@ public class BoardServiceImpl implements BoardService {
 	
 	// 첨부파일 수정
 		@Override
-		public void update(BoardVO boardVO, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception {
+		public void update(BoardVO boardVO, String[] files, MultipartHttpServletRequest mpRequest) throws Exception {
 			
 			dao.update(boardVO);
 			
-			List<Map<String, Object>> list = fileUtils.parseUpdateFileInfo(boardVO, files, fileNames, mpRequest);
+			List<Map<String, Object>> list = fileUtils.parseUpdateFileInfo(boardVO, files, mpRequest);
 			Map<String, Object> tempMap = null;
 			int size = list.size();
 			for(int i = 0; i<size; i++) {
