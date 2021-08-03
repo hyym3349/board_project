@@ -503,8 +503,7 @@ function deleteValue(){
 							function enterkey() {
 								if (window.event.keyCode == 13) {
 								if($('#keywordInput').val() == ''){
-									Swal.fire("검색어를 입력해주세요","","warning")
-  								   
+									self.location = "/board/list";
   							   }
   							   else{
    						    self.location = "list" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());

@@ -492,40 +492,41 @@ response.setHeader("Cache-Control", "no-cache");
 			<p  style="font-weight:900; color:#4e73df; font-size:20px;">게시물</p>
 
 							<div class="form-group">
-								<label for="title" class="col-sm-2 control-label">제목</label>
+								<label style="font-weight:bold;" for="title" class="col-sm-2 control-label">제목</label>
 								<input type="text" id="title" name="title" class="form-control" value="${read.title}" readonly="readonly"/>
 							</div>
 							
 							<div class="form-group">
-								<label for="content" class="col-sm-2 control-label">내용</label>
+								<label style="font-weight:bold;" for="content" class="col-sm-2 control-label">내용</label>
 								<div style="border:1px solid; padding:10px; border-radius: 10px; background-color:#eaecf4; border-color:#d1d3e2">
 								${read.content}
 								</div>
 							</div>
 							
 							<div class="form-group">
-								<label for="writer" class="col-sm-2 control-label">작성자</label>
+								<label style="font-weight:bold;" for="writer" class="col-sm-2 control-label">작성자</label>
 								<input type="text" id="writer" name="writer" class="form-control" value="${read.userName}" readonly="readonly"/>
 								
 							</div>
 								
 							<div class="form-group">
-								<label for="regdate" class="col-sm-2 control-label">작성날짜</label>
+								<label style="font-weight:bold;" for="regdate" class="col-sm-2 control-label">작성날짜</label>
 								<fmt:formatDate value="${read.regdate}" pattern="yyyy-MM-dd HH:mm:ss" />					
 							</div>
 							
 							<div class="form-group">
-								<label for="editor" class="col-sm-2 control-label">수정자</label>
+								<label style="font-weight:bold;" for="editor" class="col-sm-2 control-label">수정자</label>
 								<input type="text" id="editor" name="editor" class="form-control" value="${read.userName}" readonly="readonly"/>
 								
 							</div>
 							<div class="form-group">
-								<label for="editdate" class="col-sm-2 control-label">수정날짜</label>
+								<label style="font-weight:bold;" for="editdate" class="col-sm-2 control-label">수정날짜</label>
 								<fmt:formatDate value="${read.editdate}" pattern="yyyy-MM-dd HH:mm:ss" />					
 							</div>
 							
 							<hr>
-							<p  style="font-weight:900; color:#4e73df; font-size:20px;">파일목록</p>
+							<p  style="font-weight:900; color:#4e73df; font-size:20px;">첨부파일</p>
+							
 							<div class="form-group" style="border: 0px solid #dbdbdb;">
 								<c:forEach var="file" items="${file}">
 									<a href="#" onclick="fn_fileDown('${file.FILE_NO}'); return false;">${file.OGN_FILE_NAME}</a> ( 파일크기 : ${file.FILE_SIZE}KB )<br>
@@ -535,17 +536,17 @@ response.setHeader("Cache-Control", "no-cache");
 						
 						<div style ="float: right;">
 						<c:if test="${read.writer == member.userId}">
-					<button type="submit" class="update_btn btn btn-outline-primary">수정 / 첨부파일 추가</button>
+					<button type="submit" class="update_btn btn btn-outline-primary">게시물 / 첨부파일 수정</button>
 					</c:if>
 					<button type="submit" class="list_btn btn btn-outline-primary">목록</button>
 				</div>
 				<br><br>
 				<hr>
 				<!-- 댓글 -->
-				<p  style="font-weight:900; color:#4e73df; font-size:20px;">댓글 목록</p>
+				<p  style="font-weight:900; color:#4e73df; font-size:20px;">댓글</p>
 				
 					   <div id="reply">
-					   	<ol class = "replyList">
+					   	<div class = "replyList">
 					   	
 					   		<c:forEach items = "${replyList}" var="replyList">
 					   		<c:choose>
@@ -561,25 +562,31 @@ response.setHeader("Cache-Control", "no-cache");
 						   			수정날짜 : <fmt:formatDate value="${replyList.editdate}" pattern ="yyyy-MM-dd HH:mm:ss" />
 						   			</p> --%>
 						   			
-						   			<p style="font-weight:500;">${replyList.content}</p>
+						   			<div style="font-weight:500;">&nbsp;${replyList.content}</div>
+						   			</div>
 						   			<c:if test="${replyList.userName == member.userName}">
-						   			<div>
-									  <button type="button" class="replyUpdateBtn btn btn-outline-primary" data-rno="${replyList.rno}">수정</button>
-									  <button type="button" class="replyDeleteBtn btn btn-outline-primary" data-rno="${replyList.rno}">삭제</button>
+						   			
+						   			<div style="float:right;">
+									  <button style="color:#4e73df; font-weight:600;" type="button" class="replyUpdateBtn btn btn-outline-error" data-rno="${replyList.rno}">수정</button>
+									  &nbsp;/
+									  <button style="color:#4e73df; font-weight:600; " type="button" class="replyDeleteBtn btn btn-outline-error" data-rno="${replyList.rno}">삭제</button>
 									</div>
+									<br>
 									<hr />
 									</c:if>
 									<c:if test="${replyList.userName != member.userName}">
-									<p style="font-weight:100; font-size:5px; color:red;">* 작성자만 수정/삭제 가능 *</p>
+									
+									<p style="font-weight:100; font-size:5px; color:red; float:right;">* 작성자만 수정/삭제 가능 *</p>
+									<br>
 									<hr />
 									</c:if>
-						   		</div>
+						   		
 						   		</c:when>
 						   		<c:otherwise></c:otherwise>
 						   		</c:choose>
 						   			</c:forEach>
 						   		
-					   	</ol>
+					   	</div>
 					   </div>
 				<!-- 댓글 끝 -->
 				<hr>
@@ -595,12 +602,12 @@ response.setHeader("Cache-Control", "no-cache");
 				  <input type="hidden" id="keyword" name="keyword" value="${scri.keyword}"> 
 				
 				  <div>
-				    <label for="userno" class="col-sm-2 control-label">댓글 작성자</label>
-				    <label for="userno" class="form-control">${member.userName}</label>
+				    <label style="font-weight:bold;" for="userno" class="col-sm-2 control-label">댓글 작성자</label>
+				    <label style="border:1px solid; padding:10px; border-radius: 10px; background-color:#eaecf4; border-color:#d1d3e2" for="userno" class="form-control">${member.userName}</label>
 				    <input type="hidden" id="userno" name="userno" value="${member.userNo}"/>
 				    <br/>
-				     <label for="content" class="col-sm-2 control-label">댓글 내용</label>
-				     <textarea placeholder="댓글 내용을 입력해주세요" id="content" name="content" maxlength="500" class="form-control content" rows="8" cols="36" ></textarea>
+				     <label style="font-weight:bold;" for="content" class="col-sm-2 control-label">댓글 내용</label>
+				     <textarea placeholder="댓글 내용을 입력해주세요..." id="content" name="content" maxlength="500" class="form-control content" rows="8" cols="36" ></textarea>
 				     <span style="color:#aaa;" id="counter">(0 / 최대 500자)</span>
 
 				  </div>

@@ -12,4 +12,9 @@
     <fullyQualifiedTypeName name="javax.inject.Inject"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
     <fullyQualifiedTypeName name="java.util.logging.Logger"/>
+    <fullyQualifiedTypeName name="javax.annotation.Resource"/>
+    <fullyQualifiedTypeName name="com.project.util.FileUtils"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="java.net.URLEncoder"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
 </qualifiedTypeNameHistroy>

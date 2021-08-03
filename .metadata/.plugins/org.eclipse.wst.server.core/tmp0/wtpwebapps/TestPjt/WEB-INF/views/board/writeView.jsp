@@ -13,10 +13,11 @@ response.setDateHeader("Expires",0);
 response.setHeader("Cache-Control", "no-cache");
 %>
 <!DOCTYPE html>
-<c:if test="${member.userId != null}">
+
 <html lang="en">
 
 <head>
+
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		
 		<script type="text/javascript" src="/resources/se2/js/service/HuskyEZCreator.js" charset="utf-8"></script>
@@ -138,7 +139,7 @@ response.setHeader("Cache-Control", "no-cache");
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -591,8 +592,8 @@ response.setHeader("Cache-Control", "no-cache");
 					
 				    
 				    <div id="fileIndex" >
-				    <div><input type='file' style='color:#4e73df;  'name='file_"+(fileIndex++)+"'></input>
-				    <button type='button' style='float:right; color:#4e73df;' id='fileDelBtn' class="btn btn-outline-primary">삭제</button></div>
+				    <div><input type='file' style='cursor: pointer; color:#4e73df;' name='file_"+(fileIndex++)+"'></input>
+				    <button type='button' style='cursor: pointer; color:#4e73df;' id='fileDelBtn' class="btn btn-outline-error">삭제</button></div>
 				    </div>
 
 					
@@ -720,7 +721,7 @@ window.onload = function() {
 		var fileIndex = 1;
 		//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
 		$(".fileAdd_btn").on("click", function(){
-			$("#fileIndex").append("<br><div><input type='file' style='color:#4e73df;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right; color:#4e73df;' id='fileDelBtn' class='btn btn-outline-primary'>"+"삭제"+"</button></div>");
+			$("#fileIndex").append("<div><input type='file' style='cursor: pointer; color:#4e73df;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='cursor: pointer; color:#4e73df;' id='fileDelBtn' class='btn btn-outline-error'>"+"&nbsp삭제"+"</button></div>");
 		});
 		$(document).on("click","#fileDelBtn", function(){
 			$(this).parent().remove();
@@ -729,12 +730,9 @@ window.onload = function() {
 	});
 	    
 	</script>
+	
+
+	
 </body>
 
 </html>
-</c:if>
-<c:if test="${member.userId == null}">
-<script>
-location.href = "/board/list";
-</script>
-</c:if>

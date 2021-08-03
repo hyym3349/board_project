@@ -594,7 +594,7 @@ response.setHeader("Cache-Control", "no-cache");
 						<p class="count"><span>0</span> / 2000</p>
 					</div>
 		
-					<div class="form-group">
+					<div class="form-group" >
 						<label for="writer">작성자</label>
 						<input type="text" id="writer" name="writer" class="form-control" value="${member.userName}" readonly="readonly"/>
 					</div>
@@ -604,9 +604,9 @@ response.setHeader("Cache-Control", "no-cache");
 						<fmt:formatDate value="${update.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>					
 					</div>
 					
-					<div class="form-group">
+					<div class="form-group" >
 						<label for="editor">수정자</label>
-						<label for="editor" class="form-control">${member.userName}</label>
+						<label style="border:1px solid; padding:10px; border-radius: 10px; background-color:#eaecf4; border-color:#d1d3e2" for="editor" class="form-control">${member.userName}</label>
 						<input type="hidden" maxlength="5" id="editor" name="editor" class="chk form-control" title="수정자를 입력하세요."  title2="*참고 : 5자 이하로 입력해주세요*" readonly="readonly" value="${member.userId}"/>
 					</div>
 					
@@ -616,15 +616,14 @@ response.setHeader("Cache-Control", "no-cache");
 					</div>
 					<hr />
 					<div class="form-group">
-						<label for="editdate">첨부파일목록</label>
+						<label for="editdate">첨부파일</label>
 								<div>
 								<div id="fileIndex">
-									<c:forEach var="file" items="${file}" varStatus="var">
-									<div>
-										<input type="hidden" id="FILE_NO" name="FILE_NO_${var.index}" value="${file.FILE_NO }">
-										<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="FILE_NO_${var.index}">
-										<a href="#" id="fileName" onclick="return false;">${file.OGN_FILE_NAME}</a> ( 파일크기 : ${file.FILE_SIZE}KB )
-										<button id="fileDel" onclick="fn_del('${file.FILE_NO}','FILE_NO_${var.index}');" type="button">삭제</button><br>
+									<c:forEach var="fileNo" items="${file}" varStatus="var">
+									<div id="${fileNo.FILE_NO}">
+										<input type="hidden" id="FILE_NO" name="FILE_NO_${var.index}" value="${fileNo.FILE_NO }">
+										<a href="#" id="fileName" onclick="return false;">${fileNo.OGN_FILE_NAME}</a> ( 파일크기 : ${fileNo.FILE_SIZE}KB )
+										<button style=' color:#4e73df;' class='btn btn-outline-error' id="fileDel" onclick="fn_del('${fileNo.FILE_NO}');" type="button">삭제</button><br>
 									</div>
 									</c:forEach>
 								</div>
@@ -743,12 +742,13 @@ window.onload = function() {
 
     <!-- Page level custom scripts -->
     <script src="/resources/boot/js/demo/datatables-demo.js"></script>
+    
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var fileIndex = 1;
 		//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
 		$(".fileAdd_btn").on("click", function(){
-			$("#fileIndex").append("<div><input type='file' style='color:#4e73df;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='float:right;' id='fileDelBtn'>"+"삭제"+"</button></div>");
+			$("#fileIndex").append("<div><input type='file' style='color:#4e73df;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='color:#4e73df;' id='fileDelBtn' class='btn btn-outline-error'>"+"&nbsp삭제"+"</button></div>");
 		});
 		$(document).on("click","#fileDelBtn", function(){
 			$(this).parent().remove();
@@ -756,15 +756,14 @@ window.onload = function() {
 		});
 	});
 		var fileNoArry = new Array();
-		var fileNameArry = new Array();
-		function fn_del(value, name){
+		function fn_del(value){
 			
 			fileNoArry.push(value);
-			fileNameArry.push(name);
 			$("#fileNoDel").attr("value", fileNoArry);
-			$("#fileNameDel").attr("value", fileNameArry);
+			$("#"+value).remove();
 		}
 	</script>
+	
 </body>
 
 </html>

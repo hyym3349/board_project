@@ -74,7 +74,6 @@ public class BoardController {
 		//System.out.println(pageMaker);
 		/* System.out.println(service.list(scri)); */
 		return "board/list";
-		
 	}
 	
 	// 게시판 조회
@@ -84,10 +83,10 @@ public class BoardController {
 		/* logger.info("read"); */
 		
 		BoardVO writer = service.read(boardVO.getBno());
-		/* System.out.println(writer.getWriter()); */
+		/* System.out.println(writer); */
 		
 		MemberVO login = (MemberVO)session.getAttribute("member"); 
-		if(login != null && !login.getUserId().equals(writer.getWriter())) {
+		if(login != null && !login.getUserName().equals(writer.getWriter())) {
 		    service.boardHit(boardVO.getBno());
 		}
 		 
@@ -159,7 +158,7 @@ public class BoardController {
     		rttr.addAttribute("searchType", scri.getSearchType());
     		rttr.addAttribute("keyword", scri.getKeyword());
         }
-        return "redirect:/board/readView?&page="+ scri.getPage() +"&perPageNum="+ scri.getPerPageNum() +"&searchType="+ scri.getSearchType() +"&keyword=" + scri.getKeyword();
+        return "redirect:/board/list?&page="+ scri.getPage() +"&perPageNum="+ scri.getPerPageNum() +"&searchType="+ scri.getSearchType() +"&keyword=" + scri.getKeyword();
 		
     }
     
