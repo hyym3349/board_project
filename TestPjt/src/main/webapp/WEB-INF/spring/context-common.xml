@@ -19,13 +19,19 @@
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
 		<property name="maxUploadSize" value="100000000" /> <!-- 100MB -->
 		<property name="maxInMemorySize" value="100000000" /> <!-- 100MB -->
-	</bean> 
-	
-<!-- 	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-    <property name="exceptionMappings">
-        <props>
-            <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">/board/writeView</prop>
-        </props>
-    </property>
-</bean> -->
+	</bean>
+
+	<!-- 파일 용랭 Exception 제어 -->
+<!-- 	 <bean id="exceptionResolver"
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop
+					key="org.springframework.web.multipart.MaxUploadSizeExceededException">
+					/resources/WEB-INF/views/board/writeView.jsp
+				</prop>
+			</props>
+		</property>
+	</bean>  -->
+
 </beans>
