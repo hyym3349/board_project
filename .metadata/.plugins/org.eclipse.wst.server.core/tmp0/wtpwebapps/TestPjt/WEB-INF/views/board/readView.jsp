@@ -498,7 +498,7 @@ response.setHeader("Cache-Control", "no-cache");
 							
 							<div class="form-group">
 								<label style="font-weight:bold;" for="content" class="col-sm-2 control-label">내용</label>
-								<div style="border:1px solid; padding:10px; border-radius: 10px; background-color:#eaecf4; border-color:#d1d3e2">
+								<div style="border:1px solid; padding:.435rem .75rem; border-radius: .35rem; background-color:#eaecf4; border-color:#d1d3e2">
 								${read.content}
 								</div>
 							</div>
@@ -603,7 +603,7 @@ response.setHeader("Cache-Control", "no-cache");
 				
 				  <div>
 				    <label style="font-weight:bold;" for="userno" class="col-sm-2 control-label">댓글 작성자</label>
-				    <label style="border:1px solid; padding:10px; border-radius: 10px; background-color:#eaecf4; border-color:#d1d3e2" for="userno" class="form-control">${member.userName}</label>
+				    <label style="border:1px solid; padding:.435rem .75rem; border-radius: .35rem; background-color:#eaecf4; border-color:#d1d3e2" for="userno" class="form-control">${member.userName}</label>
 				    <input type="hidden" id="userno" name="userno" value="${member.userNo}"/>
 				    <br/>
 				     <label style="font-weight:bold;" for="content" class="col-sm-2 control-label">댓글 내용</label>

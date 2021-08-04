@@ -606,7 +606,7 @@ response.setHeader("Cache-Control", "no-cache");
 					
 					<div class="form-group" >
 						<label for="editor">수정자</label>
-						<label style="border:1px solid; padding:10px; border-radius: 10px; background-color:#eaecf4; border-color:#d1d3e2" for="editor" class="form-control">${member.userName}</label>
+						<label style="border:1px solid; padding:.435rem .75rem; border-radius: .35rem; background-color:#eaecf4; border-color:#d1d3e2" for="editor" class="form-control">${member.userName}</label>
 						<input type="hidden" maxlength="5" id="editor" name="editor" class="chk form-control" title="수정자를 입력하세요."  title2="*참고 : 5자 이하로 입력해주세요*" readonly="readonly" value="${member.userId}"/>
 					</div>
 					
@@ -624,7 +624,9 @@ response.setHeader("Cache-Control", "no-cache");
 										<input type="hidden" id="FILE_NO" name="FILE_NO_${var.index}" value="${fileNo.FILE_NO }">
 										
 										<a href="#" id="fileName" onclick="return false;">${fileNo.OGN_FILE_NAME}</a> ( 파일크기 : ${fileNo.FILE_SIZE}KB )
-										<button style=' color:#4e73df;' class='btn btn-outline-error' id="fileDel" onclick="fn_del('${fileNo.FILE_NO}');" type="button">삭제</button><br>
+										<button style=' color:#4e73df;' class='btn btn-outline-error' id="fileDel" onclick="fn_del('${fileNo.FILE_NO}');" type="button">삭제</button>
+										<span style="color:red; font-size:8px;">**100MB 미만 파일만 첨부 가능**</span>
+										<br>
 									</div>
 									</c:forEach>
 								</div>
@@ -749,7 +751,8 @@ window.onload = function() {
 		var fileIndex = 1;
 		//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
 		$(".fileAdd_btn").on("click", function(){
-			$("#fileIndex").append("<div><input type='file' style='color:#4e73df;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='color:#4e73df;' id='fileDelBtn' class='btn btn-outline-error'>"+"&nbsp삭제"+"</button></div>");
+			$("#fileIndex").append("<div><input type='file' style='color:#4e73df;' name='file_"+(fileIndex++)+"'>"+"</button>"+
+			"<button type='button' style='color:#4e73df;' id='fileDelBtn' class='btn btn-outline-error'>"+"&nbsp삭제"+"</button><span style='color:red; font-size:8px;'>**100MB 미만 파일만 첨부 가능**</span></div>");
 		});
 		$(document).on("click","#fileDelBtn", function(){
 			$(this).parent().remove();

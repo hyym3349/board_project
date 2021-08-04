@@ -8,10 +8,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <% 
-response.setHeader("Pragma","no-cache"); 
-response.setDateHeader("Expires",0); 
-response.setHeader("Cache-Control", "no-cache");
+	response.setHeader("Pragma","no-cache"); 
+	response.setDateHeader("Expires",0); 
+	response.setHeader("Cache-Control", "no-cache");
 %>
+
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -54,7 +56,6 @@ response.setHeader("Cache-Control", "no-cache");
 		<!-- 작성버튼을 눌렀을때 벨리데이션을 체크하기 위한 함수  -->
 		<!-- chk라는 클래스의 i번째가 공백이거나 null이면 알러트로 i번째의 타이틀을 출력해주는 함수  -->
 		<script type="text/javascript">
-
 		var oEditors = [];
 		$(document).ready(function(){
 			
@@ -107,7 +108,6 @@ response.setHeader("Cache-Control", "no-cache");
 	        	 oEditors.getById["content"].exec("FOCUS"); //포커싱 
 	        	 return true; 
 	        	 }
-
 		}
 		</script>
 
@@ -592,8 +592,11 @@ response.setHeader("Cache-Control", "no-cache");
 					
 				    
 				    <div id="fileIndex" >
-				    <div><input type='file' style='cursor: pointer; color:#4e73df;' name='file_"+(fileIndex++)+"'></input>
-				    <button type='button' style='cursor: pointer; color:#4e73df;' id='fileDelBtn' class="btn btn-outline-error">삭제</button></div>
+				    	<div>
+				    	<input type='file' style='cursor: pointer; color:#4e73df;' name='file_"+(fileIndex++)+"'></input>
+				    	<button type='button' style='cursor: pointer; color:#4e73df;' id='fileDelBtn' class="btn btn-outline-error">삭제</button>
+				    	<span style="color:red; font-size:8px;">**100MB 미만 파일만 첨부 가능**</span>
+				    	</div>
 				    </div>
 
 					
@@ -625,7 +628,6 @@ response.setHeader("Cache-Control", "no-cache");
 <script> var EDITORS = []; 
 window.onload = function() { 
 	// smartEditor 세팅 
-
 	
 	// editor에 글자를 쳤을 때 글자 수 표출되는 이벤트 
 	// setTimeout 을 안하면 iframe이 만들어지기 전에 이벤트가 등록되어 영역을 찾지 못한다 
@@ -721,7 +723,7 @@ window.onload = function() {
 		var fileIndex = 1;
 		//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
 		$(".fileAdd_btn").on("click", function(){
-			$("#fileIndex").append("<div><input type='file' style='cursor: pointer; color:#4e73df;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='cursor: pointer; color:#4e73df;' id='fileDelBtn' class='btn btn-outline-error'>"+"&nbsp삭제"+"</button></div>");
+			$("#fileIndex").append("<div><input type='file' style='cursor: pointer; color:#4e73df;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='cursor: pointer; color:#4e73df;' id='fileDelBtn' class='btn btn-outline-error'>"+"&nbsp삭제"+"</button><span style='color:red; font-size:8px;'>**100MB 미만 파일만 첨부 가능**</span></div>");
 		});
 		$(document).on("click","#fileDelBtn", function(){
 			$(this).parent().remove();
@@ -730,7 +732,7 @@ window.onload = function() {
 	});
 	    
 	</script>
-	
+
 
 	
 </body>
