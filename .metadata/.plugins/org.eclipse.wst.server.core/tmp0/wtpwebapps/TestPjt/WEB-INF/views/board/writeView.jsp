@@ -90,8 +90,15 @@ response.setHeader("Cache-Control", "no-cache");
 			if (fn_valiChk()) {
 				return false;
 			}
-			if (fileCheck(file)) {
-				return false;
+			
+			for(var i = 1 ; i <= 5 ; i++){
+				var file = $("#file_" + i);
+				if (file.length == 0 ) {
+					continue;
+				}
+				if (!fileCheck(file)) {
+					return;
+				}
 			}
 			formObj.attr("action", "/board/write");
 			formObj.attr("method", "post");
@@ -129,21 +136,25 @@ response.setHeader("Cache-Control", "no-cache");
 	function fileCheck(file) {
 		var maxSize = 100 * 1024 * 1024 //100MB
 		var fileSize = 0;
-
+		
+		file = file[0];
 		fileCnt = file.files.length;      // 파일의 개수
 		if(fileCnt > 0) {
 		   fileSize = file.files[0].size;
 		   // 유효성 검사 함
 		   if (fileSize > maxSize) {
 		      Swal.fire("첨부파일 100MB 이하로 등록!!", "", "error");
-		      return true;
-		   } else {
 		      return false;
+		   } else {
+		      return true;
 		   }
 		} else if(fileCnt == 0) {
-		   return false;
+		   return true;
 		}
+
 	}
+
+
 </script>
 
 <script type="text/javascript">
@@ -802,30 +813,25 @@ response.setHeader("Cache-Control", "no-cache");
 	</script>
 
 	<script type="text/javascript">
-		$(document)
-				.ready(
-						function() {
-							var fileIndex = 1;
-							//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
-							$(".fileAdd_btn")
-									.on(
-											"click",
-											function() {
-												$("#fileIndex")
-														.append(
-																"<div><input type='file' style='cursor: pointer; color:#4e73df;' name='file_"
-																		+ (fileIndex++)
-																		+ "'>"
-																		+ "</button>"
-																		+ "<button type='button' style='cursor: pointer; color:#4e73df;' id='fileDelBtn' class='btn btn-outline-error'>"
-																		+ "&nbsp삭제"
-																		+ "</button><span style='color:red; font-size:8px;'>**100MB 미만 파일만 첨부 가능**</span></div>");
-											});
-							$(document).on("click", "#fileDelBtn", function() {
-								$(this).parent().remove();
-
-							});
-						});
+		$(document).ready(function() {
+			var fileIndex = 1;
+			
+			//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
+			$(".fileAdd_btn").on("click",function() {
+				(fileIndex++);
+				$("#fileIndex").append(
+					"<div><input type='file' id='file_" + (fileIndex) + "' style='cursor: pointer; color:#4e73df;' name='file_" + (fileIndex) + "'>"
+							+ "</button>"
+							+ "<button type='button' style='cursor: pointer; color:#4e73df;' id='fileDelBtn' class='btn btn-outline-error'>"
+							+ "&nbsp삭제"
+							+ "</button><span style='color:red; font-size:8px;'>**100MB 미만 파일만 첨부 가능**</span></div>"
+				);
+			});
+			
+			$(document).on("click", "#fileDelBtn", function() {
+				$(this).parent().remove();
+			});
+		});
 	</script>
 
 
