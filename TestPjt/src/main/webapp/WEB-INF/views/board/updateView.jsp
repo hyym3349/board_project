@@ -658,7 +658,6 @@ response.setHeader("Cache-Control", "no-cache");
 <script> var EDITORS = []; 
 window.onload = function() { 
 	// smartEditor 세팅 
-
 	
 	// editor에 글자를 쳤을 때 글자 수 표출되는 이벤트 
 	// setTimeout 을 안하면 iframe이 만들어지기 전에 이벤트가 등록되어 영역을 찾지 못한다 

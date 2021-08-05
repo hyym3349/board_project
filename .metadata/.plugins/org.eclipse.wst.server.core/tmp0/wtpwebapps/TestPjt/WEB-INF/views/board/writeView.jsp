@@ -7,10 +7,10 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-<% 
-	response.setHeader("Pragma","no-cache"); 
-	response.setDateHeader("Expires",0); 
-	response.setHeader("Cache-Control", "no-cache");
+<%
+response.setHeader("Pragma", "no-cache");
+response.setDateHeader("Expires", 0);
+response.setHeader("Cache-Control", "no-cache");
 %>
 
 
@@ -62,113 +62,103 @@
 <!-- 작성버튼을 눌렀을때 벨리데이션을 체크하기 위한 함수  -->
 <!-- chk라는 클래스의 i번째가 공백이거나 null이면 알러트로 i번째의 타이틀을 출력해주는 함수  -->
 <script type="text/javascript">
-		var oEditors = [];
-		$(document).ready(function(){
-			
-			nhn.husky.EZCreator.createInIFrame({
- 			oAppRef: oEditors,
- 			elPlaceHolder: "content",
- 			sSkinURI: "/resources/se2/SmartEditor2Skin.html",
- 			htParams : { bUseToolbar : true, // 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
-			bUseVerticalResizer : true, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
- 			bUseModeChanger : true, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
-			//aAdditionalFontList : aAdditionalFontSet, // 추가 글꼴 목록 
-			fOnBeforeUnload : function() { 
-				//alert("완료!"); 
-				} 
- 			}, //boolean 
- 			fOnAppLoad : function() { 
- 				// Editor 에 값 셋팅 
- 				oEditors.getById["content"].exec("PASTE_HTML", [""]); 
- 				},
- 			fCreator: "createSEditor2"
-			});
-			var formObj = $("form[name='writeForm']");
-			
-			$(".write_btn").on("click", function(){
-				if(fn_valiChk()){
-					return false;
-				}
-				if(fileCheck(file)){
-					return false;
-				}
-				formObj.attr("action", "/board/write");
-				formObj.attr("method", "post");
-				formObj.submit();
-				
+	var oEditors = [];
+	$(document).ready(function() {
 
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef : oEditors,
+			elPlaceHolder : "content",
+			sSkinURI : "/resources/se2/SmartEditor2Skin.html",
+			htParams : {
+				bUseToolbar : true, // 툴바 사용 여부 (true:사용/ false:사용하지 않음) 
+				bUseVerticalResizer : true, // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음) 
+				bUseModeChanger : true, // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음) 
+				//aAdditionalFontList : aAdditionalFontSet, // 추가 글꼴 목록 
+				fOnBeforeUnload : function() {
+					//alert("완료!"); 
+				}
+			}, //boolean 
+			fOnAppLoad : function() {
+				// Editor 에 값 셋팅 
+				oEditors.getById["content"].exec("PASTE_HTML", [ "" ]);
+			},
+			fCreator : "createSEditor2"
+		});
+		var formObj = $("form[name='writeForm']");
 
-			});
-		
-			$(".cancel_btn").on("click", function(){
-				event.preventDefault();
-				location.href = "/board/list";
-			})
+		$(".write_btn").on("click", function() {
+			if (fn_valiChk()) {
+				return false;
+			}
+			if (fileCheck(file)) {
+				return false;
+			}
+			formObj.attr("action", "/board/write");
+			formObj.attr("method", "post");
+			formObj.submit();
+
+		});
+
+		$(".cancel_btn").on("click", function() {
+			event.preventDefault();
+			location.href = "/board/list";
 		})
-		
-		function fn_valiChk(){
-			var regForm = $("form[name='writeForm'] .chk").length;
-			for(var i = 0; i<regForm; i++){
-				if($(".chk").eq(i).val() == "" || $(".chk").eq(i).val() == null){
-					Swal.fire($(".chk").eq(i).attr("title"),$(".chk").eq(i).attr("title2"),"warning");
-					return true;
-				}
+	})
+
+	function fn_valiChk() {
+		var regForm = $("form[name='writeForm'] .chk").length;
+		for (var i = 0; i < regForm; i++) {
+			if ($(".chk").eq(i).val() == "" || $(".chk").eq(i).val() == null) {
+				Swal.fire($(".chk").eq(i).attr("title"), $(".chk").eq(i).attr(
+						"title2"), "warning");
+				return true;
 			}
-			oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
-			 var content = document.getElementById("content").value;;
-	         if(content == "" || content == null || content == '&nbsp;' || 
-	         content == '<br>' || content == '<br/>' || content == '<p>&nbsp;</p>' || content == '<p><br></p>'){ 
-	        	 Swal.fire("본문을 작성해주세요.","","warning"); 
-	        	 oEditors.getById["content"].exec("FOCUS"); //포커싱 
-	        	 return true; 
-	        	 }
 		}
-		function fileCheck( file )
-		{
-		        // 사이즈체크
-		        var maxSize  = 100 * 1024 * 1024    //100MB
-		        var fileSize = 0;
-
-			// 브라우저 확인
-			var browser=navigator.appName;
-			
-			// 익스플로러일 경우
-			if (browser=="Microsoft Internet Explorer")
-			{
-				var oas = new ActiveXObject("Scripting.FileSystemObject");
-				fileSize = oas.getFile( file.value ).size;
-			}
-			// 익스플로러가 아닐경우
-			else
-			{
-				fileSize = file.files[0].size;
-			}
-
-		        if(fileSize > maxSize)
-		        {
-		            Swal.fire("첨부파일 100MB 이하로 등록!!","","error");
-		            return "/board/writeView";
-		        }
-
-		        document.writeForm.submit();
+		oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
+		var content = document.getElementById("content").value;
+		;
+		if (content == "" || content == null || content == '&nbsp;'
+				|| content == '<br>' || content == '<br/>'
+				|| content == '<p>&nbsp;</p>' || content == '<p><br></p>') {
+			Swal.fire("본문을 작성해주세요.", "", "warning");
+			oEditors.getById["content"].exec("FOCUS"); //포커싱 
+			return true;
 		}
-		</script>
+	}
+	
+	function fileCheck(file) {
+		var maxSize = 100 * 1024 * 1024 //100MB
+		var fileSize = 0;
+
+		fileCnt = file.files.length;      // 파일의 개수
+		if(fileCnt > 0) {
+		   fileSize = file.files[0].size;
+		   // 유효성 검사 함
+		   if (fileSize > maxSize) {
+		      Swal.fire("첨부파일 100MB 이하로 등록!!", "", "error");
+		      return true;
+		   } else {
+		      return false;
+		   }
+		} else if(fileCnt == 0) {
+		   return false;
+		}
+	}
+</script>
 
 <script type="text/javascript">
-	$(document).ready(function(){
-		$("#logoutBtn").on("click", function(){
-			location.href="member/logout";
+	$(document).ready(function() {
+		$("#logoutBtn").on("click", function() {
+			location.href = "member/logout";
 		})
-		$("#registerBtn").on("click", function(){
-			location.href="/member/register";
+		$("#registerBtn").on("click", function() {
+			location.href = "/member/register";
 		})
-		
-		
-		
-		$("#memberUpdateBtn").on("click", function(){
-			location.href="member/memberUpdateView";
+
+		$("#memberUpdateBtn").on("click", function() {
+			location.href = "member/memberUpdateView";
 		})
-		
+
 	})
 </script>
 
@@ -640,22 +630,24 @@
 											</p>
 										</div>
 
-										
+
 										<div id="fileIndex">
 											<div>
-												<input type='file' id="file" style='cursor: pointer; color: #4e73df;'name='file_"+(fileIndex++)+"'></input>
-												<button type='button'style='cursor: pointer; color: #4e73df;' id='fileDelBtn' class="btn btn-outline-error">삭제</button>
+												<input type='file' id="file" style='cursor: pointer; color: #4e73df;' name='file_"+(fileIndex++)+"'></input>
+												<button type='button' style='cursor: pointer; color: #4e73df; display: none;' id='fileDelBtn' class="btn btn-outline-error">삭제</button>
 												<span style="color: red; font-size: 8px;">**100MB 미만 파일만 첨부 가능**</span>
 											</div>
 										</div>
-										
-										
+
+
 										<hr />
 										<span>
-											<button class="fileAdd_btn btn btn-outline-primary"type="button">파일추가</button>
-											<button type="button" class="write_btn btn btn-outline-primary">작성</button>
+											<button class="fileAdd_btn btn btn-outline-primary"
+												type="button">파일추가</button>
+											<button type="button"
+												class="write_btn btn btn-outline-primary">작성</button>
 										</span>
-											<button class="cancel_btn btn btn-outline-primary">취소</button>
+										<button class="cancel_btn btn btn-outline-primary">취소</button>
 
 									</c:if>
 									<c:if test="${member.userId == null}">
@@ -664,12 +656,12 @@
 								</form>
 							</section>
 							<br />
-							
-							
-							
-							
 
-<%-- 							<form name="fileForm">
+
+
+
+
+							<%-- 							<form name="fileForm">
 								<input type="file" name="file1" /> <input type="button"
 									value="upload" onclick="fileCheck( this.form.file1 )">
 							</form>
@@ -771,51 +763,72 @@
 	<script src="/resources/boot/js/write.js"></script>
 
 
-	<script> 
-	var EDITORS = []; 
-	window.onload = function() { 
-	// smartEditor 세팅 
-	
-	// editor에 글자를 쳤을 때 글자 수 표출되는 이벤트 
-	// setTimeout 을 안하면 iframe이 만들어지기 전에 이벤트가 등록되어 영역을 찾지 못한다 
-		setTimeout(function() { 
-			var ctntarea = document.querySelector("iframe").contentWindow.document.querySelector("iframe").contentWindow.document.querySelector(".se2_inputarea"); 
-			ctntarea.addEventListener("keyup", function(e) { 
-				var text = this.innerHTML; 
-				text = text.replace(/<br>/ig, ""); // br 제거 
-				text = text.replace(/&nbsp;/ig, "");// 공백 제거 
-				text = text.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, ""); // html 제거 
-					
-				var len = text.length; 
-				document.querySelector(".count span").innerHTML = len; 
-					
-				if(len > 2000) { 
-					Swal.fire("최대 2000자까지 입력 가능합니다.","","warning"); 
-					} 
-				}); 
-			}, 1000) }
-	</script>
-	
-	<script type="text/javascript">
-	$(document).ready(function() {
-		var fileIndex = 1;
-		//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
-		$(".fileAdd_btn").on("click", function(){
-			$("#fileIndex").append("<div><input type='file' style='cursor: pointer; color:#4e73df;' name='file_"+(fileIndex++)+"'>"+"</button>"+"<button type='button' style='cursor: pointer; color:#4e73df;' id='fileDelBtn' class='btn btn-outline-error'>"+"&nbsp삭제"+"</button><span style='color:red; font-size:8px;'>**100MB 미만 파일만 첨부 가능**</span></div>");
-		});
-		$(document).on("click","#fileDelBtn", function(){
-			$(this).parent().remove();
-			
-		});
-	});
-	    
+	<script>
+		var EDITORS = [];
+		window.onload = function() {
+			// smartEditor 세팅 
+
+			// editor에 글자를 쳤을 때 글자 수 표출되는 이벤트 
+			// setTimeout 을 안하면 iframe이 만들어지기 전에 이벤트가 등록되어 영역을 찾지 못한다 
+			setTimeout(
+					function() {
+						var ctntarea = document.querySelector("iframe").contentWindow.document
+								.querySelector("iframe").contentWindow.document
+								.querySelector(".se2_inputarea");
+						ctntarea
+								.addEventListener(
+										"keyup",
+										function(e) {
+											var text = this.innerHTML;
+											text = text.replace(/<br>/ig, ""); // br 제거 
+											text = text.replace(/&nbsp;/ig, "");// 공백 제거 
+											text = text
+													.replace(
+															/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig,
+															""); // html 제거 
+
+											var len = text.length;
+											document
+													.querySelector(".count span").innerHTML = len;
+
+											if (len > 2000) {
+												Swal.fire(
+														"최대 2000자까지 입력 가능합니다.",
+														"", "warning");
+											}
+										});
+					}, 1000)
+		}
 	</script>
 
-	<!-- 파일 용량 체크 -->	
-	<script>
-	/* 업로드 체크 */
-	
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function() {
+							var fileIndex = 1;
+							//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
+							$(".fileAdd_btn")
+									.on(
+											"click",
+											function() {
+												$("#fileIndex")
+														.append(
+																"<div><input type='file' style='cursor: pointer; color:#4e73df;' name='file_"
+																		+ (fileIndex++)
+																		+ "'>"
+																		+ "</button>"
+																		+ "<button type='button' style='cursor: pointer; color:#4e73df;' id='fileDelBtn' class='btn btn-outline-error'>"
+																		+ "&nbsp삭제"
+																		+ "</button><span style='color:red; font-size:8px;'>**100MB 미만 파일만 첨부 가능**</span></div>");
+											});
+							$(document).on("click", "#fileDelBtn", function() {
+								$(this).parent().remove();
+
+							});
+						});
 	</script>
+
+
 
 </body>
 

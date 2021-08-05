@@ -78,9 +78,9 @@ response.setHeader("Cache-Control", "no-cache");
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item active"><a class="nav-link"
-				href="index"> <i class="fas fa-fw fa-tachometer-alt"></i> <span>HOME</span></a>
-			</li>
+			<li class="nav-item active"><a class="nav-link" href="index">
+					<i class="fas fa-fw fa-tachometer-alt"></i> <span>HOME</span>
+			</a></li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
@@ -141,12 +141,12 @@ response.setHeader("Cache-Control", "no-cache");
 					aria-labelledby="headingPages" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Login Screens:</h6>
-						<a class="collapse-item" href="/home">Login Menu</a> 
+						<a class="collapse-item" href="/home">Login Menu</a>
 						<c:if test="${member.userId == null}">
-                        <a class="collapse-item" id="registerBtn" type="button">Register</a>
-                        </c:if>
-                        <c:if test="${member.userId != null}">
-                        </c:if>
+							<a class="collapse-item" id="registerBtn" type="button">Register</a>
+						</c:if>
+						<c:if test="${member.userId != null}">
+						</c:if>
 						<!--                       <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
@@ -221,8 +221,7 @@ response.setHeader("Cache-Control", "no-cache");
 						<li class="nav-item dropdown no-arrow d-sm-none"><a
 							class="nav-link dropdown-toggle" href="#" id="searchDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">
-							 <i class="fas fa-search fa-fw"></i>
+							aria-expanded="false"> <i class="fas fa-search fa-fw"></i>
 						</a> <!-- Dropdown - Messages -->
 							<div
 								class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
@@ -248,27 +247,24 @@ response.setHeader("Cache-Control", "no-cache");
 						<li class="nav-item dropdown no-arrow"><a
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">
-							<c:if test="${member.userId != null}">
+							aria-expanded="false"> <c:if test="${member.userId != null}">
 							사용자 : ${member.userName} 
-							</c:if>
-							<c:if test="${member.userId == null}">
+							</c:if> <c:if test="${member.userId == null}">
 							로그인해주세요.
-							</c:if>
-							<span
-								class="mr-2 d-none d-lg-inline text-gray-600 small"></span> <img class="img-profile rounded-circle"
+							</c:if> <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+								<img class="img-profile rounded-circle"
 								src="/resources/boot/img/undraw_profile.svg">
-						</a>
-						<!-- Dropdown - User Information -->
-						<c:if test="${member.userId != null}">
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="/member/memberUpdateView">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                
-<!--                                  <a class="dropdown-item" href="#">
+						</a> <!-- Dropdown - User Information --> <c:if
+								test="${member.userId != null}">
+								<div
+									class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+									aria-labelledby="userDropdown">
+									<a class="dropdown-item" href="/member/memberUpdateView"> <i
+										class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+										Profile
+									</a>
+
+									<!--                                  <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a> 
@@ -277,38 +273,35 @@ response.setHeader("Cache-Control", "no-cache");
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
                                 </a>  -->
-                                
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/member/logout" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                            </c:if>
-                            <c:if test="${member.userId == null}">
-                               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="/home">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Login
-                                </a>
-                                </a>
-                            <a class="dropdown-item" href="/member/register">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Register
-                                </a> 
-                            </div>
-                            </c:if>
-						</li>
+
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="/member/logout"
+										data-toggle="modal" data-target="#logoutModal"> <i
+										class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+										Logout
+									</a>
+								</div>
+							</c:if> <c:if test="${member.userId == null}">
+								<div
+									class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+									aria-labelledby="userDropdown">
+									<a class="dropdown-item" href="/home"> <i
+										class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Login
+									</a> </a> <a class="dropdown-item" href="/member/register"> <i
+										class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+										Register
+									</a>
+								</div>
+							</c:if></li>
 
 					</ul>
 
 				</nav>
 				<!-- End of Topbar -->
 
-				<div style="text-align:center; line-height: 500px; font-size: 100px;">
-				안녕하세요
-				</div>
+				<div
+					style="text-align: center; line-height: 500px; font-size: 100px;">
+					안녕하세요</div>
 
 			</div>
 			<!-- End of Main Content -->
@@ -334,25 +327,27 @@ response.setHeader("Cache-Control", "no-cache");
 		class="fas fa-angle-up"></i>
 	</a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">로그아웃 하시겠습니까?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">로그아웃시 로그인 페이지로 이동합니다.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-                    <a class="btn btn-primary" href="/member/logout">로그아웃</a>
-                </div>
-            </div>
-        </div>
-    </div>
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">로그아웃 하시겠습니까?</h5>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">로그아웃시 로그인 페이지로 이동합니다.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal">취소</button>
+					<a class="btn btn-primary" href="/member/logout">로그아웃</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- Bootstrap core JavaScript-->
 	<script src="/resources/boot/vendor/jquery/jquery.min.js"></script>

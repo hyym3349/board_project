@@ -14,7 +14,7 @@ response.setHeader("Cache-Control", "no-cache");
 <html lang="en">
 
 <head>
-	  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -63,9 +63,9 @@ response.setHeader("Cache-Control", "no-cache");
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item"><a class="nav-link"
-				href="/board/index"> <i class="fas fa-fw fa-tachometer-alt"></i> <span>HOME</span></a>
-			</li>
+			<li class="nav-item"><a class="nav-link" href="/board/index">
+					<i class="fas fa-fw fa-tachometer-alt"></i> <span>HOME</span>
+			</a></li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
@@ -117,8 +117,8 @@ response.setHeader("Cache-Control", "no-cache");
 			<div class="sidebar-heading">USER ADMIN</div>
 
 			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item active"><a class="nav-link collapsed" href="#"
-				data-toggle="collapse" data-target="#collapsePages"
+			<li class="nav-item active"><a class="nav-link collapsed"
+				href="#" data-toggle="collapse" data-target="#collapsePages"
 				aria-expanded="true" aria-controls="collapsePages"> <i
 					class="fas fa-fw fa-folder"></i> <span>USER</span>
 			</a>
@@ -126,13 +126,12 @@ response.setHeader("Cache-Control", "no-cache");
 					aria-labelledby="headingPages" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Login Screens:</h6>
-						<a class="collapse-item " href="/home">Login Menu</a> 
-						<c:if test="${member.userId == null}"
-						>
-                        <a class="collapse-item" id="registerBtn" type="button">Register</a>
-                        </c:if>
-                        <c:if test="${member.userId != null}">
-                        </c:if>
+						<a class="collapse-item " href="/home">Login Menu</a>
+						<c:if test="${member.userId == null}">
+							<a class="collapse-item" id="registerBtn" type="button">Register</a>
+						</c:if>
+						<c:if test="${member.userId != null}">
+						</c:if>
 						<!--                       <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
@@ -233,27 +232,24 @@ response.setHeader("Cache-Control", "no-cache");
 						<li class="nav-item dropdown no-arrow"><a
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">
-							<c:if test="${member.userId != null}">
+							aria-expanded="false"> <c:if test="${member.userId != null}">
 							사용자 : ${member.userName} 
-							</c:if>
-							<c:if test="${member.userId == null}">
+							</c:if> <c:if test="${member.userId == null}">
 							로그인해주세요.
-							</c:if>
-							<span
-								class="mr-2 d-none d-lg-inline text-gray-600 small"></span> <img class="img-profile rounded-circle"
+							</c:if> <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
+								<img class="img-profile rounded-circle"
 								src="/resources/boot/img/undraw_profile.svg">
-						</a>
-						<!-- Dropdown - User Information -->
-						<c:if test="${member.userId != null}">
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="/member/memberUpdateView">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                
-<!--                                  <a class="dropdown-item" href="#">
+						</a> <!-- Dropdown - User Information --> <c:if
+								test="${member.userId != null}">
+								<div
+									class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+									aria-labelledby="userDropdown">
+									<a class="dropdown-item" href="/member/memberUpdateView"> <i
+										class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+										Profile
+									</a>
+
+									<!--                                  <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a> 
@@ -262,124 +258,136 @@ response.setHeader("Cache-Control", "no-cache");
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
                                 </a>  -->
-                                
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/member/logout" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                            </c:if>
-                            <c:if test="${member.userId == null}">
-                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="/home">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    
-                                    Login
-                                </a>
-                            <a class="dropdown-item" href="/member/register">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Register
-                                </a> 
-                            </div>
-                            </c:if>
-						</li>
+
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="/member/logout"
+										data-toggle="modal" data-target="#logoutModal"> <i
+										class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+										Logout
+									</a>
+								</div>
+							</c:if> <c:if test="${member.userId == null}">
+								<div
+									class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+									aria-labelledby="userDropdown">
+									<a class="dropdown-item" href="/home"> <i
+										class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Login
+									</a> <a class="dropdown-item" href="/member/register"> <i
+										class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+										Register
+									</a>
+								</div>
+							</c:if></li>
 
 					</ul>
 
 				</nav>
 				<!-- End of Topbar -->
-				
+
 				<!-- 회원가입 창 시작-->
-    <div class="container">
+				<div class="container">
 
-        <div class="card o-hidden border-0 shadow-lg my-5">
-            <div class="card-body p-0">
-                <!-- Nested Row within Card Body -->
-                <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                    <div class="col-lg-7">
-                        <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-                            </div>
-                            <form class="user" action="/member/register" method="post">
-  								<div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" maxlength="15" id="userId" name="userId"
-                                            placeholder="ID">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <button class="idChk btn btn-primary btn-user btn-block" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                             maxlength="20" id="userPass" name="userPass" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            maxlength="20" id="userPass2" name="userPass2" onchange="passchk()" placeholder="Repeat Password">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" maxlength="5" id="userName" name="userName"
-                                            placeholder="Name">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" maxlength="12" id="userNick" name="userNick"
-                                            placeholder="NickName">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" maxlength="13" id="userTell" name="userTell"
-                                            placeholder="Tell">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" maxlength="8" id="userBirth" name="userBirth"
-                                            placeholder="Birth ex) 19991201">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" maxlength="50" id="userEmail" name="userEmail"
-                                        placeholder="Email Address">
-                                </div>
-                                
-                                
- 								<div class="form-group row">
- 									<div class="col-sm-6 mb-3 mb-sm-0">	
-										<label class="box-radio-input"><input type="radio" name="userGender" value="M" checked="checked" ><span>남자</span></label>
-								</div>
-									<div class="col-sm-6">
-                    					<label class="box-radio-input"><input type="radio" name="userGender" value="F" ><span>여자</span></label>
-                    				</div>
-								</div>
-								
-                                <button class="btn btn-primary btn-user btn-block" type="submit" id="submit">회원가입</button>
-                                <hr>
-                                <a href="/board/index" class="btn btn-google btn-user btn-block">
-                                    <i class="fab  fa-fw"></i> 회원가입 취소
-                                </a>
-                                <a href="/board/index" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab -f fa-fw"></i> 홈
-                                </a>
-                           
-                            <hr>
-           
-                                <a href="/home"><button class="btn btn-secondary btn-user btn-block" id="loginBtn" type="button">로그인</button> </a>
-                             </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+					<div class="card o-hidden border-0 shadow-lg my-5">
+						<div class="card-body p-0">
+							<!-- Nested Row within Card Body -->
+							<div class="row">
+								<div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+								<div class="col-lg-7">
+									<div class="p-5">
+										<div class="text-center">
+											<h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+										</div>
+										<form class="user" action="/member/register" method="post">
+											<div class="form-group row">
+												<div class="col-sm-6 mb-3 mb-sm-0">
+													<input type="text" class="form-control form-control-user"
+														maxlength="15" id="userId" name="userId" placeholder="ID">
+												</div>
+												<div class="col-sm-6">
+													<button class="idChk btn btn-primary btn-user btn-block"
+														type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
+												</div>
+											</div>
+											<div class="form-group row">
+												<div class="col-sm-6 mb-3 mb-sm-0">
+													<input type="password"
+														class="form-control form-control-user" maxlength="20"
+														id="userPass" name="userPass" placeholder="Password">
+												</div>
+												<div class="col-sm-6">
+													<input type="password"
+														class="form-control form-control-user" maxlength="20"
+														id="userPass2" name="userPass2" onchange="passchk()"
+														placeholder="Repeat Password">
+												</div>
+											</div>
+											<div class="form-group row">
+												<div class="col-sm-6 mb-3 mb-sm-0">
+													<input type="text" class="form-control form-control-user"
+														maxlength="5" id="userName" name="userName"
+														placeholder="Name">
+												</div>
+												<div class="col-sm-6">
+													<input type="text" class="form-control form-control-user"
+														maxlength="12" id="userNick" name="userNick"
+														placeholder="NickName">
+												</div>
+											</div>
+											<div class="form-group row">
+												<div class="col-sm-6 mb-3 mb-sm-0">
+													<input type="text" class="form-control form-control-user"
+														maxlength="13" id="userTell" name="userTell"
+														placeholder="Tell">
+												</div>
+												<div class="col-sm-6">
+													<input type="text" class="form-control form-control-user"
+														maxlength="8" id="userBirth" name="userBirth"
+														placeholder="Birth ex) 19991201">
+												</div>
+											</div>
+											<div class="form-group">
+												<input type="email" class="form-control form-control-user"
+													maxlength="50" id="userEmail" name="userEmail"
+													placeholder="Email Address">
+											</div>
 
-    </div>
-<!-- 회원가입 창 끝-->
+
+											<div class="form-group row">
+												<div class="col-sm-6 mb-3 mb-sm-0">
+													<label class="box-radio-input"><input type="radio"
+														name="userGender" value="M" checked="checked"><span>남자</span></label>
+												</div>
+												<div class="col-sm-6">
+													<label class="box-radio-input"><input type="radio"
+														name="userGender" value="F"><span>여자</span></label>
+												</div>
+											</div>
+
+											<button class="btn btn-primary btn-user btn-block"
+												type="submit" id="submit">회원가입</button>
+											<hr>
+											<a href="/board/index"
+												class="btn btn-google btn-user btn-block"> <i
+												class="fab  fa-fw"></i> 회원가입 취소
+											</a> <a href="/board/index"
+												class="btn btn-facebook btn-user btn-block"> <i
+												class="fab -f fa-fw"></i> 홈
+											</a>
+
+											<hr>
+
+											<a href="/home"><button
+													class="btn btn-secondary btn-user btn-block" id="loginBtn"
+													type="button">로그인</button> </a>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- 회원가입 창 끝-->
 			</div>
 			<!-- End of Main Content -->
 
@@ -404,25 +412,27 @@ response.setHeader("Cache-Control", "no-cache");
 		class="fas fa-angle-up"></i>
 	</a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">로그아웃 하시겠습니까?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">로그아웃시 로그인 페이지로 이동합니다.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
-                    <a class="btn btn-primary" href="/member/logout">로그아웃</a>
-                </div>
-            </div>
-        </div>
-    </div>
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">로그아웃 하시겠습니까?</h5>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">로그아웃시 로그인 페이지로 이동합니다.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal">취소</button>
+					<a class="btn btn-primary" href="/member/logout">로그아웃</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- Bootstrap core JavaScript-->
 	<script src="/resources/boot/vendor/jquery/jquery.min.js"></script>
@@ -441,36 +451,36 @@ response.setHeader("Cache-Control", "no-cache");
 	<!-- Page level custom scripts -->
 	<script src="/resources/boot/js/demo/chart-area-demo.js"></script>
 	<script src="/resources/boot/js/demo/chart-pie-demo.js"></script>
-	
+
 	<style>
-	.box-radio-input input[type="radio"]{
-  display:none;
+.box-radio-input input[type="radio"] {
+	display: none;
 }
 
-.box-radio-input input[type="radio"] + span{
-  background:none;
-  border:1px solid #dfdfdf;  
-  text-align:center;
-  height:35px;
-  line-height:33px;
-  font-weight:500;
-  cursor:pointer;
-  font-size: .8rem;
-    border-radius: 10rem;
-    padding: .75rem 1rem;
-    width: 100%;
+.box-radio-input input[type="radio"]+span {
+	background: none;
+	border: 1px solid #dfdfdf;
+	text-align: center;
+	height: 35px;
+	line-height: 33px;
+	font-weight: 500;
+	cursor: pointer;
+	font-size: .8rem;
+	border-radius: 10rem;
+	padding: .75rem 1rem;
+	width: 100%;
 }
 
-.box-radio-input input[type="radio"]:checked + span{
+.box-radio-input input[type="radio"]:checked+span {
 	color: #fff;
-    background-color: #4e73df;
-    border-color: #4e73df;
-    font-size: .8rem;
-    border-radius: 10rem;
-    padding: .75rem 1rem;
-    width: 100%;
+	background-color: #4e73df;
+	border-color: #4e73df;
+	font-size: .8rem;
+	border-radius: 10rem;
+	padding: .75rem 1rem;
+	width: 100%;
 }
-	</style>
+</style>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		// 취소
