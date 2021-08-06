@@ -91,7 +91,7 @@ response.setHeader("Cache-Control", "no-cache");
 				return false;
 			}
 			
-			for(var i = 1 ; i <= 5 ; i++){
+			for(var i = 1 ; i <= 10 ; i++){
 				var file = $("#file_" + i);
 				if (file.length == 0 ) {
 					continue;
@@ -644,8 +644,8 @@ response.setHeader("Cache-Control", "no-cache");
 
 										<div id="fileIndex">
 											<div>
-												<input type='file' id="file" style='cursor: pointer; color: #4e73df;' name='file_"+(fileIndex++)+"'></input>
-												<button type='button' style='cursor: pointer; color: #4e73df; display: none;' id='fileDelBtn' class="btn btn-outline-error">삭제</button>
+												<input type='file' id="file_1" style='cursor: pointer; color: #4e73df;' name='file_"+(fileIndex++)+"'></input>
+												<button type='button' style='cursor: pointer; color: #4e73df;' id='fileDelBtn' class="btn btn-outline-error">삭제</button>
 												<span style="color: red; font-size: 8px;">**100MB 미만 파일만 첨부 가능**</span>
 											</div>
 										</div>
