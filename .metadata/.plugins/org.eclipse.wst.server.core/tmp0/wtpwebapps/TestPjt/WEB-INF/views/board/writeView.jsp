@@ -91,7 +91,7 @@ response.setHeader("Cache-Control", "no-cache");
 				return false;
 			}
 			
-			for(var i = 1 ; i <= 10 ; i++){
+			for(var i = 1 ; i <= 100 ; i++){
 				var file = $("#file_" + i);
 				if (file.length == 0 ) {
 					continue;
@@ -533,7 +533,7 @@ response.setHeader("Cache-Control", "no-cache");
 								<div
 									class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 									aria-labelledby="userDropdown">
-									<a class="dropdown-item" href="/member/memberUpdateView"> <i
+									<a class="dropdown-item" href="/member/memberCheckView"> <i
 										class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 										Profile
 									</a>
@@ -646,7 +646,7 @@ response.setHeader("Cache-Control", "no-cache");
 											<div>
 												<input type='file' id="file_1" style='cursor: pointer; color: #4e73df;' name='file_"+(fileIndex++)+"'></input>
 												<button type='button' style='cursor: pointer; color: #4e73df;' id='fileDelBtn' class="btn btn-outline-error">삭제</button>
-												<span style="color: red; font-size: 8px;">**100MB 미만 파일만 첨부 가능**</span>
+												
 											</div>
 										</div>
 
@@ -814,17 +814,14 @@ response.setHeader("Cache-Control", "no-cache");
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			var fileIndex = 1;
+			var fileIndex = 1 || fileIndex < 11;
 			
 			//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
 			$(".fileAdd_btn").on("click",function() {
 				(fileIndex++);
 				$("#fileIndex").append(
-					"<div><input type='file' id='file_" + (fileIndex) + "' style='cursor: pointer; color:#4e73df;' name='file_" + (fileIndex) + "'>"
-							+ "</button>"
-							+ "<button type='button' style='cursor: pointer; color:#4e73df;' id='fileDelBtn' class='btn btn-outline-error'>"
-							+ "&nbsp삭제"
-							+ "</button><span style='color:red; font-size:8px;'>**100MB 미만 파일만 첨부 가능**</span></div>"
+					"<div><input type='file' id='file_" + (fileIndex) + "' style='cursor: pointer; color:#4e73df;' name='file_" + (fileIndex) + "'>" + "</button>"
+							+ "<button type='button' style='cursor: pointer; color:#4e73df;' id='fileDelBtn' class='btn btn-outline-error'>" + "&nbsp삭제" + "</button> </div>"
 				);
 			});
 			

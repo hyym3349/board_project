@@ -524,7 +524,7 @@ response.setHeader("Cache-Control", "no-cache");
 						<c:if test="${member.userId != null}">
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="/member/memberUpdateView">
+                                <a class="dropdown-item" href="/member/memberCheckView">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -656,7 +656,7 @@ response.setHeader("Cache-Control", "no-cache");
 										
 										<a href="#" id="fileName" onclick="return false;">${fileNo.OGN_FILE_NAME}</a> ( 파일크기 : ${fileNo.FILE_SIZE}KB )
 										<button style=' color:#4e73df;' class='btn btn-outline-error' id="fileDel" onclick="fn_del('${fileNo.FILE_NO}');" type="button">삭제</button>
-										<span style="color:red; font-size:8px;">**100MB 미만 파일만 첨부 가능**</span>
+										
 										<br>
 									</div>
 									</c:forEach>
@@ -783,7 +783,7 @@ window.onload = function() {
 		$(".fileAdd_btn").on("click", function(){
 			(fileIndex++);
 			$("#fileIndex").append("<div><input type='file' id='file_" + (fileIndex) + "' style='color:#4e73df;' name='file_"+(fileIndex)+"'>"+"</button>"+
-			"<button type='button' style='color:#4e73df;' id='fileDelBtn' class='btn btn-outline-error'>"+"&nbsp삭제"+"</button><span style='color:red; font-size:8px;'>**100MB 미만 파일만 첨부 가능**</span></div>");
+			"<button type='button' style='color:#4e73df;' id='fileDelBtn' class='btn btn-outline-error'>"+"&nbsp삭제"+"</button></div>");
 		});
 		$(document).on("click","#fileDelBtn", function(){
 			$(this).parent().remove();

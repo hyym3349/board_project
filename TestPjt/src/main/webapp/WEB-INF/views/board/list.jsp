@@ -408,7 +408,7 @@ li {
 								<div
 									class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 									aria-labelledby="userDropdown">
-									<a class="dropdown-item" href="/member/memberUpdateView"> <i
+									<a class="dropdown-item" href="/member/memberCheckView"> <i
 										class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 										Profile
 									</a>
@@ -436,7 +436,7 @@ li {
 									aria-labelledby="userDropdown">
 									<a class="dropdown-item" href="/home"> <i
 										class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Login
-									</a> </a> <a class="dropdown-item" href="/member/register"> <i
+									</a><a class="dropdown-item" href="/member/register"> <i
 										class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
 										Register
 									</a>
