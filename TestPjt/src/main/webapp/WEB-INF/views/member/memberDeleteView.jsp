@@ -172,7 +172,7 @@ response.setHeader("Cache-Control", "no-cache");
 				})
 				
 			});
-			
+		});
 	</script>
 	</html>
 </c:if>
