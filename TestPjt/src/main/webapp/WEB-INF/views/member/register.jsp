@@ -36,18 +36,18 @@ response.setHeader("Cache-Control", "no-cache");
 
 
 </head>
+<body class="bg-gradient-primary">
+<!-- <body id="page-top">
 
-<body id="page-top">
-
-	<!-- Page Wrapper -->
+	Page Wrapper
 	<div id="wrapper">
 
-		<!-- Sidebar -->
+		Sidebar
 		<ul
 			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
 			id="accordionSidebar">
 
-			<!-- Sidebar - Brand -->
+			Sidebar - Brand
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
 				href="index.html">
@@ -59,16 +59,16 @@ response.setHeader("Cache-Control", "no-cache");
 				</div>
 			</a>
 
-			<!-- Divider -->
+			Divider
 			<hr class="sidebar-divider my-0">
 
-			<!-- Nav Item - Dashboard -->
+			Nav Item - Dashboard
 			<li class="nav-item"><a class="nav-link" href="/board/index">
 					<i class="fas fa-fw fa-tachometer-alt"></i> <span>HOME</span>
 			</a></li>
 
-			<!-- Divider -->
-			<hr class="sidebar-divider">
+			Divider
+			<hr class="sidebar-divider"> -->
 
 			<!-- Heading -->
 			<!-- <div class="sidebar-heading">
@@ -114,7 +114,7 @@ response.setHeader("Cache-Control", "no-cache");
 			<!-- <hr class="sidebar-divider"> -->
 
 			<!-- Heading -->
-			<div class="sidebar-heading">USER ADMIN</div>
+			<%-- <div class="sidebar-heading">USER ADMIN</div>
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item active"><a class="nav-link collapsed"
@@ -138,7 +138,7 @@ response.setHeader("Cache-Control", "no-cache");
                         <a class="collapse-item" href="404.html">404 Page</a>
                         <a class="collapse-item" href="blank.html">Blank Page</a> -->
 					</div>
-				</div></li>
+				</div></li> --%>
 
 			<!-- Nav Item - Charts -->
 			<!--             <li class="nav-item">
@@ -148,24 +148,24 @@ response.setHeader("Cache-Control", "no-cache");
             </li> -->
 
 			<!-- Nav Item - Tables -->
-			<li class="nav-item"><a class="nav-link" href="/board/list">
+			<!-- <li class="nav-item"><a class="nav-link" href="/board/list">
 					<i class="fas fa-fw fa-table"></i> <span>BOARD</span>
 			</a></li>
 
-			<!-- Divider -->
+			Divider
 			<hr class="sidebar-divider d-none d-md-block">
 
-			<!-- Sidebar Toggler (Sidebar) -->
+			Sidebar Toggler (Sidebar)
 			<div class="text-center d-none d-md-inline">
 				<button class="rounded-circle border-0" id="sidebarToggle"></button>
 			</div>
 
 
-		</ul>
+		</ul> -->
 		<!-- End of Sidebar -->
 
 		<!-- Content Wrapper -->
-		<div id="content-wrapper" class="d-flex flex-column">
+<%-- 		<div id="content-wrapper" class="d-flex flex-column">
 
 			<!-- Main Content -->
 			<div id="content">
@@ -195,10 +195,10 @@ response.setHeader("Cache-Control", "no-cache");
                             </div> -->
 						</div>
 					</form>
-
+ --%>
 
 					<!-- Topbar Navbar -->
-					<ul class="navbar-nav ml-auto">
+					<%-- <ul class="navbar-nav ml-auto">
 
 
 
@@ -281,7 +281,7 @@ response.setHeader("Cache-Control", "no-cache");
 
 					</ul>
 
-				</nav>
+				</nav> --%>
 				<!-- End of Topbar -->
 
 				<!-- 회원가입 창 시작-->
@@ -336,7 +336,7 @@ response.setHeader("Cache-Control", "no-cache");
 											<div class="form-group row">
 												<div class="col-sm-6 mb-3 mb-sm-0">
 													<input type="text" class="form-control form-control-user"
-														maxlength="13" id="userTell" name="userTell"
+														maxlength="11" id="userTell" name="userTell"
 														placeholder="Tell">
 												</div>
 												<div class="col-sm-6">
@@ -392,13 +392,13 @@ response.setHeader("Cache-Control", "no-cache");
 			<!-- End of Main Content -->
 
 			<!-- Footer -->
-			<footer class="sticky-footer bg-white">
+<!-- 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
 						<span>Copyright &copy; Your Website 2021</span>
 					</div>
 				</div>
-			</footer>
+			</footer> -->
 			<!-- End of Footer -->
 
 		</div>

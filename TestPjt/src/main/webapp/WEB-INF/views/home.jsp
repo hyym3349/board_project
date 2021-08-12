@@ -83,7 +83,7 @@ response.setHeader("Cache-Control", "no-cache");
 													type="submit">로그인</button>
 											</div>
 											<div class="form-group">
-												<a href="/member/register"><button
+												<a style="text-decoration:none;" href="/member/register"><button
 														class="btn btn-info btn-user btn-block" type="button">회원가입</button></a>
 											</div>
 											<hr>

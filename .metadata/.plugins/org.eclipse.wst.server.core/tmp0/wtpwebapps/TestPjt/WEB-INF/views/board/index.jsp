@@ -143,7 +143,7 @@ response.setHeader("Cache-Control", "no-cache");
 						<h6 class="collapse-header">Login Screens:</h6>
 						<a class="collapse-item" href="/home">Login Menu</a>
 						<c:if test="${member.userId == null}">
-							<a class="collapse-item" id="registerBtn" type="button">Register</a>
+							<a href="/member/register" class="collapse-item" id="registerBtn" type="button">Register</a>
 						</c:if>
 						<c:if test="${member.userId != null}">
 						</c:if>
